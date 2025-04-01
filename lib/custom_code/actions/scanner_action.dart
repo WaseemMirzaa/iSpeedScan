@@ -20,11 +20,10 @@ Future<List<String>> scannerAction(BuildContext context) async {
   String resultMessage = '';
 
   var isPhotoMode = await PreferenceService.getMode();
-  // if()
 
   try {
-    pictures = await CunningDocumentScanner.getPictures(
-            isGalleryImportAllowed: true) ??
+    pictures = await CunningDocumentScanner.getPictures(noOfPages: 60,
+            isGalleryImportAllowed: false) ??
         [];
     _pictures = pictures;
   } catch (exception) {

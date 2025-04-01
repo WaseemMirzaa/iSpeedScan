@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:ispeedscan/more_apps/more_apps.dart';
+import 'package:ispeedscan/subscription_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../splash/splash_screen.dart';
@@ -51,12 +53,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/',
           builder: (context, _) => appStateNotifier.showSplashImage
               ? ToggleModeScreen()
-              : const ScannerWidget(),
+              :  ScannerWidget(),
         ),
         FFRoute(
           name: 'tevin',
           path: '/tevin',
           builder: (context, params) => const TevinWidget(),
+        ),
+        FFRoute(
+          name: 'more_apps',
+          path: '/more_apps',
+          builder: (context, params) => const MoreAppsWidget(),
         ),
         FFRoute(
           name: 'privacy',
@@ -72,6 +79,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'scanner',
           path: '/scanner',
           builder: (context, params) => ScannerWidget(),
+        ),
+        FFRoute(
+          name: 'subscribe',
+          path: '/subscribe',
+          builder: (context, params) => SubscriptionWidget(),
         ),
         FFRoute(
           name: 'howto',

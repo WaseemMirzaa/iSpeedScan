@@ -5,6 +5,7 @@ import 'dart:isolate';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -14,6 +15,11 @@ import 'package:pdf/widgets.dart' as pw;
 import 'dart:typed_data';
 import 'package:image/image.dart' as img;
 //TODO VERSION 1 STABLE
+
+int height = 660 * 2;
+int width = 880 * 2;
+int quality = 100;
+int compressionQuality = 90;
 
 // Modified class to serialize data
 class SerializableFile {
@@ -65,14 +71,23 @@ Future<void> pdfMultiImg(SendPort sendPort
     final pdf = pw.Document();
 
     for (var fileup in params.fileupList) {
+
       final serializableFile = SerializableFile.fromMap(fileup);
 
+
+
+      if(Platform.isAndroid) {
+
+        setCompression(params, serializableFile);
+      //
+      }
+
       Uint8List? fileupBytes = resizeAndCompressImage(serializableFile.bytes,
-          maxHeight: 660 * 2, maxWidth: 880 * 2, quality: 100);
+          maxHeight: height , maxWidth:width, quality: quality);
 
       if (fileupBytes != null) {
         // Decode the image
-        var decodedImage = img.decodeImage(fileupBytes);
+        var decodedImage = img.decodeImage(Platform.isAndroid ? serializableFile.bytes :fileupBytes);
 
         if (decodedImage != null) {
           // Check the orientation of the image
@@ -89,7 +104,7 @@ Future<void> pdfMultiImg(SendPort sendPort
           }
 
           fileupBytes = img.encodeJpg(processedImage,
-              quality: 90); // Reduce quality to 100%
+              quality: compressionQuality); // Reduce quality to 100%
 
           // Create a MemoryImage from the resized image bytes
           var image = pw.MemoryImage(fileupBytes);
@@ -186,11 +201,11 @@ Future<void> pdfMultiImg(SendPort sendPort
       }
     }
 
-    await Future.delayed(Duration(milliseconds: 600));
+    await Future.delayed(const Duration(milliseconds: 600));
 
     final Uint8List pdfBytes = await pdf.save();
 
-    await Future.delayed(Duration(milliseconds: 1200));
+    await Future.delayed(const Duration(milliseconds: 800));
 
     print('🔴🔴🔴🔴🔴 ${params.filename}');
 
@@ -199,6 +214,67 @@ Future<void> pdfMultiImg(SendPort sendPort
       name: '${params.filename}.pdf',
     ));
   }
+}
+
+void setCompression(PdfMultiImgParams params, SerializableFile serializableFile) {
+
+  final image = img.decodeImage(serializableFile.bytes);
+
+  print('🟢🟢🟢🟢🟢 ${image!.height} ${image.width}');
+
+  if(image.height < 1162 || image.width<1483) {
+
+    if(image.height <728 || image.width < 1015) {
+
+      compressionQuality = 100;
+
+    } else {
+
+      compressionQuality = 85;
+
+    }
+
+    return;
+
+  }
+
+  switch (params.selectedValue) {
+
+    case 'High':
+
+
+      height = 1080;
+      width = 1920;
+      quality = 100;
+      compressionQuality = 20;
+
+      break;
+    case 'Low':
+
+      height = 1080;
+      width = 1920;
+      quality = 100;
+      compressionQuality = 1;
+
+      break;
+    case 'Medium':
+
+      height = (1080 * 0.75).toInt();
+      width = (1920 * 0.75).toInt();
+      quality = 100;
+      compressionQuality = 5;
+
+      break;
+    default:
+
+      height = 1080;
+      width = 1920;
+      quality = 100;
+      compressionQuality = 20;
+
+      break;
+  }
+
 }
 
 /// Resize and compress an image while maintaining aspect ratio
@@ -238,6 +314,13 @@ Uint8List resizeAndCompressImage(
   return Uint8List.fromList(img.encodeJpg(resized, quality: quality));
 }
 
+Future<Uint8List?> compressImageBytes(Uint8List imageBytes, {int quality = 85}) async {
+  return await FlutterImageCompress.compressWithList(
+    imageBytes,
+    quality: quality, // Adjust quality (85 is a good balance)
+    // format: CompressFormat.jpeg, // Change format if needed (jpeg/png/webp)
+  );
+}
 //todo using isolate
 
 // Define a parameter class for isolate communication
@@ -246,13 +329,13 @@ class PdfMultiImgParams {
   final String filename;
   // final String? notes;
   // final bool isFirstPageSelected;
-  // final String? fit;
+  final String? selectedValue;
   final int? selectedIndex;
 
   PdfMultiImgParams({
     required this.fileupList,
     required this.filename,
-    this.selectedIndex,
+    this.selectedIndex, this.selectedValue,
   });
 
   Map<String, dynamic> toMap() {
@@ -260,6 +343,7 @@ class PdfMultiImgParams {
       'fileupList': fileupList,
       'filename': filename,
       'selectedIndex': selectedIndex,
+      'selectedValue': selectedValue,
     };
   }
 
@@ -268,6 +352,7 @@ class PdfMultiImgParams {
       fileupList: List<Map<String, dynamic>>.from(map['fileupList']),
       filename: map['filename'],
       selectedIndex: map['selectedIndex'],
+      selectedValue: map['selectedValue'],
     );
   }
 }
