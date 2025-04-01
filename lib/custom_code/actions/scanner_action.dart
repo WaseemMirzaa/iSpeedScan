@@ -20,11 +20,10 @@ Future<List<String>> scannerAction(BuildContext context) async {
   String resultMessage = '';
 
   var isPhotoMode = await PreferenceService.getMode();
-  // if()
 
   try {
-    pictures = await CunningDocumentScanner.getPictures(
-            isGalleryImportAllowed: true) ??
+    pictures = await CunningDocumentScanner.getPictures(noOfPages: 60,
+            isGalleryImportAllowed: false) ??
         [];
     _pictures = pictures;
   } catch (exception) {
@@ -34,19 +33,31 @@ Future<List<String>> scannerAction(BuildContext context) async {
     return pictures;
   }
 
-  int count = -1;
-
-  List<String> picturePaths = [];
-
-  for (String picture in pictures) {
-    final time = DateTime.now()
-        .toIso8601String()
-        .replaceAll('.', '-')
-        .replaceAll(':', '-');
-
-    String name = 'ispeedscan$time.pdf';
-    print('🔴🔴🔴🔴🔴 $isPhotoMode');
-    if (isPhotoMode) await ImageGallerySaver.saveFile(picture, name: name);
+  // For Android 10+ (API 29+), use MediaStore API
+  if (isPhotoMode && Platform.isAndroid) {
+    for (String picture in pictures) {
+      final time = DateTime.now()
+          .toIso8601String()
+          .replaceAll('.', '-')
+          .replaceAll(':', '-');
+      
+      String name = 'ispeedscan$time.jpg';
+      
+      // Use MediaStore API through ImageGallerySaver
+      await ImageGallerySaver.saveFile(picture, name: name);
+    }
+  } 
+  // For iOS, the existing code works fine
+  else if (isPhotoMode && Platform.isIOS) {
+    for (String picture in pictures) {
+      final time = DateTime.now()
+          .toIso8601String()
+          .replaceAll('.', '-')
+          .replaceAll(':', '-');
+      
+      String name = 'ispeedscan$time.pdf';
+      await ImageGallerySaver.saveFile(picture, name: name);
+    }
   }
 
   return pictures;

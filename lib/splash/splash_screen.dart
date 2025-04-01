@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import '../flutter_flow/nav/nav.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../helper/shared_preference_service.dart';
 
@@ -10,16 +10,31 @@ class ToggleModeScreen extends StatefulWidget {
 }
 
 class _ToggleModeScreenState extends State<ToggleModeScreen> {
-  bool? isPdfMode; // Toggle state
+  bool? isPdfMode;
 
   @override
   void initState() {
     super.initState();
-    // Lock to portrait mode
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    _loadMode(); // Load saved mode when screen starts
+    _loadMode();
+    _initializeSplashScreen();
+  }
+
+  Future<void> _initializeSplashScreen() async {
+    // Show splash for 4 seconds then navigate
+    await Future.delayed(const Duration(milliseconds: 4000));
+    if (mounted) {
+      AppStateNotifier.instance.stopShowingSplashImage();
+    }
+  }
+
+  Future<void> _loadMode() async {
+    bool savedMode = await PreferenceService.getMode();
+    setState(() {
+      isPdfMode = savedMode;
+    });
   }
 
   @override
@@ -188,12 +203,5 @@ class _ToggleModeScreenState extends State<ToggleModeScreen> {
 
   void _toggleMode(bool value) {
     PreferenceService.saveMode(value); // Save the state
-  }
-
-  Future<void> _loadMode() async {
-    bool savedMode = await PreferenceService.getMode();
-    setState(() {
-      isPdfMode = savedMode;
-    });
   }
 }

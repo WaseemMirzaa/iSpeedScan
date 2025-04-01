@@ -1,17 +1,27 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:ispeedscan/helper/log_helper.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import 'app_globals.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 void main() async {
-  // await SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.portraitUp,
-  // ]);
   WidgetsFlutterBinding.ensureInitialized();
+
+  const MethodChannel('log_helper').setMethodCallHandler((call) async {
+    return LogHelper.handlePlatformLog(call);
+  });
+
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
+
+  await Purchases.configure(PurchasesConfiguration(
+      (Platform.isAndroid) ? revenueCatAndroidKey : revenueCatKey));
 
   runApp(const MyApp());
 }
@@ -31,6 +41,7 @@ class _MyAppState extends State<MyApp> {
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
+
   String getRoute([RouteMatch? routeMatch]) {
     final RouteMatch lastMatch =
         routeMatch ?? _router.routerDelegate.currentConfiguration.last;
@@ -71,6 +82,7 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.light,
         useMaterial3: false,
       ),
+      debugShowCheckedModeBanner: false,
       themeMode: _themeMode,
       routerConfig: _router,
     );

@@ -6,10 +6,12 @@
 // @dart = 3.0
 
 import 'dart:io'; // flutter_ignore: dart_io_import.
+import 'package:flutter_image_compress_common/flutter_image_compress_common.dart';
 import 'package:path_provider_android/path_provider_android.dart';
 import 'package:shared_preferences_android/shared_preferences_android.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher_android/url_launcher_android.dart';
+import 'package:flutter_image_compress_common/flutter_image_compress_common.dart';
 import 'package:path_provider_foundation/path_provider_foundation.dart';
 import 'package:shared_preferences_foundation/shared_preferences_foundation.dart';
 import 'package:sqflite/sqflite.dart';
@@ -19,6 +21,7 @@ import 'package:path_provider_linux/path_provider_linux.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences_linux/shared_preferences_linux.dart';
 import 'package:url_launcher_linux/url_launcher_linux.dart';
+import 'package:flutter_image_compress_macos/flutter_image_compress_macos.dart';
 import 'package:path_provider_foundation/path_provider_foundation.dart';
 import 'package:shared_preferences_foundation/shared_preferences_foundation.dart';
 import 'package:sqflite/sqflite.dart';
@@ -35,6 +38,15 @@ class _PluginRegistrant {
   @pragma('vm:entry-point')
   static void register() {
     if (Platform.isAndroid) {
+      try {
+        FlutterImageCompressCommon.registerWith();
+      } catch (err) {
+        print(
+          '`flutter_image_compress_common` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+      }
+
       try {
         PathProviderAndroid.registerWith();
       } catch (err) {
@@ -72,6 +84,15 @@ class _PluginRegistrant {
       }
 
     } else if (Platform.isIOS) {
+      try {
+        FlutterImageCompressCommon.registerWith();
+      } catch (err) {
+        print(
+          '`flutter_image_compress_common` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+      }
+
       try {
         PathProviderFoundation.registerWith();
       } catch (err) {
@@ -155,6 +176,15 @@ class _PluginRegistrant {
       }
 
     } else if (Platform.isMacOS) {
+      try {
+        FlutterImageCompressMacos.registerWith();
+      } catch (err) {
+        print(
+          '`flutter_image_compress_macos` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+      }
+
       try {
         PathProviderFoundation.registerWith();
       } catch (err) {
