@@ -5,7 +5,10 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:ispeedscan/helper/local_provider.dart';
 import 'package:ispeedscan/helper/log_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'app_globals.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -24,7 +27,12 @@ void main() async {
   await Purchases.configure(PurchasesConfiguration(
       (Platform.isAndroid) ? revenueCatAndroidKey : revenueCatKey));
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => LocaleProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -73,12 +81,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'ispeedscan',
-      localizationsDelegates: const [
+      locale: Provider.of<LocaleProvider>(context).locale,
+      supportedLocales: L10n.supportedLocales,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: false,

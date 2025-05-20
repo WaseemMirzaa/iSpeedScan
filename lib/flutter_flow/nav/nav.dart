@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:ispeedscan/language_page.dart';
 import 'package:ispeedscan/more_apps/more_apps.dart';
 import 'package:ispeedscan/subscription_widget.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +54,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/',
           builder: (context, _) => appStateNotifier.showSplashImage
               ? ToggleModeScreen()
-              :  ScannerWidget(),
+              : ScannerWidget(),
         ),
         FFRoute(
           name: 'tevin',
@@ -89,7 +90,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'howto',
           path: '/howto',
           builder: (context, params) => const HowtoWidget(),
-        )
+        ),
+        FFRoute(
+          name: 'language',
+          path: '/language',
+          builder: (context, params) => const LanguagePage(),
+        ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 
