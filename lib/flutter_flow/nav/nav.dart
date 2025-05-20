@@ -53,7 +53,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/',
           builder: (context, _) => appStateNotifier.showSplashImage
               ? ToggleModeScreen()
-              : const ScannerWidget(),
+              :  ScannerWidget(),
         ),
         FFRoute(
           name: 'tevin',

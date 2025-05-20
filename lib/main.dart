@@ -18,6 +18,7 @@ void main() async {
   });
 
   GoRouter.optionURLReflectsImperativeAPIs = true;
+
   usePathUrlStrategy();
 
   await Purchases.configure(PurchasesConfiguration(
