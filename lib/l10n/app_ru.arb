@@ -1,0 +1,20 @@
+{
+  "@@locale": "ru",
+  "iSpeedScan": "iSpeedScan",
+  "mode": "Режим: ",
+  "pdf": "PDF",
+  "photo": "Фото",
+  "pdfQuality": "Качество PDF",
+  "low": "Низкое",
+  "medium": "Среднее",
+  "high": "Высокое",
+  "howToUseISpeedScan": "Как использовать iSpeedScan",
+  "simplicityAndEfficiency": "Простота и эффективность",
+  "privacyAndSecurity": "Конфиденциальность и безопасность",
+  "moreAppsByTevinEighDesigns": "Другие приложения от Tevin Eigh Designs",
+  "aboutTevinEighDesigns": "О Tevin Eigh Designs",
+  "lifeTimeSubsciption": "Пожизненная подписка = ",
+  "viewPurchaseDetails": "Просмотреть детали покупки",
+  "checkYourPhotoGalaryForYourSavedPhotos": "Проверьте свою фотогалерею для сохранённых фотографий",
+  "languageAndTranslation": "Язык и перевод"
+}

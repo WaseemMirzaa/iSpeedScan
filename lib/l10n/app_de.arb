@@ -1,0 +1,23 @@
+{
+  "@@locale": "de",
+  "iSpeedScan": "iSpeedScan",
+  "mode": "Modus: ",
+  "pdf": "PDF",
+  "photo": "Foto",
+  "pdfQuality": "PDF-Qualität",
+  "low": "Niedrig",
+  "medium": "Mittel",
+  "high": "Hoch",
+  "howToUseISpeedScan": "Wie man iSpeedScan verwendet",
+  "simplicityAndEfficiency": "Einfachheit und Effizienz",
+  "privacyAndSecurity": "Datenschutz und Sicherheit",
+  "moreAppsByTevinEighDesigns": "Weitere Apps von Tevin Eigh Designs",
+  "aboutTevinEighDesigns": "Über Tevin Eigh Designs",
+  "lifeTimeSubsciption": "Lebenslanges Abonnement = ",
+  "viewPurchaseDetails": "Kaufdetails anzeigen",
+  "checkYourPhotoGalaryForYourSavedPhotos": "Überprüfen Sie Ihre Fotogalerie auf gespeicherte Fotos",
+  "languageAndTranslation": "Sprache und Übersetzung",
+  "langugeSettings": "Spracheinstellungen",
+"selectYourPreferredLanguage": "Wähle deine bevorzugte Sprache",
+"chooseTheLanguageYouWant": "Wähle die Sprache, die du in der App verwenden möchtest"
+}

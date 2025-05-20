@@ -9,6 +9,15 @@ class L10n {
     Locale('de'),
     Locale('it'),
     Locale('ja'),
+    Locale('ar'),
+    Locale('hi'),
+    Locale('ko'),
+    Locale('pt'),
+    Locale('ru'),
+    Locale('th'),
+    Locale('tr'),
+    Locale('vi'),
+    Locale('zh'),
   ];
 }
 

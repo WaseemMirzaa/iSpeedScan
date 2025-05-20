@@ -16,5 +16,8 @@
   "lifeTimeSubsciption": "Suscripción de por vida = ",
   "viewPurchaseDetails": "Ver detalles de la compra",
   "checkYourPhotoGalaryForYourSavedPhotos": "Consulta tu galería de fotos para ver tus fotos guardadas",
-  "languageAndTranslation": "Idioma y traducción"
+  "languageAndTranslation": "Idioma y traducción",
+  "langugeSettings": "Configuración de idioma",
+"selectYourPreferredLanguage": "Selecciona tu idioma preferido",
+"chooseTheLanguageYouWant": "Elige el idioma que deseas usar en la aplicación"
 }

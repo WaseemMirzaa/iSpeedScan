@@ -1,0 +1,20 @@
+{
+  "@@locale": "ko",
+  "iSpeedScan": "iSpeedScan",
+  "mode": "모드: ",
+  "pdf": "PDF",
+  "photo": "사진",
+  "pdfQuality": "PDF 품질",
+  "low": "낮음",
+  "medium": "중간",
+  "high": "높음",
+  "howToUseISpeedScan": "iSpeedScan 사용 방법",
+  "simplicityAndEfficiency": "단순함과 효율성",
+  "privacyAndSecurity": "개인정보 보호 및 보안",
+  "moreAppsByTevinEighDesigns": "Tevin Eigh Designs의 다른 앱",
+  "aboutTevinEighDesigns": "Tevin Eigh Designs 소개",
+  "lifeTimeSubsciption": "평생 구독 = ",
+  "viewPurchaseDetails": "구매 내역 보기",
+  "checkYourPhotoGalaryForYourSavedPhotos": "저장된 사진은 사진 갤러리에서 확인하세요",
+  "languageAndTranslation": "언어 및 번역"
+}

@@ -1,0 +1,20 @@
+{
+  "@@locale": "ja",
+  "iSpeedScan": "iSpeedScan",
+  "mode": "モード: ",
+  "pdf": "PDF",
+  "photo": "写真",
+  "pdfQuality": "PDFの品質",
+  "low": "低",
+  "medium": "中",
+  "high": "高",
+  "howToUseISpeedScan": "iSpeedScanの使い方",
+  "simplicityAndEfficiency": "シンプルさと効率性",
+  "privacyAndSecurity": "プライバシーとセキュリティ",
+  "moreAppsByTevinEighDesigns": "Tevin Eigh Designsのその他のアプリ",
+  "aboutTevinEighDesigns": "Tevin Eigh Designsについて",
+  "lifeTimeSubsciption": "生涯サブスクリプション = ",
+  "viewPurchaseDetails": "購入の詳細を見る",
+  "checkYourPhotoGalaryForYourSavedPhotos": "保存された写真はフォトギャラリーを確認してください",
+  "languageAndTranslation": "言語と翻訳"
+}
