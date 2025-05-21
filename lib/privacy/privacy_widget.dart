@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -7,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'privacy_model.dart';
 export 'privacy_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ispeedscan/helper/local_provider.dart';
 
 class PrivacyWidget extends StatefulWidget {
   const PrivacyWidget({super.key});
@@ -23,11 +26,14 @@ class _PrivacyWidgetState extends State<PrivacyWidget>
 
   final animationsMap = <String, AnimationInfo>{};
 
-  var point1 = '1. Information Collection and Utilization\niSpeedScan is built to function without collecting or storing personal data for its core features, such as document scanning and storage. All data processed by the app stays on your device, with the exception of minimal information needed for subscription processing. Here’s what we access and why:\n\n•Camera Access: We need access to your device’s camera to scan documents. All images are processed locally and never sent elsewhere.\n\n•Photo Gallery Access: We request permission to save scanned documents to your photo gallery. This is only for your convenience, and we don’t touch your existing photos.•Storage of PDFs in Files: If you opt to save scans as PDFs, we’ll ask for storage permissions. These files remain under your control on your device.\n\n•Document Management: Users have full control over their PDFs and can choose to share, email, save, or upload them as they prefer.\n\n•Subscription Processing: To unlock full features, a one-time subscription fee is processed securely through a third-party service. We don’t collect or store your payment details—everything is handled safely by that service.';
-  var point2 = '2. Data Transmission Practices\nFor its main functions—like scanning and saving documents — iSpeedScan doesn’t send any data to external servers or third parties. Everything happens locally on your device. The only data transmitted is related to your life time subscription, which is securely managed by a payment service';
-  var point3 = '3. Absence of Advertisements\niSpeedScan offers a clean, ad-free experience. Once you pay the one-time subscription fee you get full access to all features—no hidden costs or interruptions.';
-  var point4 = '4. Our Dedication to Your Privacy\nWe’re committed to upholding the highest privacy and security standards for our users. If you have any questions or want more details about this policy, please don’t hesitate to reach out to use.';
-
+  var point1 =
+      '1. Information Collection and Utilization\niSpeedScan is built to function without collecting or storing personal data for its core features, such as document scanning and storage. All data processed by the app stays on your device, with the exception of minimal information needed for subscription processing. Here’s what we access and why:\n\n•Camera Access: We need access to your device’s camera to scan documents. All images are processed locally and never sent elsewhere.\n\n•Photo Gallery Access: We request permission to save scanned documents to your photo gallery. This is only for your convenience, and we don’t touch your existing photos.•Storage of PDFs in Files: If you opt to save scans as PDFs, we’ll ask for storage permissions. These files remain under your control on your device.\n\n•Document Management: Users have full control over their PDFs and can choose to share, email, save, or upload them as they prefer.\n\n•Subscription Processing: To unlock full features, a one-time subscription fee is processed securely through a third-party service. We don’t collect or store your payment details—everything is handled safely by that service.';
+  var point2 =
+      '2. Data Transmission Practices\nFor its main functions—like scanning and saving documents — iSpeedScan doesn’t send any data to external servers or third parties. Everything happens locally on your device. The only data transmitted is related to your life time subscription, which is securely managed by a payment service';
+  var point3 =
+      '3. Absence of Advertisements\niSpeedScan offers a clean, ad-free experience. Once you pay the one-time subscription fee you get full access to all features—no hidden costs or interruptions.';
+  var point4 =
+      '4. Our Dedication to Your Privacy\nWe’re committed to upholding the highest privacy and security standards for our users. If you have any questions or want more details about this policy, please don’t hesitate to reach out to use.';
 
   @override
   void initState() {
@@ -93,6 +99,9 @@ class _PrivacyWidgetState extends State<PrivacyWidget>
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+    final t = AppLocalizations.of(context)!;
+    Locale currentLocale = Localizations.localeOf(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -141,7 +150,7 @@ class _PrivacyWidgetState extends State<PrivacyWidget>
                             0.0, 20.0, 0.0, 20.0),
                         child: Center(
                           child: Text(
-                            'Privacy and Security',
+                            t.privacyAndSecurity,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -154,7 +163,7 @@ class _PrivacyWidgetState extends State<PrivacyWidget>
                         ),
                       ),
                       Text(
-                        'At iSpeedScan, we prioritize your privacy and the security of your information. This Privacy and Security Policy outlines how we handle data when you use iSpeedScan. Our goal is to provide a straightforward, secure experience while keeping your information protected.\n\n$point1\n\n$point2\n\n$point3\n\n$point4',
+                        '${t.atISpeedScanWePrioritizAndOtherDetails}\n\n${t.informationCollectionAndOtherDetails}\n\n${t.dataTransmissionPracticeAndOtherDetails}\n\n${t.absenceOfAdvertismentsAndOtherDetails}\n\n${t.ourDedicationToYourPrivacyAndOtherDetails}',
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Readex Pro',

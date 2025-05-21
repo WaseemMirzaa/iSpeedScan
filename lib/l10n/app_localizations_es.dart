@@ -58,4 +58,79 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get languageAndTranslation => 'Idioma y traducción';
+
+  @override
+  // TODO: implement howToUSeiSpeed
+  String get howToUSeiSpeed => throw UnimplementedError();
+
+  @override
+  // TODO: implement startScanningAndItesDetails
+  String get startScanningAndItesDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement absenceOfAdvertismentsAndOtherDetails
+  String get absenceOfAdvertismentsAndOtherDetails =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement atISpeedScanWePrioritizAndOtherDetails
+  String get atISpeedScanWePrioritizAndOtherDetails =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement captureADocumentAndItsDetails
+  String get captureADocumentAndItsDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement dataTransmissionPracticeAndOtherDetails
+  String get dataTransmissionPracticeAndOtherDetails =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement exploreOurRangOfClientAndOtherDetails
+  String get exploreOurRangOfClientAndOtherDetails =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement informationCollectionAndOtherDetails
+  String get informationCollectionAndOtherDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement mainMenuAndModeSelectionAndOtherDetails
+  String get mainMenuAndModeSelectionAndOtherDetails =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement ourDedicationToYourPrivacyAndOtherDetails
+  String get ourDedicationToYourPrivacyAndOtherDetails =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement ourMissionAndOtherDetails
+  String get ourMissionAndOtherDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement ourPhilosophySimplicityAndOtherDetails
+  String get ourPhilosophySimplicityAndOtherDetails =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement privacyAndSecurityAndOtherDetails
+  String get privacyAndSecurityAndOtherDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement saveAndOrganizeAndItsDetails
+  String get saveAndOrganizeAndItsDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement selectYourModeAndItsDetails
+  String get selectYourModeAndItsDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement viewShareAndManageAndOtherDetails
+  String get viewShareAndManageAndOtherDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement weBelieveInProvidingJustDetails
+  String get weBelieveInProvidingJustDetails => throw UnimplementedError();
 }

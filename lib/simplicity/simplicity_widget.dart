@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -7,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'simplicity_model.dart';
 export 'simplicity_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ispeedscan/helper/local_provider.dart';
 
 class SimplicityWidget extends StatefulWidget {
   const SimplicityWidget({super.key});
@@ -62,6 +65,9 @@ class _SimplicityWidgetState extends State<SimplicityWidget>
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+    final t = AppLocalizations.of(context)!;
+    Locale currentLocale = Localizations.localeOf(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -119,7 +125,7 @@ class _SimplicityWidgetState extends State<SimplicityWidget>
                     padding: const EdgeInsetsDirectional.fromSTEB(
                         4.0, 0.0, 0.0, 0.0),
                     child: Text(
-                      'Simplicity and Efficiency',
+                      t.simplicityAndEfficiency,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
                             letterSpacing: 0.0,
@@ -140,7 +146,7 @@ class _SimplicityWidgetState extends State<SimplicityWidget>
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 7.0, 0.0, 0.0),
                           child: Text(
-                            'Our Philosophy\n-Simplicity: Our apps are designed to be intuitive and straightforward, making them easy to use for everyone.\n-Security: By keeping all processing on the client side, we ensure your data remains private and secure.\n-Efficiency: We continually refine our apps to remove unnecessary steps while preserving their core functionality.',
+                            t.ourPhilosophySimplicityAndOtherDetails,
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
                                 .labelLarge
@@ -160,7 +166,7 @@ class _SimplicityWidgetState extends State<SimplicityWidget>
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 7.0, 0.0, 0.0),
                           child: Text(
-                            'We believe in providing just what you need, nothing more, nothing less. As we evolve, our commitment remains to enhance efficiency without compromising on the primary purpose of our applications.',
+                            t.weBelieveInProvidingJustDetails,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -174,7 +180,7 @@ class _SimplicityWidgetState extends State<SimplicityWidget>
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 7.0, 0.0, 0.0),
                         child: Text(
-                          'Explore our range of client-side apps and experience the difference simplicity, efficiency, and security can make in your daily tasks.',
+                          t.exploreOurRangOfClientAndOtherDetails,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
