@@ -133,4 +133,150 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   // TODO: implement weBelieveInProvidingJustDetails
   String get weBelieveInProvidingJustDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement alreadyPuchasedRestoreHere
+  String get alreadyPuchasedRestoreHere => throw UnimplementedError();
+
+  @override
+  // TODO: implement atTevinEighDesignsAndOtherDetails
+  String get atTevinEighDesignsAndOtherDetails => throw UnimplementedError();
+
+  @override
+  // TODO: implement cancel
+  String get cancel => throw UnimplementedError();
+
+  @override
+  // TODO: implement checkingActivePurchases
+  String get checkingActivePurchases => throw UnimplementedError();
+
+  @override
+  // TODO: implement creatingPDF
+  String get creatingPDF => throw UnimplementedError();
+
+  @override
+  // TODO: implement currentPlanFreeTrail
+  String get currentPlanFreeTrail => throw UnimplementedError();
+
+  @override
+  // TODO: implement currentPlanFullAccess
+  String get currentPlanFullAccess => throw UnimplementedError();
+
+  @override
+  // TODO: implement error
+  String get error => throw UnimplementedError();
+
+  @override
+  // TODO: implement faildToRestorePurchasesPlzTryAgainLater
+  String get faildToRestorePurchasesPlzTryAgainLater =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement fourMinutesOfFreeScanningWeekly
+  String get fourMinutesOfFreeScanningWeekly => throw UnimplementedError();
+
+  @override
+  // TODO: implement freeTailOneWeekUnlimitedUse
+  String get freeTailOneWeekUnlimitedUse => throw UnimplementedError();
+
+  @override
+  // TODO: implement freeVersionAfterTrailExpires
+  String get freeVersionAfterTrailExpires => throw UnimplementedError();
+
+  @override
+  // TODO: implement getLifetimeAccessAndOtherDecs
+  String get getLifetimeAccessAndOtherDecs => throw UnimplementedError();
+
+  @override
+  // TODO: implement noPurchasesFound
+  String get noPurchasesFound => throw UnimplementedError();
+
+  @override
+  // TODO: implement ok
+  String get ok => throw UnimplementedError();
+
+  @override
+  // TODO: implement oneTimePurchaseUnlockFullAccess
+  String get oneTimePurchaseUnlockFullAccess => throw UnimplementedError();
+
+  @override
+  // TODO: implement openSettings
+  String get openSettings => throw UnimplementedError();
+
+  @override
+  // TODO: implement permissionRequired
+  String get permissionRequired => throw UnimplementedError();
+
+  @override
+  // TODO: implement purchaseNow
+  String get purchaseNow => throw UnimplementedError();
+
+  @override
+  // TODO: implement unlimitedScansLifetimeAccess
+  String get unlimitedScansLifetimeAccess => throw UnimplementedError();
+
+  @override
+  // TODO: implement view
+  String get view => throw UnimplementedError();
+
+  @override
+  // TODO: implement weCouldntFindAnyPurchasesToRestore
+  String get weCouldntFindAnyPurchasesToRestore => throw UnimplementedError();
+
+  @override
+  // TODO: implement yourPurchaseHasBeenSuccessfullyRestored
+  String get yourPurchaseHasBeenSuccessfullyRestored =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement chooseTheLanguageYouWant
+  String get chooseTheLanguageYouWant => throw UnimplementedError();
+
+  @override
+  // TODO: implement creatingPdf
+  String get creatingPdf => throw UnimplementedError();
+
+  @override
+  // TODO: implement iSpeedScanSupportsMultipleLanuages
+  String get iSpeedScanSupportsMultipleLanuages => throw UnimplementedError();
+
+  @override
+  // TODO: implement ifYouUsingEnjoyThisApp
+  String get ifYouUsingEnjoyThisApp => throw UnimplementedError();
+
+  @override
+  // TODO: implement languageInformation
+  String get languageInformation => throw UnimplementedError();
+
+  @override
+  // TODO: implement languageSettings
+  String get languageSettings => throw UnimplementedError();
+
+  @override
+  // TODO: implement maybeLater
+  String get maybeLater => throw UnimplementedError();
+
+  @override
+  // TODO: implement noThanks
+  String get noThanks => throw UnimplementedError();
+
+  @override
+  // TODO: implement rate
+  String get rate => throw UnimplementedError();
+
+  @override
+  // TODO: implement rateThisApp
+  String get rateThisApp => throw UnimplementedError();
+
+  @override
+  // TODO: implement selectYourPreferredLanguage
+  String get selectYourPreferredLanguage => throw UnimplementedError();
+
+  @override
+  // TODO: implement success
+  String get success => throw UnimplementedError();
+
+  @override
+  // TODO: implement yourPurchaseSuccessfullyRestored
+  String get yourPurchaseSuccessfullyRestored => throw UnimplementedError();
 }

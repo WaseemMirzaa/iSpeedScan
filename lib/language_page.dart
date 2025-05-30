@@ -76,7 +76,7 @@ class _LanguagePageState extends State<LanguagePage>
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primary,
         title: Text(
-          'Language Settings',
+          t.languageSettings,
           style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Outfit',
                 color: Colors.white,
@@ -95,14 +95,14 @@ class _LanguagePageState extends State<LanguagePage>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                 child: Text(
-                  'Select Your Preferred Language',
+                  t.selectYourPreferredLanguage,
                   style: FlutterFlowTheme.of(context).headlineSmall,
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 16),
                 child: Text(
-                  'Choose the language you want to use in the app',
+                  t.chooseTheLanguageYouWant,
                   style: FlutterFlowTheme.of(context).bodyMedium,
                 ),
               ),
@@ -325,13 +325,16 @@ class _LanguagePageState extends State<LanguagePage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Language Information',
-                          style: FlutterFlowTheme.of(context).titleMedium,
+                          t.languageInformation,
+                          style:
+                              FlutterFlowTheme.of(context).titleMedium.copyWith(
+                                    color: Colors.black,
+                                  ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                           child: Text(
-                            'iSpeedScan supports multiple languages to make the app accessible to users worldwide. If your preferred language is not available, more languages will be added in future updates.',
+                            t.iSpeedScanSupportsMultipleLanuages,
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ),

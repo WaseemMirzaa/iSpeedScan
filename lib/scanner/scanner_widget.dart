@@ -33,6 +33,7 @@ export 'scanner_model.dart';
 
 class ScannerWidget extends StatefulWidget {
   const ScannerWidget({super.key});
+  // late String selectedValue;
 
   @override
   State<ScannerWidget> createState() => _ScannerWidgetState();
@@ -40,6 +41,14 @@ class ScannerWidget extends StatefulWidget {
 
 class _ScannerWidgetState extends State<ScannerWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver {
+  late String selectedValue;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    selectedValue = AppLocalizations.of(context)!.high;
+  }
+
   DateTime? _sessionStartTime;
   int _totalUsageMinutes = 0;
 
@@ -53,7 +62,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
   final animationsMap = <String, AnimationInfo>{};
 
-  String selectedValue = 'High';
+  // String selectedValue = AppLocalizations.of(context)!.high;
 
   Offerings? offerings;
   bool _isSubscribed = true;
@@ -195,6 +204,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
   }
 
   Future<void> initRateMyApp() async {
+    final t = AppLocalizations.of(context)!;
     RateMyApp rateMyApp = RateMyApp(
       preferencesPrefix: 'rateMyApp_',
       minDays: 7,
@@ -209,12 +219,11 @@ class _ScannerWidgetState extends State<ScannerWidget>
       if (rateMyApp.shouldOpenDialog) {
         rateMyApp.showRateDialog(
           context,
-          title: 'Rate this app', // The dialog title.
-          message:
-              'If you enjoy using this app, we’d really appreciate it if you could take a minute to leave a review! Your feedback helps us improve and won’t take more than a minute of your time.', // The dialog message.
-          rateButton: 'RATE', // The dialog "rate" button text.
-          noButton: 'NO THANKS', // The dialog "no" button text.
-          laterButton: 'MAYBE LATER', // The dialog "later" button text.
+          title: t.rateThisApp, // The dialog title.
+          message: t.ifYouUsingEnjoyThisApp,
+          rateButton: t.rate, // The dialog "rate" button text.
+          noButton: t.noThanks, // The dialog "no" button text.
+          laterButton: t.maybeLater, // The dialog "later" button text.
           listener: (button) {
             // The button click listener (useful if you want to cancel the click event).
             switch (button) {
@@ -602,7 +611,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                                   color: Colors.black,
                                                   fontSize: 16),
                                               // Text styling
-                                              items: ['Low', 'Medium', 'High']
+                                              items: [t.low, t.medium, t.high]
                                                   .map((String value) {
                                                 return DropdownMenuItem<String>(
                                                   value: value,
