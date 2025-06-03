@@ -127,7 +127,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get freeVersionAfterTrailExpires => 'الإصدار المجاني – بعد انتهاء التجربة\n\n';
 
   @override
-  String get fourMinutesOfFreeScanningWeekly => '✔ 4 minutes of FREE scanning weekly\n\n';
+  String get fourMinutesOfFreeScanningWeekly => '✔ ٤ دقائق من المسح المجاني أسبوعيًا\n\n';
 
   @override
   String get oneTimePurchaseUnlockFullAccess => 'شراء لمرة واحدة (فتح الوصول الكامل)';
