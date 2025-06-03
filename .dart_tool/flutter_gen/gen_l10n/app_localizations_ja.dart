@@ -107,4 +107,112 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. プライバシー保護への取り組み\n私たちは、ユーザーのプライバシーとセキュリティを最も重要視しています。本ポリシーに関する質問や詳細を希望される場合は、いつでもご連絡ください。';
+
+  @override
+  String get view => '表示';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'Tevin Eigh Designsでは、日々の問題をシンプルさ、効率性、安全性で解決するクライアントサイドアプリの開発を専門としています。必要な機能を最小限のステップとクリックで提供し、ユーザーが主な作業に集中できるようにしています。\n\n私たちの理念\n- シンプルさ：直感的で使いやすいアプリを設計しています。\n- セキュリティ：すべての処理をクライアント側で行うことで、データのプライバシーと安全性を確保しています。\n- 効率性：不要な手順を排除しつつ、コア機能はしっかりと維持しています。\n\n私たちは、必要なものだけを提供することを信条としています。それ以上でもそれ以下でもありません。今後も効率性を高めながら、アプリケーションの本来の目的を損なうことのないよう努めていきます。\n\nクライアントサイドアプリのラインナップをぜひご覧ください。シンプルさ、効率性、安全性が日常業務にもたらす違いを実感してください。\n\n';
+
+  @override
+  String get currentPlanFullAccess => '現在のプラン：フルアクセス';
+
+  @override
+  String get currentPlanFreeTrail => '現在のプラン：無料トライアル';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => '無料トライアル – 1週間 – 無制限利用\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => '無料版 – トライアル終了後\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ 毎週4分間の無料スキャン\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => '一度の購入でフルアクセスを解除';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ 無制限スキャン、永久アクセス';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\niSpeedScanを一度の購入で永久に利用可能にし、すべての機能を今すぐ解除しましょう';
+
+  @override
+  String get purchaseNow => '今すぐ購入';
+
+  @override
+  String get checkingActivePurchases => 'アクティブな購入を確認中';
+
+  @override
+  String get alreadyPuchasedRestoreHere => 'すでに購入済みですか？こちらで復元';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => '購入が正常に復元されました！';
+
+  @override
+  String get noPurchasesFound => '購入が見つかりません';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => '復元可能な過去の購入が見つかりませんでした。';
+
+  @override
+  String get error => 'エラー';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => '購入の復元に失敗しました。後でもう一度お試しください。';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get creatingPDF => 'PDFを作成中...';
+
+  @override
+  String get permissionRequired => '許可が必要です';
+
+  @override
+  String get cancel => 'キャンセル';
+
+  @override
+  String get openSettings => '設定を開く';
+
+  @override
+  String get success => '成功';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => '購入が正常に復元されました！';
+
+  @override
+  String get creatingPdf => 'PDFを作成中...';
+
+  @override
+  String get languageSettings => '言語設定';
+
+  @override
+  String get selectYourPreferredLanguage => '希望する言語を選択してください';
+
+  @override
+  String get chooseTheLanguageYouWant => 'アプリで使用したい言語を選んでください';
+
+  @override
+  String get languageInformation => '言語情報';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan は複数の言語に対応しており、世界中のユーザーが利用できます。ご希望の言語がない場合は、今後のアップデートで追加されます。';
+
+  @override
+  String get rateThisApp => 'このアプリを評価する';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => 'このアプリを気に入っていただけたら、レビューを残していただけると嬉しいです！あなたのフィードバックは改善に役立ちます。';
+
+  @override
+  String get rate => '評価する';
+
+  @override
+  String get noThanks => '結構です';
+
+  @override
+  String get maybeLater => 'あとで';
 }

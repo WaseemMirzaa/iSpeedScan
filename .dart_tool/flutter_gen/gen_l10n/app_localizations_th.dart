@@ -107,4 +107,112 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. ความมุ่งมั่นของเราในความเป็นส่วนตัวของคุณ\nเรามุ่งมั่นที่จะรักษามาตรฐานสูงสุดของความเป็นส่วนตัวและความปลอดภัยสำหรับผู้ใช้ของเรา หากคุณมีคำถามหรืออยากทราบรายละเอียดเพิ่มเติมเกี่ยวกับนโยบายนี้ โปรดอย่าลังเลที่จะติดต่อเรา';
+
+  @override
+  String get view => 'ดู';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'ที่ Tevin Eigh Designs เรามุ่งเน้นการสร้างแอปฝั่งไคลเอนต์ที่แก้ปัญหาประจำวันด้วยความเรียบง่าย ประสิทธิภาพ และความปลอดภัย จุดสนใจของเราคือการมอบฟังก์ชันหลักที่คุณต้องการด้วยขั้นตอนและการคลิกน้อยที่สุด เพื่อให้คุณสามารถมุ่งเน้นไปที่งานหลักโดยไม่มีสิ่งรบกวน\n\nปรัชญาของเรา\n- ความเรียบง่าย: แอปของเราออกแบบมาให้ใช้งานง่ายและเข้าใจได้ทันที\n- ความปลอดภัย: การประมวลผลทั้งหมดอยู่ที่ฝั่งไคลเอนต์ ทำให้ข้อมูลของคุณเป็นส่วนตัวและปลอดภัย\n- ประสิทธิภาพ: เราปรับปรุงแอปของเราอย่างต่อเนื่องเพื่อลดขั้นตอนที่ไม่จำเป็นโดยยังคงรักษาฟังก์ชันหลักไว้\n\nเราเชื่อในการให้สิ่งที่คุณต้องการเท่านั้น ไม่มากไป ไม่น้อยไป และในขณะที่เราพัฒนา เราจะยังคงมุ่งมั่นในการเพิ่มประสิทธิภาพโดยไม่ลดทอนวัตถุประสงค์หลักของแอปของเรา\n\nสำรวจแอปฝั่งไคลเอนต์ของเราและสัมผัสความแตกต่างที่ความเรียบง่าย ประสิทธิภาพ และความปลอดภัยสามารถสร้างขึ้นในงานประจำวันของคุณ\n\n';
+
+  @override
+  String get currentPlanFullAccess => 'แผนปัจจุบัน: เข้าถึงทั้งหมด';
+
+  @override
+  String get currentPlanFreeTrail => 'แผนปัจจุบัน: ทดลองใช้งานฟรี';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => 'ทดลองใช้ฟรี – 1 สัปดาห์ – ใช้งานไม่จำกัด\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => 'เวอร์ชันฟรี – หลังหมดช่วงทดลอง\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ สแกนฟรี 4 นาทีต่อสัปดาห์\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => 'ซื้อครั้งเดียว (ปลดล็อกการเข้าถึงทั้งหมด)';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ สแกนไม่จำกัด เข้าถึงตลอดชีพ';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\nรับสิทธิ์เข้าถึง iSpeedScan ตลอดชีพด้วยการซื้อครั้งเดียว & ปลดล็อกพลังเต็มรูปแบบวันนี้';
+
+  @override
+  String get purchaseNow => 'ซื้อเลย';
+
+  @override
+  String get checkingActivePurchases => 'กำลังตรวจสอบการซื้อที่ใช้งานอยู่';
+
+  @override
+  String get alreadyPuchasedRestoreHere => 'ซื้อแล้วหรือ? กู้คืนที่นี่';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => 'กู้คืนการซื้อของคุณเรียบร้อยแล้ว!';
+
+  @override
+  String get noPurchasesFound => 'ไม่พบการซื้อ';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => 'เราไม่พบการซื้อใด ๆ ที่จะกู้คืนได้';
+
+  @override
+  String get error => 'ข้อผิดพลาด';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => 'ไม่สามารถกู้คืนการซื้อได้ กรุณาลองใหม่อีกครั้งในภายหลัง';
+
+  @override
+  String get ok => 'ตกลง';
+
+  @override
+  String get creatingPDF => 'กำลังสร้าง PDF...';
+
+  @override
+  String get permissionRequired => 'ต้องการสิทธิ์';
+
+  @override
+  String get cancel => 'ยกเลิก';
+
+  @override
+  String get openSettings => 'เปิดการตั้งค่า';
+
+  @override
+  String get success => 'สำเร็จ';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => 'การซื้อของคุณได้รับการกู้คืนสำเร็จแล้ว!';
+
+  @override
+  String get creatingPdf => 'กำลังสร้าง PDF...';
+
+  @override
+  String get languageSettings => 'การตั้งค่าภาษา';
+
+  @override
+  String get selectYourPreferredLanguage => 'เลือกภาษาที่คุณต้องการ';
+
+  @override
+  String get chooseTheLanguageYouWant => 'เลือกภาษาที่คุณต้องการใช้ในแอป';
+
+  @override
+  String get languageInformation => 'ข้อมูลภาษา';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan รองรับหลายภาษาเพื่อให้แอปเข้าถึงผู้ใช้ทั่วโลก หากภาษาที่คุณต้องการยังไม่พร้อมใช้งาน จะมีการเพิ่มภาษาใหม่ในอัปเดตในอนาคต';
+
+  @override
+  String get rateThisApp => 'ให้คะแนนแอปนี้';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => 'หากคุณชอบใช้แอปนี้ เราขอขอบคุณหากคุณสละเวลาสักครู่เพื่อให้คะแนน! คำติชมของคุณช่วยให้เราปรับปรุงแอปได้ดีขึ้น และใช้เวลาไม่ถึงหนึ่งนาทีของคุณ';
+
+  @override
+  String get rate => 'ให้คะแนน';
+
+  @override
+  String get noThanks => 'ไม่ ขอบคุณ';
+
+  @override
+  String get maybeLater => 'อาจจะทีหลัง';
 }

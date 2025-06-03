@@ -107,4 +107,112 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. 我们对您的隐私承诺\n我们致力于为用户维护最高的隐私和安全标准。如您有任何疑问或需了解更多政策详情，欢迎随时联系我们。';
+
+  @override
+  String get view => '查看';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => '在 Tevin Eigh Designs，我们专注于创建解决日常问题的客户端应用，强调简洁、高效和安全。我们的重点是以最少的步骤和点击提供您所需的核心功能，确保您能够专注于主要任务而不受干扰。\n\n我们的理念\n- 简洁：我们的应用设计直观易用，适合所有人。\n- 安全：所有处理均在客户端完成，确保您的数据隐私和安全。\n- 高效：我们不断优化应用，去除不必要的步骤，同时保留核心功能。\n\n我们相信只提供您需要的功能，既不多也不少。在不断发展中，我们始终致力于提升效率，而不影响应用的主要目的。\n\n探索我们的一系列客户端应用，体验简洁、高效和安全为您的日常任务带来的不同。\n\n';
+
+  @override
+  String get currentPlanFullAccess => '当前计划：完全访问';
+
+  @override
+  String get currentPlanFreeTrail => '当前计划：免费试用';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => '免费试用 – 1周 – 无限使用\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => '免费版本 – 试用期结束后\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ 每周免费扫描4分钟\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => '一次性购买（解锁完全访问）';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ 无限扫描，终身访问';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\n通过一次性购买获取 iSpeedScan 终身访问权限，立即解锁全部功能';
+
+  @override
+  String get purchaseNow => '立即购买';
+
+  @override
+  String get checkingActivePurchases => '正在检查有效购买';
+
+  @override
+  String get alreadyPuchasedRestoreHere => '已购买？在此恢复';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => '您的购买已成功恢复！';
+
+  @override
+  String get noPurchasesFound => '未找到购买记录';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => '未找到可恢复的购买记录。';
+
+  @override
+  String get error => '错误';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => '恢复购买失败，请稍后再试。';
+
+  @override
+  String get ok => '确定';
+
+  @override
+  String get creatingPDF => '正在创建 PDF...';
+
+  @override
+  String get permissionRequired => '需要权限';
+
+  @override
+  String get cancel => '取消';
+
+  @override
+  String get openSettings => '打开设置';
+
+  @override
+  String get success => '成功';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => '您的购买已成功恢复！';
+
+  @override
+  String get creatingPdf => '正在创建 PDF...';
+
+  @override
+  String get languageSettings => '语言设置';
+
+  @override
+  String get selectYourPreferredLanguage => '选择您偏好的语言';
+
+  @override
+  String get chooseTheLanguageYouWant => '选择您想在应用中使用的语言';
+
+  @override
+  String get languageInformation => '语言信息';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan 支持多种语言，让全球用户都能方便使用该应用。如果您偏好的语言暂时不可用，未来更新将会增加更多语言。';
+
+  @override
+  String get rateThisApp => '评价此应用';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => '如果您喜欢使用此应用，请花一分钟时间留下评论！您的反馈将帮助我们改进应用。';
+
+  @override
+  String get rate => '评价';
+
+  @override
+  String get noThanks => '不用了，谢谢';
+
+  @override
+  String get maybeLater => '也许以后';
 }

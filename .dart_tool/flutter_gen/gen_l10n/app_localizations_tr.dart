@@ -107,4 +107,112 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. Gizliliğinize Adanmışlığımız\nKullanıcılarımız için en yüksek gizlilik ve güvenlik standartlarını sağlamaya kararlıyız. Bu politika hakkında sorularınız varsa veya daha fazla bilgi istiyorsanız, bizimle iletişime geçmekten çekinmeyin.';
+
+  @override
+  String get view => 'Görüntüle';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'Tevin Eigh Designs olarak, günlük sorunları basitlik, verimlilik ve güvenlikle çözen istemci tarafı uygulamalar geliştiriyoruz. Odak noktamız, ihtiyacınız olan temel işlevselliği en az adım ve tıklama ile sunmak, böylece esas görevlerinize dikkat dağıtmadan odaklanabilmenizi sağlamaktır.\n\nFelsefemiz\n- Basitlik: Uygulamalarımız herkes için sezgisel ve kolay kullanımlıdır.\n- Güvenlik: Tüm işlemler istemci tarafında yapılarak verilerinizin gizliliği ve güvenliği sağlanır.\n- Verimlilik: Gereksiz adımları kaldırırken temel işlevselliği koruyarak uygulamalarımızı sürekli geliştiriyoruz.\n\nSadece ihtiyacınız olanı sunmaya inanıyoruz, ne fazlası ne eksiği. Gelişirken, uygulamalarımızın temel amacını koruyarak verimliliği artırmaya devam edeceğiz.\n\nİstemci tarafı uygulamalarımızı keşfedin ve basitliğin, verimliliğin ve güvenliğin günlük işlerinize nasıl fark kattığını deneyimleyin.\n\n';
+
+  @override
+  String get currentPlanFullAccess => 'Mevcut Plan: Tam Erişim';
+
+  @override
+  String get currentPlanFreeTrail => 'Mevcut Plan: Ücretsiz Deneme';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => 'ÜCRETSİZ DENEME – 1 Hafta – Sınırsız Kullanım\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => 'ÜCRETSİZ SÜRÜM – Deneme Süresi Bitince\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ Haftalık 4 dakika ÜCRETSİZ tarama\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => 'Tek Seferlik Satın Alma (Tam Erişimi Aç)';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ Sınırsız Tarama, ömür boyu erişim';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\niSpeedScan’e tek seferlik satın alma ile ömür boyu erişim kazanın ve tüm gücünü bugün açın';
+
+  @override
+  String get purchaseNow => 'Şimdi Satın Al';
+
+  @override
+  String get checkingActivePurchases => 'Aktif Satın Almalar Kontrol Ediliyor';
+
+  @override
+  String get alreadyPuchasedRestoreHere => 'Zaten Satın Aldınız mı? Buradan Geri Yükleyin';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => 'Satın almanız başarıyla geri yüklendi!';
+
+  @override
+  String get noPurchasesFound => 'Satın Alma Bulunamadı';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => 'Geri yüklenebilecek önceki satın alma bulunamadı.';
+
+  @override
+  String get error => 'Hata';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => 'Satın almalar geri yüklenemedi. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get ok => 'Tamam';
+
+  @override
+  String get creatingPDF => 'PDF Oluşturuluyor...';
+
+  @override
+  String get permissionRequired => 'İzin Gerekiyor';
+
+  @override
+  String get cancel => 'İptal';
+
+  @override
+  String get openSettings => 'Ayarları Aç';
+
+  @override
+  String get success => 'Başarılı';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => 'Satın alma işleminiz başarıyla geri yüklendi!';
+
+  @override
+  String get creatingPdf => 'PDF oluşturuluyor...';
+
+  @override
+  String get languageSettings => 'Dil Ayarları';
+
+  @override
+  String get selectYourPreferredLanguage => 'Tercih ettiğiniz dili seçin';
+
+  @override
+  String get chooseTheLanguageYouWant => 'Uygulamada kullanmak istediğiniz dili seçin';
+
+  @override
+  String get languageInformation => 'Dil Bilgisi';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan, uygulamayı dünya çapındaki kullanıcılar için erişilebilir kılmak adına birden fazla dili destekler. Tercih ettiğiniz dil mevcut değilse, gelecekteki güncellemelerde daha fazla dil eklenecektir.';
+
+  @override
+  String get rateThisApp => 'Bu uygulamayı değerlendirin';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => 'Bu uygulamayı kullanmaktan keyif alıyorsanız, lütfen bir dakikanızı ayırıp bir değerlendirme bırakın! Geri bildiriminiz geliştirmemize yardımcı olur.';
+
+  @override
+  String get rate => 'DEĞERLENDİR';
+
+  @override
+  String get noThanks => 'HAYIR TEŞEKKÜR';
+
+  @override
+  String get maybeLater => 'BELKİ SONRA';
 }

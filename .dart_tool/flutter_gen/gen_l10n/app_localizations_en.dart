@@ -107,4 +107,112 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. Our Dedication to Your Privacy\nWe’re committed to upholding the highest privacy and security standards for our users. If you have any questions or want more details about this policy, please don’t hesitate to reach out to use.';
+
+  @override
+  String get view => 'View';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'At Tevin Eigh Designs, we specialize in creating client-side apps that solve daily problems with simplicity, efficiency, and security. Our focus is on delivering the core functionality you need with the fewest steps and clicks possible, ensuring you can concentrate on your main tasks without distractions.\n\nOur Philosophy\n-Simplicity: Our apps are designed to be intuitive and straithforward, making them easy to use for everyone.\n-Security: By keeping all processing on the client side, we ensure your data remains private and secure.\n-Efficiency: We continually refine our apps to remove unnecessary steps while preserving their core functionality.\n\nWe Believe in providing just what you need, nothing more, nothing less. As we evolve, our commitment remains to enhance efficiency without compromising on the primary purpose of our applications.\n\nExplore our range of client-side apps and experience the difference simplicity, efficiency, and security can make in your daily tasks.\n\n';
+
+  @override
+  String get currentPlanFullAccess => 'Current Plan : Full Access';
+
+  @override
+  String get currentPlanFreeTrail => 'Current Plan : Free Trial';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => 'FREE TRIAL – 1 Week – Unlimited Use\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => 'FREE VERSION – After Trial Expires\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ 4 minutes of FREE scanning weekly\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => 'One Time Purchase (Unlock Full Access)';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ Unlimited Scans, lifetime access';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\nGet lifetime access to iSpeedScan with a one-time purchase & unlock its full power today';
+
+  @override
+  String get purchaseNow => 'Purchase Now';
+
+  @override
+  String get checkingActivePurchases => 'Checking Active Purchase';
+
+  @override
+  String get alreadyPuchasedRestoreHere => 'Already Purchased? Restore Here';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => 'Your purchase has been successfully restored!';
+
+  @override
+  String get noPurchasesFound => 'No Purchases Found';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => 'We couldn\'t find any previous purchases to restore.';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => 'Failed to restore purchases. Please try again later.';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get creatingPDF => 'Creating PDF...';
+
+  @override
+  String get permissionRequired => 'Permission Required';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get openSettings => 'Open Settings';
+
+  @override
+  String get success => 'Success';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => 'Your purchase has been successfully restored!';
+
+  @override
+  String get creatingPdf => 'Creating PDF...';
+
+  @override
+  String get languageSettings => 'Language Settings';
+
+  @override
+  String get selectYourPreferredLanguage => 'Select Your Preferred Language';
+
+  @override
+  String get chooseTheLanguageYouWant => 'Choose the language you want to use in the app';
+
+  @override
+  String get languageInformation => 'Language Information';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan supports multiple languages to make the app accessible to users worldwide. If your preferred language is not available, more languages will be added in future updates.';
+
+  @override
+  String get rateThisApp => 'Rate this app';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => 'If you enjoy using this app, we’d really appreciate it if you could take a minute to leave a review! Your feedback helps us improve and won’t take more than a minute of your time.';
+
+  @override
+  String get rate => 'RATE';
+
+  @override
+  String get noThanks => 'NO THANKS';
+
+  @override
+  String get maybeLater => 'MAYBE LATER';
 }

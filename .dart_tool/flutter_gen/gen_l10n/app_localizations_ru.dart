@@ -107,4 +107,112 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. Наша приверженность вашей конфиденциальности\nМы стремимся соблюдать высочайшие стандарты конфиденциальности и безопасности. Если у вас есть вопросы или нужна дополнительная информация о политике, не стесняйтесь обращаться к нам.';
+
+  @override
+  String get view => 'Просмотр';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'В Tevin Eigh Designs мы специализируемся на создании клиентских приложений, которые решают повседневные задачи с простотой, эффективностью и безопасностью. Мы сосредоточены на предоставлении основной функциональности с минимальным количеством шагов и кликов, чтобы вы могли сосредоточиться на главных задачах без отвлечений.\n\nНаша философия\n- Простота: наши приложения интуитивно понятны и удобны для всех.\n- Безопасность: вся обработка происходит на стороне клиента, что гарантирует конфиденциальность и безопасность ваших данных.\n- Эффективность: мы постоянно совершенствуем наши приложения, устраняя ненужные шаги, сохраняя при этом основную функциональность.\n\nМы верим в предоставление ровно того, что нужно — ни больше, ни меньше. По мере нашего развития мы продолжаем стремиться к повышению эффективности без ущерба для основной цели наших приложений.\n\nИзучите наш ассортимент клиентских приложений и ощутите разницу, которую простота, эффективность и безопасность могут принести в вашу повседневную работу.\n\n';
+
+  @override
+  String get currentPlanFullAccess => 'Текущий план: Полный доступ';
+
+  @override
+  String get currentPlanFreeTrail => 'Текущий план: Бесплатная пробная версия';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => 'БЕСПЛАТНАЯ ПРОБНАЯ ВЕРСИЯ – 1 неделя – неограниченное использование\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => 'БЕСПЛАТНАЯ ВЕРСИЯ – после окончания пробного периода\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ 4 минуты бесплатного сканирования еженедельно\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => 'Единовременная покупка (полный доступ)';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ Неограниченное количество сканирований, пожизненный доступ';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\nПолучите пожизненный доступ к iSpeedScan с единовременной покупкой и разблокируйте все возможности уже сегодня';
+
+  @override
+  String get purchaseNow => 'Купить сейчас';
+
+  @override
+  String get checkingActivePurchases => 'Проверка активных покупок';
+
+  @override
+  String get alreadyPuchasedRestoreHere => 'Уже купили? Восстановить здесь';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => 'Ваша покупка успешно восстановлена!';
+
+  @override
+  String get noPurchasesFound => 'Покупки не найдены';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => 'Не удалось найти покупки для восстановления.';
+
+  @override
+  String get error => 'Ошибка';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => 'Не удалось восстановить покупки. Пожалуйста, попробуйте позже.';
+
+  @override
+  String get ok => 'ОК';
+
+  @override
+  String get creatingPDF => 'Создание PDF...';
+
+  @override
+  String get permissionRequired => 'Требуется разрешение';
+
+  @override
+  String get cancel => 'Отмена';
+
+  @override
+  String get openSettings => 'Открыть настройки';
+
+  @override
+  String get success => 'Успех';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => 'Ваша покупка успешно восстановлена!';
+
+  @override
+  String get creatingPdf => 'Создание PDF...';
+
+  @override
+  String get languageSettings => 'Настройки языка';
+
+  @override
+  String get selectYourPreferredLanguage => 'Выберите предпочитаемый язык';
+
+  @override
+  String get chooseTheLanguageYouWant => 'Выберите язык, который хотите использовать в приложении';
+
+  @override
+  String get languageInformation => 'Информация о языке';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan поддерживает несколько языков, чтобы сделать приложение доступным для пользователей по всему миру. Если ваш предпочитаемый язык недоступен, в будущих обновлениях будут добавлены другие языки.';
+
+  @override
+  String get rateThisApp => 'Оцените это приложение';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => 'Если вам нравится это приложение, пожалуйста, уделите минуту, чтобы оставить отзыв! Ваши отзывы помогают нам улучшаться и не займут больше минуты вашего времени.';
+
+  @override
+  String get rate => 'ОЦЕНИТЬ';
+
+  @override
+  String get noThanks => 'НЕТ, СПАСИБО';
+
+  @override
+  String get maybeLater => 'МОЖЕТ БЫТЬ ПОЗЖЕ';
 }

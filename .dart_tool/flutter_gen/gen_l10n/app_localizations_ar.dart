@@ -107,4 +107,112 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. التزامنا بخصوصيتك\nنحن ملتزمون بالحفاظ على أعلى معايير الخصوصية والأمان لمستخدمينا. إذا كانت لديك أي أسئلة أو ترغب في معرفة المزيد عن هذه السياسة، فلا تتردد في التواصل معنا.';
+
+  @override
+  String get view => 'عرض';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'في Tevin Eigh Designs، نحن متخصصون في إنشاء تطبيقات على جانب العميل لحل المشكلات اليومية ببساطة وكفاءة وأمان. نركز على تقديم الوظائف الأساسية التي تحتاجها بأقل عدد من الخطوات والنقرات، مما يتيح لك التركيز على مهامك الرئيسية دون تشتيت.\n\nفلسفتنا\n- البساطة: تم تصميم تطبيقاتنا لتكون بديهية وسهلة الاستخدام للجميع.\n- الأمان: من خلال إبقاء جميع المعالجات على جانب العميل، نضمن أن تظل بياناتك خاصة وآمنة.\n- الكفاءة: نقوم باستمرار بتحسين تطبيقاتنا لإزالة الخطوات غير الضرورية مع الحفاظ على وظائفها الأساسية.\n\nنحن نؤمن بتقديم ما تحتاجه فقط، لا أكثر ولا أقل. ومع تطورنا، يبقى التزامنا تعزيز الكفاءة دون المساس بالغرض الأساسي من تطبيقاتنا.\n\nاستكشف مجموعتنا من التطبيقات على جانب العميل واختبر الفرق الذي يمكن أن تصنعه البساطة والكفاءة والأمان في مهامك اليومية.\n\n';
+
+  @override
+  String get currentPlanFullAccess => 'الخطة الحالية: وصول كامل';
+
+  @override
+  String get currentPlanFreeTrail => 'الخطة الحالية: تجربة مجانية';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => 'تجربة مجانية – أسبوع واحد – استخدام غير محدود\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => 'الإصدار المجاني – بعد انتهاء التجربة\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ 4 minutes of FREE scanning weekly\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => 'شراء لمرة واحدة (فتح الوصول الكامل)';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ عدد غير محدود من عمليات المسح، وصول مدى الحياة';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\nاحصل على وصول مدى الحياة إلى iSpeedScan من خلال عملية شراء لمرة واحدة وفعّل كل إمكانياته اليوم';
+
+  @override
+  String get purchaseNow => 'اشترِ الآن';
+
+  @override
+  String get checkingActivePurchases => 'جارٍ التحقق من المشتريات النشطة';
+
+  @override
+  String get alreadyPuchasedRestoreHere => 'هل سبق وأن اشتريت؟ استعد هنا';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => 'تم استعادة مشترياتك بنجاح!';
+
+  @override
+  String get noPurchasesFound => 'لم يتم العثور على مشتريات';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => 'لم نتمكن من العثور على أي مشتريات سابقة لاستعادتها.';
+
+  @override
+  String get error => 'خطأ';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => 'فشل في استعادة المشتريات. يرجى المحاولة لاحقًا.';
+
+  @override
+  String get ok => 'حسنًا';
+
+  @override
+  String get creatingPDF => 'جارٍ إنشاء ملف PDF...';
+
+  @override
+  String get permissionRequired => 'يتطلب إذنًا';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get openSettings => 'فتح الإعدادات';
+
+  @override
+  String get success => 'نجاح';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => 'تم استعادة مشترياتك بنجاح!';
+
+  @override
+  String get creatingPdf => 'جارٍ إنشاء ملف PDF...';
+
+  @override
+  String get languageSettings => 'إعدادات اللغة';
+
+  @override
+  String get selectYourPreferredLanguage => 'اختر لغتك المفضلة';
+
+  @override
+  String get chooseTheLanguageYouWant => 'اختر اللغة التي تريد استخدامها في التطبيق';
+
+  @override
+  String get languageInformation => 'معلومات اللغة';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'يدعم iSpeedScan لغات متعددة لجعل التطبيق متاحًا للمستخدمين في جميع أنحاء العالم. إذا لم تكن لغتك المفضلة متاحة، فسيتم إضافة المزيد من اللغات في التحديثات المستقبلية.';
+
+  @override
+  String get rateThisApp => 'قيّم هذا التطبيق';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => 'إذا كنت تستمتع باستخدام هذا التطبيق، فنحن نقدر حقًا إذا كنت تستطيع تخصيص دقيقة لترك مراجعة! ملاحظاتك تساعدنا على التحسين ولن تستغرق أكثر من دقيقة من وقتك.';
+
+  @override
+  String get rate => 'قيّم';
+
+  @override
+  String get noThanks => 'لا، شكرًا';
+
+  @override
+  String get maybeLater => 'ربما لاحقًا';
 }

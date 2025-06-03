@@ -107,4 +107,112 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. Il nostro impegno per la tua privacy\nSiamo impegnati a mantenere i più alti standard di privacy e sicurezza per i nostri utenti. Se hai domande o desideri ulteriori dettagli su questa politica, non esitare a contattarci.';
+
+  @override
+  String get view => 'Visualizza';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'Da Tevin Eigh Designs, siamo specializzati nella creazione di applicazioni lato client che risolvono i problemi quotidiani con semplicità, efficienza e sicurezza. Il nostro obiettivo è fornire le funzionalità essenziali di cui hai bisogno con il minor numero possibile di passaggi e clic, permettendoti di concentrarti sulle tue attività principali senza distrazioni.\n\nLa nostra filosofia\n- Semplicità: Le nostre app sono progettate per essere intuitive e facili da usare.\n- Sicurezza: Manteniamo tutta l’elaborazione lato client per garantire che i tuoi dati restino privati e sicuri.\n- Efficienza: Miglioriamo costantemente le nostre app per eliminare i passaggi superflui mantenendo le funzionalità principali.\n\nCrediamo nel fornire solo ciò di cui hai bisogno, né più né meno. Man mano che ci evolviamo, il nostro impegno rimane quello di migliorare l\'efficienza senza compromettere lo scopo principale delle nostre applicazioni.\n\nEsplora la nostra gamma di app lato client e scopri la differenza che semplicità, efficienza e sicurezza possono fare nelle tue attività quotidiane.\n\n';
+
+  @override
+  String get currentPlanFullAccess => 'Piano attuale: Accesso completo';
+
+  @override
+  String get currentPlanFreeTrail => 'Piano attuale: Prova gratuita';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => 'PROVA GRATUITA – 1 settimana – Utilizzo illimitato\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => 'VERSIONE GRATUITA – Dopo la scadenza della prova\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ 4 minuti di scansione gratuita settimanale\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => 'Acquisto una tantum (Sblocca accesso completo)';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ Scansioni illimitate, accesso a vita';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\nOttieni accesso a vita a iSpeedScan con un acquisto una tantum e sblocca tutta la sua potenza oggi stesso';
+
+  @override
+  String get purchaseNow => 'Acquista ora';
+
+  @override
+  String get checkingActivePurchases => 'Verifica degli acquisti attivi in corso';
+
+  @override
+  String get alreadyPuchasedRestoreHere => 'Acquistato in precedenza? Ripristina qui';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => 'Il tuo acquisto è stato ripristinato con successo!';
+
+  @override
+  String get noPurchasesFound => 'Nessun acquisto trovato';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => 'Non siamo riusciti a trovare acquisti precedenti da ripristinare.';
+
+  @override
+  String get error => 'Errore';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => 'Impossibile ripristinare gli acquisti. Riprova più tardi.';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get creatingPDF => 'Creazione PDF in corso...';
+
+  @override
+  String get permissionRequired => 'Autorizzazione necessaria';
+
+  @override
+  String get cancel => 'Annulla';
+
+  @override
+  String get openSettings => 'Apri impostazioni';
+
+  @override
+  String get success => 'Successo';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => 'Il tuo acquisto è stato ripristinato con successo!';
+
+  @override
+  String get creatingPdf => 'Creazione del PDF...';
+
+  @override
+  String get languageSettings => 'Impostazioni lingua';
+
+  @override
+  String get selectYourPreferredLanguage => 'Seleziona la tua lingua preferita';
+
+  @override
+  String get chooseTheLanguageYouWant => 'Scegli la lingua che desideri utilizzare nell\'app';
+
+  @override
+  String get languageInformation => 'Informazioni sulla lingua';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan supporta più lingue per rendere l\'app accessibile a utenti di tutto il mondo. Se la tua lingua preferita non è disponibile, ne verranno aggiunte altre nei futuri aggiornamenti.';
+
+  @override
+  String get rateThisApp => 'Valuta questa app';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => 'Se ti piace usare questa app, ci farebbe molto piacere se potessi lasciarci una recensione! Il tuo feedback ci aiuta a migliorare.';
+
+  @override
+  String get rate => 'VALUTA';
+
+  @override
+  String get noThanks => 'NO GRAZIE';
+
+  @override
+  String get maybeLater => 'FORSE PIÙ TARDI';
 }

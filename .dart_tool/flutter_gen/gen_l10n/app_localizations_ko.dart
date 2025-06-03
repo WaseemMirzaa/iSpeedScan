@@ -107,4 +107,112 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. 개인정보 보호에 대한 우리의 노력\n우리는 사용자 개인정보와 보안 보호를 위한 최고의 기준을 고수합니다. 이 정책에 대해 궁금한 점이 있거나 추가 정보가 필요하시면 언제든지 문의해 주세요.';
+
+  @override
+  String get view => '보기';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'Tevin Eigh Designs는 일상적인 문제를 단순함, 효율성, 보안성으로 해결하는 클라이언트 사이드 앱을 전문적으로 제작합니다. 최소한의 단계와 클릭만으로 필요한 핵심 기능을 제공하여, 사용자가 본연의 업무에 집중할 수 있도록 돕습니다.\n\n우리의 철학\n- 단순함: 누구나 쉽게 사용할 수 있도록 직관적으로 설계된 앱\n- 보안: 모든 처리를 클라이언트 측에서 수행하여 데이터의 프라이버시와 보안을 유지\n- 효율성: 핵심 기능은 유지하면서 불필요한 단계를 제거해 지속적으로 앱을 개선\n\n우리는 \'필요한 만큼만 제공\'하는 것을 믿습니다. 그 이상도, 그 이하도 아닙니다. 시간이 지나도, 우리의 목표는 본래 목적을 훼손하지 않으면서 효율성을 향상시키는 것입니다.\n\nTevin Eigh Designs의 클라이언트 사이드 앱을 경험해 보세요. 단순함, 효율성, 보안이 일상 업무에 어떤 변화를 줄 수 있는지 확인해 보세요.\n\n';
+
+  @override
+  String get currentPlanFullAccess => '현재 플랜: 전체 액세스';
+
+  @override
+  String get currentPlanFreeTrail => '현재 플랜: 무료 체험';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => '무료 체험 – 1주 – 무제한 사용\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => '무료 버전 – 체험 종료 후\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ 주당 4분 무료 스캔 제공\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => '1회 구매 (전체 액세스 잠금 해제)';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ 무제한 스캔, 평생 액세스';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\niSpeedScan을 1회 구매로 평생 사용할 수 있으며, 지금 전체 기능을 해제해보세요';
+
+  @override
+  String get purchaseNow => '지금 구매';
+
+  @override
+  String get checkingActivePurchases => '활성 구매 확인 중';
+
+  @override
+  String get alreadyPuchasedRestoreHere => '이미 구매하셨나요? 여기서 복원';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => '구매가 성공적으로 복원되었습니다!';
+
+  @override
+  String get noPurchasesFound => '구매 내역을 찾을 수 없습니다';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => '복원할 수 있는 이전 구매 내역이 없습니다.';
+
+  @override
+  String get error => '오류';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => '구매 복원에 실패했습니다. 나중에 다시 시도해 주세요.';
+
+  @override
+  String get ok => '확인';
+
+  @override
+  String get creatingPDF => 'PDF 생성 중...';
+
+  @override
+  String get permissionRequired => '권한 필요';
+
+  @override
+  String get cancel => '취소';
+
+  @override
+  String get openSettings => '설정 열기';
+
+  @override
+  String get success => '성공';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => '구매가 성공적으로 복원되었습니다!';
+
+  @override
+  String get creatingPdf => 'PDF 생성 중...';
+
+  @override
+  String get languageSettings => '언어 설정';
+
+  @override
+  String get selectYourPreferredLanguage => '선호하는 언어를 선택하세요';
+
+  @override
+  String get chooseTheLanguageYouWant => '앱에서 사용할 언어를 선택하세요';
+
+  @override
+  String get languageInformation => '언어 정보';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan은 다양한 언어를 지원하여 전 세계 사용자가 앱을 사용할 수 있도록 합니다. 원하는 언어가 없다면, 추후 업데이트에서 추가될 예정입니다.';
+
+  @override
+  String get rateThisApp => '앱 평가하기';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => '이 앱이 마음에 드셨다면, 잠시 시간을 내어 리뷰를 남겨주세요! 여러분의 피드백은 앱 개선에 큰 도움이 됩니다.';
+
+  @override
+  String get rate => '평가하기';
+
+  @override
+  String get noThanks => '괜찮아요';
+
+  @override
+  String get maybeLater => '나중에';
 }

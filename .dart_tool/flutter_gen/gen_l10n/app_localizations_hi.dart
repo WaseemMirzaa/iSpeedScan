@@ -107,4 +107,112 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get ourDedicationToYourPrivacyAndOtherDetails => '4. आपकी गोपनीयता के प्रति हमारी प्रतिबद्धता\nहम अपने उपयोगकर्ताओं के लिए उच्चतम गोपनीयता और सुरक्षा मानकों को बनाए रखने के लिए प्रतिबद्ध हैं। यदि आपके कोई प्रश्न हैं या इस नीति के बारे में अधिक जानकारी चाहिए, तो कृपया हमसे संपर्क करें।';
+
+  @override
+  String get view => 'देखें';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'Tevin Eigh Designs में, हम क्लाइंट-साइड ऐप्स बनाने में विशेषज्ञ हैं जो दैनिक समस्याओं को सादगी, दक्षता और सुरक्षा के साथ हल करते हैं। हमारा फोकस आपको आवश्यक मूल कार्यक्षमता को न्यूनतम चरणों और क्लिक के साथ प्रदान करने पर है, ताकि आप बिना किसी व्यवधान के अपने मुख्य कार्यों पर ध्यान केंद्रित कर सकें।\n\nहमारा दर्शन\n- सादगी: हमारे ऐप्स सहज और उपयोग में आसान होते हैं।\n- सुरक्षा: सभी प्रोसेसिंग को क्लाइंट-साइड पर रखकर, हम आपकी डेटा की गोपनीयता और सुरक्षा सुनिश्चित करते हैं।\n- दक्षता: हम अपनी ऐप्स को लगातार बेहतर बनाते हैं ताकि अनावश्यक चरणों को हटाया जा सके और मुख्य कार्यक्षमता बनी रहे।\n\nहम मानते हैं कि आपको केवल वही दिया जाए जो आवश्यक हो – न अधिक, न कम। जैसे-जैसे हम आगे बढ़ते हैं, हमारा संकल्प यही है कि हम दक्षता को बढ़ाएँ बिना ऐप की मूल उपयोगिता से समझौता किए।\n\nहमारे क्लाइंट-साइड ऐप्स की रेंज को एक्सप्लोर करें और देखें कि सादगी, दक्षता और सुरक्षा आपके दैनिक कार्यों में कितना अंतर ला सकती है।\n\n';
+
+  @override
+  String get currentPlanFullAccess => 'वर्तमान प्लान : पूर्ण एक्सेस';
+
+  @override
+  String get currentPlanFreeTrail => 'वर्तमान प्लान : फ्री ट्रायल';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => 'नि:शुल्क ट्रायल – 1 सप्ताह – असीमित उपयोग\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => 'नि:शुल्क संस्करण – ट्रायल समाप्त होने के बाद\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ प्रति सप्ताह 4 मिनट का फ्री स्कैनिंग\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => 'एक बार की खरीदारी (पूर्ण एक्सेस अनलॉक करें)';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ असीमित स्कैन, आजीवन एक्सेस';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\niSpeedScan का आजीवन एक्सेस एक बार की खरीदारी से प्राप्त करें और इसकी पूरी क्षमता को आज ही अनलॉक करें';
+
+  @override
+  String get purchaseNow => 'अब खरीदें';
+
+  @override
+  String get checkingActivePurchases => 'सक्रिय खरीद की जांच की जा रही है';
+
+  @override
+  String get alreadyPuchasedRestoreHere => 'पहले से खरीदा है? यहां पुनर्स्थापित करें';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => 'आपकी खरीद सफलतापूर्वक पुनर्स्थापित हो गई है!';
+
+  @override
+  String get noPurchasesFound => 'कोई खरीद नहीं मिली';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => 'हम कोई भी पिछली खरीद पुनर्स्थापित करने के लिए नहीं ढूंढ सके।';
+
+  @override
+  String get error => 'त्रुटि';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => 'खरीद पुनर्स्थापित करने में विफल। कृपया बाद में प्रयास करें।';
+
+  @override
+  String get ok => 'ठीक है';
+
+  @override
+  String get creatingPDF => 'PDF बनाया जा रहा है...';
+
+  @override
+  String get permissionRequired => 'अनुमति आवश्यक';
+
+  @override
+  String get cancel => 'रद्द करें';
+
+  @override
+  String get openSettings => 'सेटिंग्स खोलें';
+
+  @override
+  String get success => 'सफलता';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => 'आपकी खरीदारी सफलतापूर्वक पुनर्स्थापित हो गई है!';
+
+  @override
+  String get creatingPdf => 'PDF बना रहा है...';
+
+  @override
+  String get languageSettings => 'भाषा सेटिंग्स';
+
+  @override
+  String get selectYourPreferredLanguage => 'अपनी पसंदीदा भाषा चुनें';
+
+  @override
+  String get chooseTheLanguageYouWant => 'ऐप में उपयोग के लिए भाषा चुनें';
+
+  @override
+  String get languageInformation => 'भाषा जानकारी';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan कई भाषाओं का समर्थन करता है ताकि ऐप वैश्विक उपयोगकर्ताओं के लिए सुलभ हो सके। यदि आपकी पसंदीदा भाषा उपलब्ध नहीं है, तो भविष्य के अपडेट में और भाषाएं जोड़ी जाएंगी।';
+
+  @override
+  String get rateThisApp => 'ऐप को रेट करें';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => 'यदि आप इस ऐप का आनंद ले रहे हैं, तो कृपया एक मिनट निकालकर रिव्यू छोड़ें! आपकी प्रतिक्रिया हमें बेहतर बनाने में मदद करती है।';
+
+  @override
+  String get rate => 'रेट करें';
+
+  @override
+  String get noThanks => 'नहीं, धन्यवाद';
+
+  @override
+  String get maybeLater => 'शायद बाद में';
 }
