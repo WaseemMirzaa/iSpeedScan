@@ -2,9 +2,12 @@ import 'dart:io';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/services.dart';
+import 'package:ispeedscan/helper/local_provider.dart';
+import 'package:ispeedscan/l10n/app_localizations_es.dart';
 import 'package:ispeedscan/services/app_store_service.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdfx/pdfx.dart';
+import 'package:provider/provider.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:share_plus/share_plus.dart';
@@ -25,10 +28,12 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'scanner_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 export 'scanner_model.dart';
 
 class ScannerWidget extends StatefulWidget {
   const ScannerWidget({super.key});
+  // late String selectedValue;
 
   @override
   State<ScannerWidget> createState() => _ScannerWidgetState();
@@ -36,6 +41,14 @@ class ScannerWidget extends StatefulWidget {
 
 class _ScannerWidgetState extends State<ScannerWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver {
+  late String selectedValue;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    selectedValue = AppLocalizations.of(context)!.high;
+  }
+
   DateTime? _sessionStartTime;
   int _totalUsageMinutes = 0;
 
@@ -49,7 +62,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
   final animationsMap = <String, AnimationInfo>{};
 
-  String selectedValue = 'High';
+  // String selectedValue = AppLocalizations.of(context)!.high;
 
   Offerings? offerings;
   bool _isSubscribed = true;
@@ -73,7 +86,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
   Future<void> _checkFirstTimeOpen() async {
     final prefs = await SharedPreferences.getInstance();
     final isFirstTimeOpen = prefs.getBool('isFirstTimeAppOpened') ?? true;
-    
+
     if (isFirstTimeOpen) {
       // Log first time open event
       await analytics.logEvent(
@@ -83,10 +96,10 @@ class _ScannerWidgetState extends State<ScannerWidget>
           'timestamp': DateTime.now().toIso8601String(),
         },
       );
-      
+
       // Set the flag to false for future app opens
       await prefs.setBool('isFirstTimeAppOpened', false);
-      
+
       LogHelper.logSuccessMessage('First time app open', 'Event logged successfully');
     }
   }
@@ -228,6 +241,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
   }
 
   Future<void> initRateMyApp() async {
+    final t = AppLocalizations.of(context)!;
     RateMyApp rateMyApp = RateMyApp(
       preferencesPrefix: 'rateMyApp_',
       minDays: 7,
@@ -242,12 +256,11 @@ class _ScannerWidgetState extends State<ScannerWidget>
       if (rateMyApp.shouldOpenDialog) {
         rateMyApp.showRateDialog(
           context,
-          title: 'Rate this app', // The dialog title.
-          message:
-              'If you enjoy using this app, we’d really appreciate it if you could take a minute to leave a review! Your feedback helps us improve and won’t take more than a minute of your time.', // The dialog message.
-          rateButton: 'RATE', // The dialog "rate" button text.
-          noButton: 'NO THANKS', // The dialog "no" button text.
-          laterButton: 'MAYBE LATER', // The dialog "later" button text.
+          title: t.rateThisApp, // The dialog title.
+          message: t.ifYouUsingEnjoyThisApp,
+          rateButton: t.rate, // The dialog "rate" button text.
+          noButton: t.noThanks, // The dialog "no" button text.
+          laterButton: t.maybeLater, // The dialog "later" button text.
           listener: (button) {
             // The button click listener (useful if you want to cancel the click event).
             switch (button) {
@@ -287,6 +300,22 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+    final t = AppLocalizations.of(context)!;
+
+    print("Current locale in scanner: ${provider.locale.languageCode}");
+    print("Mode text: ${t.mode}");
+    print("AppLocalizations locale: ${t.localeName}");
+
+    // Force rebuild with the correct locale
+    Locale currentLocale = Localizations.localeOf(context);
+    print("Localizations.localeOf: $currentLocale");
+
+    // Print all available translations for debugging
+    print("PDF text: ${t.pdf}");
+    print("Photo text: ${t.photo}");
+    print("How to use text: ${t.howToUseISpeedScan}");
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -563,7 +592,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(12.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'Mode: ',
+                                              t.mode,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
@@ -579,7 +608,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Text("PDF"),
+                                            Text(t.pdf),
                                             Switch(
                                               value: isPhotoMode!,
                                               onChanged: (value) {
@@ -591,7 +620,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                               activeColor: Colors.blue,
                                               inactiveThumbColor: Colors.grey,
                                             ),
-                                            Text("Photo"),
+                                            Text(t.photo),
                                           ],
                                         ),
                                       ],
@@ -645,7 +674,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                                       .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'PDF Quality',
+                                                t.pdfQuality,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge
@@ -666,7 +695,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                                   color: Colors.black,
                                                   fontSize: 16),
                                               // Text styling
-                                              items: ['Low', 'Medium', 'High']
+                                              items: [t.low, t.medium, t.high]
                                                   .map((String value) {
                                                 return DropdownMenuItem<String>(
                                                   value: value,
@@ -749,7 +778,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(12.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'How to Use iSpeedScan',
+                                              t.howToUseISpeedScan,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
@@ -818,7 +847,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(12.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'Simplicity and Efficiency',
+                                              t.simplicityAndEfficiency,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
@@ -887,7 +916,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(12.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'Privacy and Security',
+                                              t.privacyAndSecurity,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
@@ -968,7 +997,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(12.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'More Apps By Tevin Eigh Designs',
+                                              t.moreAppsByTevinEighDesigns,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
@@ -1047,7 +1076,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                                       .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
-                                                'About Tevin Eigh Designs',
+                                                t.aboutTevinEighDesigns,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge
@@ -1122,8 +1151,78 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                                 .fromSTEB(12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               !_isSubscribed
-                                                  ? 'Lifetime Subscription = \$4.99'
+                                                  ? t.lifeTimeSubsciption +
+                                                      ' \$4.99 $isPurchased'
                                                   : 'View Purchase Details',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: const AlignmentDirectional(
+                                              0.9, 0.0),
+                                          child: Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 18.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ).animateOnPageLoad(animationsMap[
+                                      'rowOnPageLoadAnimation1']!),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 12.0, 16.0, 0.0),
+                              child: Container(
+                                width: double.infinity,
+                                height: 60.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 5.0,
+                                      color: Color(0x3416202A),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed('language');
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              t.languageAndTranslation,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
@@ -1170,7 +1269,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                               child: Align(
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
-                                  'Check your Photo Gallery for your Saved Photo(s)',
+                                  t.checkYourPhotoGalaryForYourSavedPhotos,
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

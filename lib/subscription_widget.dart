@@ -4,8 +4,10 @@ import 'dart:io';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/services.dart';
+import 'package:ispeedscan/helper/local_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:permission_handler_platform_interface/permission_handler_platform_interface.dart';
+import 'package:provider/provider.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,6 +24,8 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ispeedscan/helper/local_provider.dart';
 
 class SubscriptionWidget extends StatefulWidget {
   const SubscriptionWidget({super.key});
@@ -204,6 +208,9 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+    final t = AppLocalizations.of(context)!;
+    Locale currentLocale = Localizations.localeOf(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -280,8 +287,8 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                                   children: [
                                     Text(
                                       _isSubscribed
-                                          ? 'Current Plan : Full Access'
-                                          : 'Current Plan : Free Trial',
+                                          ? t.currentPlanFullAccess
+                                          : t.currentPlanFreeTrail,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -306,7 +313,7 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                                           children: [
                                             TextSpan(
                                               text:
-                                                  'FREE TRIAL – 1 Week – Unlimited Use\n\n',
+                                                  t.freeTailOneWeekUnlimitedUse,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -319,8 +326,8 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                                                       ),
                                             ),
                                             TextSpan(
-                                              text:
-                                                  'FREE VERSION – After Trial Expires\n\n',
+                                              text: t
+                                                  .freeVersionAfterTrailExpires,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -332,37 +339,37 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                                                             FontWeight.bold,
                                                       ),
                                             ),
-                                            const TextSpan(
-                                              text:
-                                                  ' ✔ 4 minutes of FREE scanning weekly\n\n',
+                                            TextSpan(
+                                              text: t
+                                                  .fourMinutesOfFreeScanningWeekly,
+                                              style: const TextStyle(
+                                                fontSize: 14.0,
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text: t
+                                                  .oneTimePurchaseUnlockFullAccess,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                            ),
+                                            TextSpan(
+                                              text: t
+                                                  .unlimitedScansLifetimeAccess,
                                               style: TextStyle(
                                                 fontSize: 14.0,
                                               ),
                                             ),
                                             TextSpan(
-                                              text:
-                                                  'One Time Purchase (Unlock Full Access)',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                            ),
-                                            const TextSpan(
-                                              text:
-                                                  '\n\n ✔ Unlimited Scans, lifetime access',
-                                              style: TextStyle(
-                                                fontSize: 14.0,
-                                              ),
-                                            ),
-                                            TextSpan(
-                                              text:
-                                                  '\n\nGet lifetime access to iSpeedScan with a one-time purchase & unlock its full power today 🚀',
+                                              text: t
+                                                  .getLifetimeAccessAndOtherDecs,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -506,7 +513,7 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                                   // offering
                                 }
                               },
-                              text: 'Purchase Now \$4.99',
+                              text: '${t.purchaseNow} \$4.99',
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 50.0,
@@ -544,7 +551,7 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 LoadingDialog.show(context,
-                                    message: 'Checking Active Purchase');
+                                    message: t.checkingActivePurchases);
                                 try {
                                   await checkAndRestorePurchases();
                                   // await getSubscriptionsData();
@@ -552,7 +559,7 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                                   // LoadingDialog.hide(context);
                                 }
                               },
-                              text: 'Already Purchased? Restore Here',
+                              text: t.alreadyPuchasedRestoreHere,
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 50.0,
@@ -611,13 +618,13 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
         showDialog(
           context: context,
           builder: (BuildContext context) {
+            final t = AppLocalizations.of(context)!;
             return AlertDialog(
-              title: const Text("Success"),
-              content:
-                  const Text("Your purchase has been successfully restored!"),
+              title: Text(t.success),
+              content: Text(t.yourPurchaseHasBeenSuccessfullyRestored),
               actions: [
                 TextButton(
-                  child: const Text("OK"),
+                  child: Text(t.ok),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -631,13 +638,14 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
         showDialog(
           context: context,
           builder: (BuildContext context) {
+            final t = AppLocalizations.of(context)!;
+
             return AlertDialog(
-              title: const Text("No Purchases Found"),
-              content: const Text(
-                  "We couldn't find any previous purchases to restore."),
+              title: Text(t.noPurchasesFound),
+              content: Text(t.weCouldntFindAnyPurchasesToRestore),
               actions: [
                 TextButton(
-                  child: const Text("OK"),
+                  child: Text(t.ok),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -652,13 +660,14 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
       showDialog(
         context: context,
         builder: (BuildContext context) {
+          final t = AppLocalizations.of(context)!;
+
           return AlertDialog(
-            title: const Text("Error"),
-            content: const Text(
-                "Failed to restore purchases. Please try again later."),
+            title: Text(t.error),
+            content: Text(t.faildToRestorePurchasesPlzTryAgainLater),
             actions: [
               TextButton(
-                child: const Text("OK"),
+                child: Text(t.ok),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -780,7 +789,10 @@ class LoadingDialog {
   static bool isImagePickerCalled = false;
   static bool isAlreadyCancelled = false;
 
-  static void show(BuildContext context, {String message = "Creating PDF..."}) {
+  static void show(BuildContext context, {String? message}) {
+    final t = AppLocalizations.of(context)!;
+    final displayMessage = message ?? t.creatingPdf;
+
     if (isAlreadyCancelled) {
       isAlreadyCancelled = false;
       return;
@@ -804,7 +816,7 @@ class LoadingDialog {
               children: [
                 const CircularProgressIndicator(),
                 const SizedBox(width: 16),
-                Text(message, style: const TextStyle(fontSize: 16)),
+                Text(displayMessage, style: const TextStyle(fontSize: 16)),
               ],
             ),
           ),
@@ -824,19 +836,21 @@ void _showPermissionDialog(BuildContext context, String message,
   showDialog(
     context: context,
     builder: (BuildContext context) {
+      final t = AppLocalizations.of(context)!;
+
       return AlertDialog(
-        title: const Text("Permission Required"),
+        title: Text(t.permissionRequired),
         content: Text(message),
         actions: [
           TextButton(
-            child: Text("Cancel"),
+            child: Text(t.cancel),
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
           if (openSettings)
             TextButton(
-              child: const Text("Open Settings"),
+              child: Text(t.openSettings),
               onPressed: () {
                 openAppSettings();
                 Navigator.of(context).pop();

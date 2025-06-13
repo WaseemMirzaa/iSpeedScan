@@ -6,8 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:ispeedscan/helper/analytics_debug_helper.dart';
+import 'package:ispeedscan/helper/local_provider.dart';
 import 'package:ispeedscan/helper/log_helper.dart';
 import 'package:ispeedscan/services/firebase_service.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'app_globals.dart';
@@ -71,7 +74,12 @@ void main() async {
   await Purchases.configure(PurchasesConfiguration(
       (Platform.isAndroid) ? revenueCatAndroidKey : revenueCatKey));
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => LocaleProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -108,9 +116,6 @@ class _MyAppState extends State<MyApp> {
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
 
-    // No need to log app open here since we already did it in main()
-    // FirebaseService.instance.logAppOpen();
-
     Future.delayed(const Duration(milliseconds: 4000),
         () => safeSetState(() => _appStateNotifier.stopShowingSplashImage()));
   }
@@ -123,7 +128,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'ispeedscan',
-      localizationsDelegates: const [
+      locale: Provider.of<LocaleProvider>(context).locale,
+      supportedLocales: L10n.supportedLocales,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

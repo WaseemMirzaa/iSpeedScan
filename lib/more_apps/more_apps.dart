@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:provider/provider.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,6 +10,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ispeedscan/helper/local_provider.dart';
 
 class MoreAppsWidget extends StatefulWidget {
   const MoreAppsWidget({super.key});
@@ -61,11 +64,15 @@ class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
 
   @override
   void dispose() {
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+    final t = AppLocalizations.of(context)!;
+    Locale currentLocale = Localizations.localeOf(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -127,6 +134,7 @@ class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
+
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(12.0),
@@ -180,14 +188,15 @@ class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
                                         } else if (Platform.isAndroid) {
                                           openPlayStore();
                                         }
+
                                       },
-                                      text: 'View',
+                                      text: t.view,
                                       options: FFButtonOptions(
                                         // height: 20.0,
-                                        padding: const EdgeInsetsDirectional
-                                            .fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                        iconPadding: const EdgeInsetsDirectional
-                                            .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
                                         color: const Color(0xFF173F5A),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -235,13 +244,10 @@ class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
   }
 
   Future<void> openPlayStore() async {
-    final String packageName =
-        "com.mycompany.ispeedpix2pdf7"; // Replace with your package name
-    final Uri playStoreUrl =
-        Uri.parse("https://play.google.com/store/apps/details?id=$packageName");
+    final String packageName = "com.mycompany.ispeedpix2pdf7"; // Replace with your package name
+    final Uri playStoreUrl = Uri.parse("https://play.google.com/store/apps/details?id=$packageName");
 
     if (!await launchUrl(playStoreUrl, mode: LaunchMode.externalApplication)) {
       throw 'Could not launch $playStoreUrl';
     }
-  }
-}
+  }}
