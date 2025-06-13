@@ -93,6 +93,18 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_share/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_share/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_share/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_analytics/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_analytics/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_analytics/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_analytics/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_analytics/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_analytics/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_core/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_core/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_core/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_core/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_core/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_core/example/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

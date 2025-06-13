@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -18,7 +19,7 @@ class MoreAppsWidget extends StatefulWidget {
 
 class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
     with TickerProviderStateMixin {
-
+  var analytics = FirebaseAnalytics.instance;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -60,7 +61,6 @@ class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
 
   @override
   void dispose() {
-
     super.dispose();
   }
 
@@ -125,9 +125,8 @@ class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
-
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(12.0),
@@ -140,21 +139,23 @@ class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 10.0, 0.0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 10.0, 0.0),
                                     child: Text(
                                       'iSpeedPix2PDF',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                        fontFamily: 'Inter',
-                                        color: FlutterFlowTheme.of(context).primaryText,
-                                        fontSize: 14,
-                                        letterSpacing: 0.0,
-                                      ),
-                                    ).animateOnPageLoad(
-                                        animationsMap['textOnPageLoadAnimation']!),
+                                            fontFamily: 'Inter',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 14,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'textOnPageLoadAnimation']!),
                                   ),
                                 ),
                                 Container(
@@ -162,33 +163,46 @@ class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
                                   child: Center(
                                     child: FFButtonWidget(
                                       onPressed: () async {
+                                        await analytics.logEvent(
+                                          name:
+                                              'event_on_view_ispeedpix2pdf_button_pressed',
+                                          parameters: {
+                                            'os': Platform.isAndroid
+                                                ? 'android'
+                                                : 'ios',
+                                            // 'photoMode': isPhotoMode! ? "true" : "false",
+                                            'timestamp': DateTime.now()
+                                                .toIso8601String(),
+                                          },
+                                        );
                                         if (Platform.isIOS) {
                                           openAppStore();
                                         } else if (Platform.isAndroid) {
                                           openPlayStore();
                                         }
-
                                       },
                                       text: 'View',
                                       options: FFButtonOptions(
                                         // height: 20.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                        iconPadding: const EdgeInsetsDirectional
+                                            .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                         color: const Color(0xFF173F5A),
-                                        textStyle:
-                                        FlutterFlowTheme.of(context).titleSmall.override(
-                                          fontFamily: 'Inter',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                        ),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                            ),
                                         // elevation: 3.0,
                                         borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
-                                        borderRadius: BorderRadius.circular(8.0),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
                                     ),
                                   ),
@@ -221,10 +235,13 @@ class _MoreAppsWidgetWidgetState extends State<MoreAppsWidget>
   }
 
   Future<void> openPlayStore() async {
-    final String packageName = "com.mycompany.ispeedpix2pdf7"; // Replace with your package name
-    final Uri playStoreUrl = Uri.parse("https://play.google.com/store/apps/details?id=$packageName");
+    final String packageName =
+        "com.mycompany.ispeedpix2pdf7"; // Replace with your package name
+    final Uri playStoreUrl =
+        Uri.parse("https://play.google.com/store/apps/details?id=$packageName");
 
     if (!await launchUrl(playStoreUrl, mode: LaunchMode.externalApplication)) {
       throw 'Could not launch $playStoreUrl';
     }
-  }}
+  }
+}

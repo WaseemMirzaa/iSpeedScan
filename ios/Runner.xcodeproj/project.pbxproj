@@ -16,6 +16,7 @@
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		C88F955456AAEB78AEC9F727 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 102127D64F5C0818A5109BB0 /* Pods_Runner.framework */; };
 		CE4C654A2D54FFDD00B39286 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4C65492D54FFDD00B39286 /* StoreKit.framework */; };
+		CE6F82C12DE67B3A00A65DBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE6F82C02DE67B3A00A65DBE /* GoogleService-Info.plist */; };
 		CEED8F592D9C9D2C00926E55 /* AppStoreReceiptHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED8F582D9C9D2C00926E55 /* AppStoreReceiptHandler.swift */; };
 		CEED8F5B2D9CAAF700926E55 /* storekit_config.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CEED8F5A2D9CAAF700926E55 /* storekit_config.storekit */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		999ECE3B7A3583EC4D55B217 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		ABA9DB37FCB0497615C569E5 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4C65492D54FFDD00B39286 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CE6F82C02DE67B3A00A65DBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEED8F582D9C9D2C00926E55 /* AppStoreReceiptHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReceiptHandler.swift; sourceTree = "<group>"; };
 		CEED8F5A2D9CAAF700926E55 /* storekit_config.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = storekit_config.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 				97C147021CF9000F007C117D /* Info.plist */,
 				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
+				CE6F82C02DE67B3A00A65DBE /* GoogleService-Info.plist */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 				44A671D42BC7AFBA0042F967 /* PrivacyInfo.xcprivacy */,
@@ -206,6 +209,7 @@
 				CEED8F5B2D9CAAF700926E55 /* storekit_config.storekit in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+				CE6F82C12DE67B3A00A65DBE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,11 +380,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 125;
+				CURRENT_PROJECT_VERSION = 129;
 				DEVELOPMENT_TEAM = FP38MLNQFG;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 1.1.2;
-				FLUTTER_BUILD_NUMBER = 125;
+				FLUTTER_BUILD_NAME = 1.1.6;
+				FLUTTER_BUILD_NUMBER = 129;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
@@ -396,7 +400,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mycompany.ispeedscan1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -522,11 +526,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 125;
+				CURRENT_PROJECT_VERSION = 129;
 				DEVELOPMENT_TEAM = FP38MLNQFG;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 1.1.2;
-				FLUTTER_BUILD_NUMBER = 125;
+				FLUTTER_BUILD_NAME = 1.1.6;
+				FLUTTER_BUILD_NUMBER = 129;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
@@ -542,7 +546,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mycompany.ispeedscan1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -562,11 +566,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 125;
+				CURRENT_PROJECT_VERSION = 129;
 				DEVELOPMENT_TEAM = FP38MLNQFG;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 1.1.2;
-				FLUTTER_BUILD_NUMBER = 125;
+				FLUTTER_BUILD_NAME = 1.1.6;
+				FLUTTER_BUILD_NUMBER = 129;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
@@ -582,7 +586,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mycompany.ispeedscan1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

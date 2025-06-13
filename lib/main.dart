@@ -5,13 +5,60 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:ispeedscan/helper/analytics_debug_helper.dart';
 import 'package:ispeedscan/helper/log_helper.dart';
+import 'package:ispeedscan/services/firebase_service.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'app_globals.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Firebase
+  try {
+    // Initialize Firebase first
+    if (Firebase.apps.isEmpty) {
+      // For Android, initialize with manual options
+      if (Platform.isAndroid) {
+        await Firebase.initializeApp(
+          options: const FirebaseOptions(
+            apiKey: 'AIzaSyCjdvnpDIYnLUHIGh94j4nsLXmqsbkGXsY',
+            appId: '1:695369766912:android:3c84020514c056b80760e5',
+            messagingSenderId: '695369766912',
+            projectId: 'ispeedscan-4edc4',
+            storageBucket: 'ispeedscan-4edc4.firebasestorage.app',
+          ),
+        );
+      } else if (Platform.isIOS) {
+        // For iOS, use manual options as well
+        await Firebase.initializeApp(
+          options: const FirebaseOptions(
+            apiKey: 'AIzaSyAHUsS5Wj9C7BFE6h2T3D3epCBtWu5nahM',
+            appId: '1:695369766912:ios:c14507644b575c110760e5',
+            messagingSenderId: '695369766912',
+            projectId: 'ispeedscan-4edc4',
+            storageBucket: 'ispeedscan-4edc4.firebasestorage.app',
+          ),
+        );
+      }
+    }
+
+    if (Platform.isAndroid) {
+      await AnalyticsDebugHelper.enableDebugMode();
+    }
+
+    // Initialize Firebase service
+    await FirebaseService.instance.initialize();
+
+    // Log app open
+    await FirebaseService.instance.logAppOpen();
+
+    print('Firebase initialized successfully');
+  } catch (e) {
+    debugPrint('Failed to initialize Firebase: $e');
+  }
 
   const MethodChannel('log_helper').setMethodCallHandler((call) async {
     return LogHelper.handlePlatformLog(call);
@@ -60,6 +107,9 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
+
+    // No need to log app open here since we already did it in main()
+    // FirebaseService.instance.logAppOpen();
 
     Future.delayed(const Duration(milliseconds: 4000),
         () => safeSetState(() => _appStateNotifier.stopShowingSplashImage()));

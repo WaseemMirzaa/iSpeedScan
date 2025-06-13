@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ispeedscan/more_apps/more_apps.dart';
 import 'package:ispeedscan/subscription_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import '../../splash/splash_screen.dart';
 import '/index.dart';

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/services.dart';
 import 'package:ispeedscan/services/app_store_service.dart';
 import 'package:path_provider/path_provider.dart';
@@ -52,6 +53,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
   Offerings? offerings;
   bool _isSubscribed = true;
+  final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   bool _is7DaysPassed = false;
   CustomerInfo? _customerInfo;
@@ -64,8 +66,29 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
     WidgetsBinding.instance.addObserver(this);
     _loadUsageTime();
-
+    _checkFirstTimeOpen();
     _loadMode();
+  }
+
+  Future<void> _checkFirstTimeOpen() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isFirstTimeOpen = prefs.getBool('isFirstTimeAppOpened') ?? true;
+    
+    if (isFirstTimeOpen) {
+      // Log first time open event
+      await analytics.logEvent(
+        name: 'event_on_first_open',
+        parameters: {
+          'os': Platform.isAndroid ? 'android' : 'ios',
+          'timestamp': DateTime.now().toIso8601String(),
+        },
+      );
+      
+      // Set the flag to false for future app opens
+      await prefs.setBool('isFirstTimeAppOpened', false);
+      
+      LogHelper.logSuccessMessage('First time app open', 'Event logged successfully');
+    }
   }
 
   @override
@@ -128,6 +151,13 @@ class _ScannerWidgetState extends State<ScannerWidget>
     LogHelper.logSuccessMessage('isPurchasedChecked', isPurchasedChecked);
 
     if (storedSubscriptionStatus == true) {
+      await analytics.logEvent(
+        name: 'event_on_subscription_restored',
+        parameters: {
+          'os': Platform.isAndroid ? 'android' : 'ios',
+          'timestamp': DateTime.now().toIso8601String(),
+        },
+      );
       setState(() {
         _isSubscribed = true;
       });
@@ -153,6 +183,14 @@ class _ScannerWidgetState extends State<ScannerWidget>
           true) {
         await prefs?.setBool('is_subscribed', true);
 
+        await analytics.logEvent(
+          name: 'event_on_already_subscribed',
+          parameters: {
+            'os': Platform.isAndroid ? 'android' : 'ios',
+            'photoMode': isPhotoMode! ? "true" : "false",
+            'timestamp': DateTime.now().toIso8601String(),
+          },
+        );
         setState(() {
           _isSubscribed = true;
 
@@ -337,12 +375,35 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                 if (_is7DaysPassed &&
                                     _totalUsageMinutes > 4 * 60 &&
                                     !_isSubscribed) {
+                                  await analytics.logEvent(
+                                    name: 'event_on_trial_limit_reached',
+                                    parameters: {
+                                      'os': Platform.isAndroid
+                                          ? 'android'
+                                          : 'ios',
+                                      'photoMode':
+                                          isPhotoMode! ? "true" : "false",
+                                      'timestamp':
+                                          DateTime.now().toIso8601String(),
+                                    },
+                                  );
                                   //todo add check for free 4 minutes scan
                                   showTrialLimitDialog(context);
 
                                   return;
                                 }
 
+                                await analytics.logEvent(
+                                  name: 'event_on_scanner_button_pressed',
+                                  parameters: {
+                                    'os':
+                                        Platform.isAndroid ? 'android' : 'ios',
+                                    'timestamp':
+                                        DateTime.now().toIso8601String(),
+                                    'photoMode':
+                                        isPhotoMode! ? "true" : "false",
+                                  },
+                                );
                                 try {
                                   var images = await actions.scannerAction(
                                     context,
@@ -373,11 +434,35 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                     !_isSubscribed) {
                                   print('days passed $_is7DaysPassed');
                                   //todo add check for free 4 minutes scan
+                                  await analytics.logEvent(
+                                    name: 'event_on_trial_limit_reached',
+                                    parameters: {
+                                      'os': Platform.isAndroid
+                                          ? 'android'
+                                          : 'ios',
+                                      'photoMode':
+                                          isPhotoMode! ? "true" : "false",
+                                      'timestamp':
+                                          DateTime.now().toIso8601String(),
+                                    },
+                                  );
                                   showTrialLimitDialog(context);
 
                                   return;
                                 }
                                 try {
+                                  await analytics.logEvent(
+                                    name: 'event_on_scanner_button_pressed',
+                                    parameters: {
+                                      'os': Platform.isAndroid
+                                          ? 'android'
+                                          : 'ios',
+                                      'photoMode':
+                                          isPhotoMode! ? "true" : "false",
+                                      'timestamp':
+                                          DateTime.now().toIso8601String(),
+                                    },
+                                  );
                                   var images = await actions.scannerAction(
                                     context,
                                   );
@@ -861,6 +946,18 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      await analytics.logEvent(
+                                        name: 'event_on_more_apps_clicked',
+                                        parameters: {
+                                          'os': Platform.isAndroid
+                                              ? 'android'
+                                              : 'ios',
+                                          'photoMode':
+                                              isPhotoMode! ? "true" : "false",
+                                          'timestamp':
+                                              DateTime.now().toIso8601String(),
+                                        },
+                                      );
                                       context.pushNamed('more_apps');
                                     },
                                     child: Row(
@@ -979,39 +1076,43 @@ class _ScannerWidgetState extends State<ScannerWidget>
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 12.0, 16.0, 0.0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 60.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      blurRadius: 5.0,
-                                      color: Color(0x3416202A),
-                                      offset: Offset(
-                                        0.0,
-                                        2.0,
-                                      ),
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  shape: BoxShape.rectangle,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context
-                                          .pushNamed('subscribe')
-                                          .then((result) {
-                                        checkSubscriptionStatus();
-                                      });
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await context.pushNamed(
+                                    'subscribe',
+                                    extra: {
+                                      'isSubscribed': _isSubscribed.toString(),
                                     },
+                                  );
+
+                                  // After returning from the subscription page, check status
+                                  await checkSubscriptionStatus();
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 60.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        blurRadius: 5.0,
+                                        color: Color(0x3416202A),
+                                        offset: Offset(
+                                          0.0,
+                                          2.0,
+                                        ),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    shape: BoxShape.rectangle,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -1021,7 +1122,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                                 .fromSTEB(12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               !_isSubscribed
-                                                  ? 'Lifetime Subscription = \$4.99 $isPurchased'
+                                                  ? 'Lifetime Subscription = \$4.99'
                                                   : 'View Purchase Details',
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -1124,6 +1225,14 @@ class _ScannerWidgetState extends State<ScannerWidget>
       await requestPermission(cameraPermission);
 
       IF(_isSubscribed) {
+        analytics.logEvent(
+          name: 'event_on_trial_limit_reached',
+          parameters: {
+            'os': Platform.isAndroid ? 'android' : 'ios',
+            'photoMode': isPhotoMode! ? "true" : "false",
+            'timestamp': DateTime.now().toIso8601String(),
+          },
+        );
         showTrialLimitDialog(context);
         return;
       }
@@ -1133,12 +1242,28 @@ class _ScannerWidgetState extends State<ScannerWidget>
         print('😂$_totalUsageMinutes');
 
         if (_is7DaysPassed && _totalUsageMinutes > 4 * 60 && !_isSubscribed) {
+          await analytics.logEvent(
+            name: 'event_on_trial_limit_reached',
+            parameters: {
+              'os': Platform.isAndroid ? 'android' : 'ios',
+              'photoMode': isPhotoMode! ? "true" : "false",
+              'timestamp': DateTime.now().toIso8601String(),
+            },
+          );
           showTrialLimitDialog(context);
           return;
         }
       }
 
       try {
+        await analytics.logEvent(
+          name: 'event_on_scanner_opened',
+          parameters: {
+            'os': Platform.isAndroid ? 'android' : 'ios',
+            'photoMode': isPhotoMode! ? "true" : "false",
+            'timestamp': DateTime.now().toIso8601String(),
+          },
+        );
         var images = await actions.scannerAction(context);
         checkPdfCreation(images);
       } catch (e) {
@@ -1263,6 +1388,14 @@ class _ScannerWidgetState extends State<ScannerWidget>
       }
       LoadingDialog.hide(context);
       saveAndSharePdf(pdf2.bytes!, name);
+      await analytics.logEvent(
+        name: 'event_on_pdf_created_and_saved',
+        parameters: {
+          'os': Platform.isAndroid ? 'android' : 'ios',
+          'photoMode': isPhotoMode! ? "true" : "false",
+          'timestamp': DateTime.now().toIso8601String(),
+        },
+      );
     }
   }
 
@@ -1397,6 +1530,14 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
           if (receipt != null) {
             isPurchased = true;
+            await analytics.logEvent(
+              name: 'event_on_previous_purchase_found',
+              parameters: {
+                'os': Platform.isAndroid ? 'android' : 'ios',
+                'photoMode': isPhotoMode! ? "true" : "false",
+                'timestamp': DateTime.now().toIso8601String(),
+              },
+            );
             setState(() {
               isPurchased = true;
               _isSubscribed = true;

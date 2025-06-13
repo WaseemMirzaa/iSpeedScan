@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
     <!-- Removed MANAGE_EXTERNAL_STORAGE permission -->
 
     <application
@@ -14,7 +17,38 @@
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
-
+        
+        <!-- Add Firebase debug configuration -->
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="true" />
+        <meta-data
+            android:name="firebase_performance_collection_enabled"
+            android:value="true" />
+        <meta-data
+            android:name="firebase_analytics_debug_mode"
+            android:value="true" />
+        <meta-data
+            android:name="google_app_id"
+            android:value="1:695369766912:android:3c84020514c056b80760e5"/>
+        <meta-data
+            android:name="firebase_database_url"
+            android:value="https://ispeedscan-4edc4.firebaseio.com"/>
+        <meta-data
+            android:name="gcm_defaultSenderId"
+            android:value="695369766912"/>
+        <meta-data
+            android:name="google_api_key"
+            android:value="AIzaSyCjdvnpDIYnLUHIGh94j4nsLXmqsbkGXsY"/>
+        <meta-data
+            android:name="google_storage_bucket"
+            android:value="ispeedscan-4edc4.firebasestorage.app"/>
+        <meta-data
+            android:name="project_id"
+            android:value="ispeedscan-4edc4"/>
+     <meta-data
+    android:name="firebase_analytics_collection_deactivated"
+    android:value="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

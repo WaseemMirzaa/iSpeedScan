@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:permission_handler_platform_interface/permission_handler_platform_interface.dart';
@@ -35,6 +36,8 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
 
   SharedPreferences? prefs;
 
+  var analytics = FirebaseAnalytics.instance;
+
   Offerings? offerings;
   bool _isSubscribed = false;
   CustomerInfo? _customerInfo;
@@ -44,12 +47,6 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
   @override
   void initState() {
     super.initState();
-
-    try {
-      getSubscriptionsData();
-    } catch (e) {
-      LogHelper.logMessage('Subscription Error', e);
-    }
 
     animationsMap.addAll({
       'textOnPageLoadAnimation': AnimationInfo(
@@ -65,15 +62,46 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
         ],
       ),
     });
-
-    // getSubscriptionsData();
-
+    initSubscriptionScreenEvent();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       safeSetState(() {});
 
-      // Ensure that no text field is focused when the app startscf
+      // Ensure that no text field is focused when the app starts
       FocusScope.of(context).requestFocus(FocusNode());
     });
+  }
+
+  @override
+  Future<void> didChangeDependencies() async {
+    super.didChangeDependencies();
+
+    // Check if isSubscribed parameter was passed through extra
+    final routerState = GoRouterState.of(context);
+    final extraMap = routerState.extra as Map<String, dynamic>?;
+
+    if (extraMap != null && extraMap.containsKey('isSubscribed')) {
+      setState(() {
+        _isSubscribed = extraMap['isSubscribed'] as String == 'true';
+        LogHelper.logSuccessMessage('isSubscribed', _isSubscribed.toString());
+      });
+    }
+
+    if (!_isSubscribed) {
+      try {
+        getSubscriptionsData();
+      } catch (e) {
+        LogHelper.logMessage('Subscription Error', e);
+      }
+    } else {
+      await analytics.logEvent(
+        name: 'event_on_user_already_subscribed',
+        parameters: {
+          'screen': 'Subscription Screen',
+          'os': Platform.isAndroid ? 'android' : 'ios',
+          'timestamp': DateTime.now().toIso8601String(),
+        },
+      );
+    }
   }
 
   Future<bool> checkPreviousAppPurchase() async {
@@ -442,6 +470,17 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                                 8.0, 16.0, 8.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
+                                await analytics.logEvent(
+                                  name:
+                                      'event_on_purchase_subscription_button_pressed',
+                                  parameters: {
+                                    'screen': 'Subscription Screen',
+                                    'os':
+                                        Platform.isAndroid ? 'android' : 'ios',
+                                    'timestamp':
+                                        DateTime.now().toIso8601String(),
+                                  },
+                                );
                                 var offering = offerings
                                     ?.getOffering('sub_lifetime_ispeedscan');
 
@@ -452,12 +491,13 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                                             offering.availablePackages[0]
                                                 .storeProduct);
 
-                                    getSubscriptionsData();
+                                    getSubscriptionsData(
+                                        'event_on_subscription_purchased_successful');
 
                                     LogHelper.logSuccessMessage(
                                         'Purchase Package', customerInfo);
 
-                                    getSubscriptionsData();
+                                    // getSubscriptionsData();
                                   } catch (e) {
                                     LogHelper.logErrorMessage(
                                         'Subscription Purchase Error ', e);
@@ -668,14 +708,17 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
     }
   }
 
-  Future<void> getSubscriptionsData() async {
+  Future<void> getSubscriptionsData([String? param]) async {
     prefs = await SharedPreferences.getInstance();
 
     final storedSubscriptionStatus = prefs!.getBool('is_subscribed') ?? false;
 
     _customerInfo = await Purchases.getCustomerInfo();
 
+
     offerings = await Purchases.getOfferings();
+
+    var offering = offerings?.getOffering('sub_lifetime');
 
     LogHelper.logSuccessMessage('Customer Info', _customerInfo);
 
@@ -690,13 +733,45 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
       setState(() {
         _isSubscribed = true;
       });
+      if (param != null) {
+        await analytics.logEvent(
+          name: param!,
+          parameters: {
+              'price': offering?.availablePackages[0].storeProduct.price
+                    .toString(),
+                'currencyCode':
+                    offering?.availablePackages[0].storeProduct.currencyCode,
+            'screen': 'Subscription Screen',
+            'os': Platform.isAndroid ? 'android' : 'ios',
+            'timestamp': DateTime.now().toIso8601String(),
+          },
+        );
+      } else {
+        await analytics.logEvent(
+          name: 'event_on_subscription_already_purchased',
+          parameters: {
+            'screen': 'Subscription Screen',
+            'os': Platform.isAndroid ? 'android' : 'ios',
+            'timestamp': DateTime.now().toIso8601String(),
+          },
+        );
+      }
     } else {
-      _isSubscribed = false;
-
-      if (storedSubscriptionStatus == false) {
+      if (storedSubscriptionStatus == false && !_isSubscribed) {
         checkPreviousAppPurchase();
       }
     }
+  }
+
+  Future<void> initSubscriptionScreenEvent() async {
+    await analytics.logEvent(
+      name: 'event_on_subscription_screen_opened',
+      parameters: {
+        'os': Platform.isAndroid ? 'android' : 'ios',
+        // 'photoMode': isPhotoMode! ? "true" : "false",
+        'timestamp': DateTime.now().toIso8601String(),
+      },
+    );
   }
 }
 
