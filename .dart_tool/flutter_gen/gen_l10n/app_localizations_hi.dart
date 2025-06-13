@@ -1,0 +1,218 @@
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Hindi (`hi`).
+class AppLocalizationsHi extends AppLocalizations {
+  AppLocalizationsHi([String locale = 'hi']) : super(locale);
+
+  @override
+  String get iSpeedScan => 'iSpeedScan';
+
+  @override
+  String get mode => 'मोड: ';
+
+  @override
+  String get pdf => 'पीडीएफ';
+
+  @override
+  String get photo => 'फ़ोटो';
+
+  @override
+  String get pdfQuality => 'पीडीएफ गुणवत्ता';
+
+  @override
+  String get low => 'निम्न';
+
+  @override
+  String get medium => 'मध्यम';
+
+  @override
+  String get high => 'उच्च';
+
+  @override
+  String get howToUseISpeedScan => 'iSpeedScan का उपयोग कैसे करें';
+
+  @override
+  String get simplicityAndEfficiency => 'सादगी और दक्षता';
+
+  @override
+  String get privacyAndSecurity => 'गोपनीयता और सुरक्षा';
+
+  @override
+  String get moreAppsByTevinEighDesigns => 'Tevin Eigh Designs द्वारा और ऐप्स';
+
+  @override
+  String get aboutTevinEighDesigns => 'Tevin Eigh Designs के बारे में';
+
+  @override
+  String get lifeTimeSubsciption => 'लाइफटाइम सब्सक्रिप्शन = ';
+
+  @override
+  String get viewPurchaseDetails => 'खरीद विवरण देखें';
+
+  @override
+  String get checkYourPhotoGalaryForYourSavedPhotos => 'अपनी सहेजी गई फ़ोटो के लिए फोटो गैलरी जांचें';
+
+  @override
+  String get languageAndTranslation => 'भाषा और अनुवाद';
+
+  @override
+  String get howToUSeiSpeed => 'iSpeedScan का उपयोग कैसे करें: चरण-दर-चरण मार्गदर्शिका';
+
+  @override
+  String get startScanningAndItesDetails => '1. स्कैनिंग शुरू करें\n- iSpeedScan खोलें। स्टार्ट स्क्रीन पर, अपनी पसंदीदा मोड चुनने के लिए पिक्चर/PDF स्लाइडर का उपयोग करें\n*सुविधा के लिए, कुछ क्षणों के बाद ऐप स्वचालित रूप से उस अंतिम मोड में खुलता है जिसे आपने पिछली बार उपयोग किया था, जब तक आप स्कैन करने से पहले उसे बदल नहीं देते';
+
+  @override
+  String get selectYourModeAndItsDetails => '2. अपना मोड चुनें\n- चित्र के रूप में स्कैन करें: तुरंत खुलता है, जिससे आप सीधे अपनी गैलरी में इमेज स्कैन और सेव कर सकते हैं\n- PDF के रूप में स्कैन करें: एक PDF स्कैनर खोलता है जिसमें आप कई पेज स्कैन कर सकते हैं और उन्हें एक ही PDF के रूप में सेव कर सकते हैं';
+
+  @override
+  String get captureADocumentAndItsDetails => '3. एक दस्तावेज़ स्कैन करें (किसी भी मोड में)\n- अपने डिवाइस को दस्तावेज़ के ऊपर ले जाएं, स्कैनर इसे स्वतः पहचान कर स्कैन कर लेगा\n- अधिक नियंत्रण के लिए मैनुअल कैप्चर विकल्प भी उपलब्ध है\n- कई दस्तावेज़ों को जल्दी और आसानी से स्कैन करें\n* सेव करने से पहले पेज थंबनेल पर टैप करके अलग-अलग पेजों को संपादित कर सकते हैं, जो आपके डिवाइस के एडिटिंग टूल्स खोलता है (आप बाद में भी संपादन कर सकते हैं)';
+
+  @override
+  String get saveAndOrganizeAndItsDetails => '4. सेव करें और व्यवस्थित करें\n- चित्र के रूप में स्कैन करें: प्रत्येक स्कैन को सीधे आपकी डिवाइस की गैलरी में सेव करता है\n- PDF के रूप में स्कैन करें: स्कैनिंग के बाद, अगली स्क्रीन पर जाएंगे जहाँ आप PDF को साझा, सेव, अपलोड, संदेश या ईमेल कर सकते हैं';
+
+  @override
+  String get viewShareAndManageAndOtherDetails => '5. देखें, साझा करें और प्रबंधित करें\n- अपने स्कैन को ईमेल, मैसेजिंग, क्लाउड स्टोरेज, अपलोड या सोशल मीडिया के जरिए अपने डिवाइस की शेयरिंग विकल्पों से साझा करें\n- एक बार सेव हो जाने के बाद, आप सामान्य ऑपरेटिंग सिस्टम टूल्स से PDF को एडिट, साझा, सेव, अपलोड, मैसेज या ईमेल कर सकते हैं';
+
+  @override
+  String get mainMenuAndModeSelectionAndOtherDetails => '*मुख्य मेनू और मोड चयन\n- मोड बदलना है? स्कैनिंग के दौरान \'रद्द करें\' पर टैप करें, जिससे आप मुख्य मेनू पर लौट सकते हैं और \'चित्र\' या \'PDF\' मोड चुन सकते हैं\n- सुविधा के लिए, ऐप हमेशा पिछले उपयोग किए गए मोड में ही खुलेगा जब तक कि आप स्कैन करने से पहले इसे बदलें नहीं';
+
+  @override
+  String get privacyAndSecurityAndOtherDetails => '*गोपनीयता और सुरक्षा: आपके दस्तावेज़ सुरक्षित रूप से आपकी डिवाइस की गैलरी में संग्रहीत होते हैं\n- iSpeedScan आपके फ़ाइलों को संग्रहित नहीं करता, जिससे पूर्ण गोपनीयता सुनिश्चित होती है';
+
+  @override
+  String get ourMissionAndOtherDetails => '*हमारा मिशन: हम सादगी, दक्षता और गोपनीयता पर ध्यान केंद्रित करते हैं — आपको वही टूल्स प्रदान करते हैं जो वास्तव में ज़रूरी हैं, बिना किसी फालतू चीज़ के';
+
+  @override
+  String get ourPhilosophySimplicityAndOtherDetails => 'हमारा दृष्टिकोण\n- सादगी: हमारे ऐप्स सहज और सभी के लिए उपयोग में आसान बनाए गए हैं।\n- सुरक्षा: सभी प्रोसेसिंग क्लाइंट-साइड पर होती है, जिससे आपकी जानकारी निजी और सुरक्षित रहती है।\n- दक्षता: हम ऐप को निरंतर सुधारते हैं ताकि गैरज़रूरी स्टेप्स हटाए जा सकें और कार्यक्षमता बनी रहे।';
+
+  @override
+  String get weBelieveInProvidingJustDetails => 'हम मानते हैं कि केवल वही प्रदान किया जाए जो वास्तव में ज़रूरी है — न कम, न ज़्यादा। जैसे-जैसे हम आगे बढ़ते हैं, हमारा लक्ष्य दक्षता को बढ़ाना है बिना मूल उद्देश्य से समझौता किए।';
+
+  @override
+  String get exploreOurRangOfClientAndOtherDetails => 'हमारे क्लाइंट-साइड ऐप्स की रेंज का अनुभव करें और देखें कि सादगी, दक्षता और सुरक्षा कैसे आपके रोजमर्रा के कार्यों को आसान बना सकती है।';
+
+  @override
+  String get atISpeedScanWePrioritizAndOtherDetails => 'iSpeedScan में हम आपकी गोपनीयता और जानकारी की सुरक्षा को सर्वोच्च प्राथमिकता देते हैं। यह गोपनीयता नीति बताती है कि हम iSpeedScan के उपयोग के दौरान डेटा को कैसे संभालते हैं। हमारा उद्देश्य एक सरल और सुरक्षित अनुभव प्रदान करना है।';
+
+  @override
+  String get informationCollectionAndOtherDetails => '1. जानकारी संग्रहण और उपयोग\niSpeedScan इस तरह से बनाया गया है कि वह किसी भी व्यक्तिगत जानकारी को एकत्र या स्टोर किए बिना काम करता है। सभी डाटा आपके डिवाइस पर ही प्रोसेस होता है, सिवाय उस न्यूनतम जानकारी के जो सब्सक्रिप्शन प्रोसेसिंग के लिए आवश्यक है:\n\n• कैमरा एक्सेस: डॉक्युमेंट स्कैन करने के लिए कैमरा एक्सेस की आवश्यकता होती है। सभी इमेज केवल आपके डिवाइस पर प्रोसेस होती हैं और कहीं नहीं भेजी जातीं।\n\n• गैलरी एक्सेस: स्कैन किए गए डॉक्युमेंट्स को गैलरी में सेव करने के लिए अनुमति मांगी जाती है। हम आपकी मौजूदा फ़ोटो को नहीं छूते।\n\n• PDF स्टोरेज: यदि आप PDF के रूप में सेव करना चुनते हैं, तो स्टोरेज अनुमति मांगी जाएगी। ये फ़ाइलें आपके डिवाइस पर ही रहती हैं।\n\n• डॉक्युमेंट प्रबंधन: उपयोगकर्ता अपने PDF फ़ाइलों पर पूर्ण नियंत्रण रखते हैं और उन्हें साझा, ईमेल, सेव या अपलोड कर सकते हैं।\n\n• सब्सक्रिप्शन प्रोसेसिंग: पूरी सुविधा का उपयोग करने के लिए एक बार का शुल्क लिया जाता है, जो किसी थर्ड पार्टी सर्विस के माध्यम से सुरक्षित रूप से प्रोसेस किया जाता है। हम आपके भुगतान विवरण को स्टोर नहीं करते।';
+
+  @override
+  String get dataTransmissionPracticeAndOtherDetails => '2. डाटा ट्रांसमिशन प्रथाएँ\nमुख्य कार्यों — जैसे स्कैनिंग और डॉक्युमेंट सेविंग — के लिए iSpeedScan कोई भी डेटा बाहरी सर्वर या तीसरे पक्ष को नहीं भेजता। सब कुछ आपके डिवाइस पर ही होता है। केवल आपकी लाइफटाइम सब्सक्रिप्शन से संबंधित जानकारी सुरक्षित रूप से एक पेमेंट सेवा द्वारा ट्रांसमिट होती है।';
+
+  @override
+  String get absenceOfAdvertismentsAndOtherDetails => '3. विज्ञापनों की अनुपस्थिति\niSpeedScan एक साफ, विज्ञापन-मुक्त अनुभव प्रदान करता है। एक बार आप एकमुश्त सब्सक्रिप्शन शुल्क का भुगतान करते हैं, तो आपको सभी सुविधाओं तक पूरा एक्सेस मिल जाता है — बिना किसी छिपे शुल्क या रुकावट के।';
+
+  @override
+  String get ourDedicationToYourPrivacyAndOtherDetails => '4. आपकी गोपनीयता के प्रति हमारी प्रतिबद्धता\nहम अपने उपयोगकर्ताओं के लिए उच्चतम गोपनीयता और सुरक्षा मानकों को बनाए रखने के लिए प्रतिबद्ध हैं। यदि आपके कोई प्रश्न हैं या इस नीति के बारे में अधिक जानकारी चाहिए, तो कृपया हमसे संपर्क करें।';
+
+  @override
+  String get view => 'देखें';
+
+  @override
+  String get atTevinEighDesignsAndOtherDetails => 'Tevin Eigh Designs में, हम क्लाइंट-साइड ऐप्स बनाने में विशेषज्ञ हैं जो दैनिक समस्याओं को सादगी, दक्षता और सुरक्षा के साथ हल करते हैं। हमारा फोकस आपको आवश्यक मूल कार्यक्षमता को न्यूनतम चरणों और क्लिक के साथ प्रदान करने पर है, ताकि आप बिना किसी व्यवधान के अपने मुख्य कार्यों पर ध्यान केंद्रित कर सकें।\n\nहमारा दर्शन\n- सादगी: हमारे ऐप्स सहज और उपयोग में आसान होते हैं।\n- सुरक्षा: सभी प्रोसेसिंग को क्लाइंट-साइड पर रखकर, हम आपकी डेटा की गोपनीयता और सुरक्षा सुनिश्चित करते हैं।\n- दक्षता: हम अपनी ऐप्स को लगातार बेहतर बनाते हैं ताकि अनावश्यक चरणों को हटाया जा सके और मुख्य कार्यक्षमता बनी रहे।\n\nहम मानते हैं कि आपको केवल वही दिया जाए जो आवश्यक हो – न अधिक, न कम। जैसे-जैसे हम आगे बढ़ते हैं, हमारा संकल्प यही है कि हम दक्षता को बढ़ाएँ बिना ऐप की मूल उपयोगिता से समझौता किए।\n\nहमारे क्लाइंट-साइड ऐप्स की रेंज को एक्सप्लोर करें और देखें कि सादगी, दक्षता और सुरक्षा आपके दैनिक कार्यों में कितना अंतर ला सकती है।\n\n';
+
+  @override
+  String get currentPlanFullAccess => 'वर्तमान प्लान : पूर्ण एक्सेस';
+
+  @override
+  String get currentPlanFreeTrail => 'वर्तमान प्लान : फ्री ट्रायल';
+
+  @override
+  String get freeTailOneWeekUnlimitedUse => 'नि:शुल्क ट्रायल – 1 सप्ताह – असीमित उपयोग\n\n';
+
+  @override
+  String get freeVersionAfterTrailExpires => 'नि:शुल्क संस्करण – ट्रायल समाप्त होने के बाद\n\n';
+
+  @override
+  String get fourMinutesOfFreeScanningWeekly => '✔ प्रति सप्ताह 4 मिनट का फ्री स्कैनिंग\n\n';
+
+  @override
+  String get oneTimePurchaseUnlockFullAccess => 'एक बार की खरीदारी (पूर्ण एक्सेस अनलॉक करें)';
+
+  @override
+  String get unlimitedScansLifetimeAccess => '\n\n ✔ असीमित स्कैन, आजीवन एक्सेस';
+
+  @override
+  String get getLifetimeAccessAndOtherDecs => '\n\niSpeedScan का आजीवन एक्सेस एक बार की खरीदारी से प्राप्त करें और इसकी पूरी क्षमता को आज ही अनलॉक करें';
+
+  @override
+  String get purchaseNow => 'अब खरीदें';
+
+  @override
+  String get checkingActivePurchases => 'सक्रिय खरीद की जांच की जा रही है';
+
+  @override
+  String get alreadyPuchasedRestoreHere => 'पहले से खरीदा है? यहां पुनर्स्थापित करें';
+
+  @override
+  String get yourPurchaseHasBeenSuccessfullyRestored => 'आपकी खरीद सफलतापूर्वक पुनर्स्थापित हो गई है!';
+
+  @override
+  String get noPurchasesFound => 'कोई खरीद नहीं मिली';
+
+  @override
+  String get weCouldntFindAnyPurchasesToRestore => 'हम कोई भी पिछली खरीद पुनर्स्थापित करने के लिए नहीं ढूंढ सके।';
+
+  @override
+  String get error => 'त्रुटि';
+
+  @override
+  String get faildToRestorePurchasesPlzTryAgainLater => 'खरीद पुनर्स्थापित करने में विफल। कृपया बाद में प्रयास करें।';
+
+  @override
+  String get ok => 'ठीक है';
+
+  @override
+  String get creatingPDF => 'PDF बनाया जा रहा है...';
+
+  @override
+  String get permissionRequired => 'अनुमति आवश्यक';
+
+  @override
+  String get cancel => 'रद्द करें';
+
+  @override
+  String get openSettings => 'सेटिंग्स खोलें';
+
+  @override
+  String get success => 'सफलता';
+
+  @override
+  String get yourPurchaseSuccessfullyRestored => 'आपकी खरीदारी सफलतापूर्वक पुनर्स्थापित हो गई है!';
+
+  @override
+  String get creatingPdf => 'PDF बना रहा है...';
+
+  @override
+  String get languageSettings => 'भाषा सेटिंग्स';
+
+  @override
+  String get selectYourPreferredLanguage => 'अपनी पसंदीदा भाषा चुनें';
+
+  @override
+  String get chooseTheLanguageYouWant => 'ऐप में उपयोग के लिए भाषा चुनें';
+
+  @override
+  String get languageInformation => 'भाषा जानकारी';
+
+  @override
+  String get iSpeedScanSupportsMultipleLanuages => 'iSpeedScan कई भाषाओं का समर्थन करता है ताकि ऐप वैश्विक उपयोगकर्ताओं के लिए सुलभ हो सके। यदि आपकी पसंदीदा भाषा उपलब्ध नहीं है, तो भविष्य के अपडेट में और भाषाएं जोड़ी जाएंगी।';
+
+  @override
+  String get rateThisApp => 'ऐप को रेट करें';
+
+  @override
+  String get ifYouUsingEnjoyThisApp => 'यदि आप इस ऐप का आनंद ले रहे हैं, तो कृपया एक मिनट निकालकर रिव्यू छोड़ें! आपकी प्रतिक्रिया हमें बेहतर बनाने में मदद करती है।';
+
+  @override
+  String get rate => 'रेट करें';
+
+  @override
+  String get noThanks => 'नहीं, धन्यवाद';
+
+  @override
+  String get maybeLater => 'शायद बाद में';
+}
