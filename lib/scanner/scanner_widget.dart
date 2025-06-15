@@ -100,7 +100,8 @@ class _ScannerWidgetState extends State<ScannerWidget>
       // Set the flag to false for future app opens
       await prefs.setBool('isFirstTimeAppOpened', false);
 
-      LogHelper.logSuccessMessage('First time app open', 'Event logged successfully');
+      LogHelper.logSuccessMessage(
+          'First time app open', 'Event logged successfully');
     }
   }
 
@@ -1153,7 +1154,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                               !_isSubscribed
                                                   ? t.lifeTimeSubsciption +
                                                       ' \$4.99 $isPurchased'
-                                                  : 'View Purchase Details',
+                                                  : t.viewPurchaseDetails,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge

@@ -62,7 +62,6 @@ void main() async {
   } catch (e) {
     debugPrint('Failed to initialize Firebase: $e');
   }
-
   const MethodChannel('log_helper').setMethodCallHandler((call) async {
     return LogHelper.handlePlatformLog(call);
   });
@@ -74,9 +73,18 @@ void main() async {
   await Purchases.configure(PurchasesConfiguration(
       (Platform.isAndroid) ? revenueCatAndroidKey : revenueCatKey));
 
+  // Register our custom plugins
+  await _registerPlugins();
+
+  // Create the LocaleProvider instance
+  final localeProvider = LocaleProvider();
+
+  // Wait for the saved locale to be loaded
+  await Future.delayed(Duration(milliseconds: 100));
+
   runApp(
     ChangeNotifierProvider(
-      create: (_) => LocaleProvider(),
+      create: (_) => localeProvider,
       child: const MyApp(),
     ),
   );
@@ -136,7 +144,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('en', '')],
+      // supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: false,
@@ -145,5 +153,16 @@ class _MyAppState extends State<MyApp> {
       themeMode: _themeMode,
       routerConfig: _router,
     );
+  }
+}
+
+Future<void> _registerPlugins() async {
+  try {
+    const MethodChannel channel =
+        MethodChannel('com.tevineighdesigns.ispeedscan1/plugin_registrant');
+    await channel.invokeMethod('registerPlugins');
+    print('Custom plugins registered successfully');
+  } catch (e) {
+    print('Error registering custom plugins: $e');
   }
 }

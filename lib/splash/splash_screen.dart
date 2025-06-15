@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import '../flutter_flow/nav/nav.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../helper/shared_preference_service.dart';
+import 'package:ispeedscan/l10n/app_localizations_es.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ToggleModeScreen extends StatefulWidget {
   @override
@@ -51,6 +53,8 @@ class _ToggleModeScreenState extends State<ToggleModeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -129,7 +133,7 @@ class _ToggleModeScreenState extends State<ToggleModeScreen> {
                                         padding: const EdgeInsetsDirectional
                                             .fromSTEB(12.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'Mode: ',
+                                          '${t.mode}: ',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -144,7 +148,8 @@ class _ToggleModeScreenState extends State<ToggleModeScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          "PDF",
+                                          t.pdf,
+                                          // "PDF",
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -173,7 +178,7 @@ class _ToggleModeScreenState extends State<ToggleModeScreen> {
                                           width: 15,
                                         ),
                                         Text(
-                                          "Photo",
+                                          t.photo,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(

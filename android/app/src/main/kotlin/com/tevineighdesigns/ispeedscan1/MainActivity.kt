@@ -1,15 +1,23 @@
 package com.tevineighdesigns.ispeedscan1
 
+import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.MethodChannel
+import java.io.File
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.core.content.FileProvider
-import io.flutter.embedding.android.FlutterActivity
-import io.flutter.plugin.common.MethodChannel
-import java.io.File
 
 class MainActivity : FlutterActivity() {
     private val CHANNEL = "com.tevineighdesigns.ispeedscan1.fileprovider/file" // The method channel name
+
+    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+        super.configureFlutterEngine(flutterEngine)
+        
+        // Register the plugin registrant receiver
+        PluginRegistrantReceiver.registerWith(flutterEngine, context)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

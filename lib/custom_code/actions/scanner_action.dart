@@ -15,6 +15,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import '../../../helper/analytics_helper.dart';
+import 'package:ispeedscan/helper/scanner_locale_helper.dart';
 
 Future<List<String>> scannerAction(BuildContext context) async {
   List<String> _pictures = [];
@@ -24,6 +25,9 @@ Future<List<String>> scannerAction(BuildContext context) async {
   var analytics = FirebaseAnalytics.instance;
   
   var isPhotoMode = await PreferenceService.getMode();
+
+  // Apply the current app locale to the scanner before launching
+  await ScannerLocaleHelper.applyScannerLocale();
 
   try {
     pictures = await CunningDocumentScanner.getPictures(

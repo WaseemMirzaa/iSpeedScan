@@ -127,7 +127,10 @@ class _LanguagePageState extends State<LanguagePage>
                       languageName: 'English',
                       flagEmoji: '🇺🇸',
                       isSelected: currentLocale == 'en',
-                      onTap: () => provider.setLocale(const Locale('en')),
+                      onTap: () {
+                        provider.setLocale(const Locale('en'));
+                        Navigator.pop(context);
+                      },
                     ),
 
                     // done
@@ -139,6 +142,8 @@ class _LanguagePageState extends State<LanguagePage>
                       isSelected: currentLocale == 'es',
                       onTap: () {
                         provider.setLocale(const Locale('es'));
+                        Navigator.pop(context);
+
                         print(
                             "Setting locale to Spanish"); // Add this debug statement
                       },
@@ -151,7 +156,11 @@ class _LanguagePageState extends State<LanguagePage>
                       languageName: 'Français',
                       flagEmoji: '🇫🇷',
                       isSelected: currentLocale == 'fr',
-                      onTap: () => provider.setLocale(const Locale('fr')),
+                      onTap: () {
+                        provider.setLocale(const Locale('fr'));
+
+                        Navigator.pop(context);
+                      },
                     ),
 
                     // done
@@ -161,7 +170,10 @@ class _LanguagePageState extends State<LanguagePage>
                       languageName: 'Deutsch',
                       flagEmoji: '🇩🇪',
                       isSelected: currentLocale == 'de',
-                      onTap: () => provider.setLocale(const Locale('de')),
+                      onTap: () {
+                        provider.setLocale(const Locale('de'));
+                        Navigator.pop(context);
+                      },
                     ),
 
                     //done
@@ -171,7 +183,10 @@ class _LanguagePageState extends State<LanguagePage>
                       languageName: 'Italiano',
                       flagEmoji: '🇮🇹',
                       isSelected: currentLocale == 'it',
-                      onTap: () => provider.setLocale(const Locale('it')),
+                      onTap: () {
+                        provider.setLocale(const Locale('it'));
+                        Navigator.pop(context);
+                      },
                     ),
 
                     //done
@@ -181,7 +196,10 @@ class _LanguagePageState extends State<LanguagePage>
                       languageName: '日本語',
                       flagEmoji: '🇯🇵',
                       isSelected: currentLocale == 'ja',
-                      onTap: () => provider.setLocale(const Locale('ja')),
+                      onTap: () {
+                        provider.setLocale(const Locale('ja'));
+                        Navigator.pop(context);
+                      },
                     ),
 
                     // done
@@ -191,7 +209,10 @@ class _LanguagePageState extends State<LanguagePage>
                       languageName: 'Arabic',
                       flagEmoji: '🇦🇪',
                       isSelected: currentLocale == 'ar',
-                      onTap: () => provider.setLocale(const Locale('ar')),
+                      onTap: () {
+                        provider.setLocale(const Locale('ar'));
+                        Navigator.pop(context);
+                      },
                     ),
 
                     // done
@@ -203,7 +224,7 @@ class _LanguagePageState extends State<LanguagePage>
                       isSelected: currentLocale == 'hi',
                       onTap: () {
                         provider.setLocale(const Locale('hi'));
-                        print("Setting locale to Hindi"); // Debug statement
+                        Navigator.pop(context);
                       },
                     ),
 
@@ -216,7 +237,7 @@ class _LanguagePageState extends State<LanguagePage>
                       isSelected: currentLocale == 'ko',
                       onTap: () {
                         provider.setLocale(const Locale('ko'));
-                        print("Setting locale to Korean"); // Debug statement
+                        Navigator.pop(context);
                       },
                     ),
 
@@ -230,6 +251,8 @@ class _LanguagePageState extends State<LanguagePage>
                       isSelected: currentLocale == 'pt',
                       onTap: () {
                         provider.setLocale(const Locale('pt'));
+                        Navigator.pop(context);
+
                         print(
                             "Setting locale to Portuguese"); // Debug statement
                       },
@@ -244,6 +267,8 @@ class _LanguagePageState extends State<LanguagePage>
                       isSelected: currentLocale == 'ru',
                       onTap: () {
                         provider.setLocale(const Locale('ru'));
+
+                        Navigator.pop(context);
                         print("Setting locale to Russian"); // Debug statement
                       },
                     ),
@@ -257,6 +282,8 @@ class _LanguagePageState extends State<LanguagePage>
                       isSelected: currentLocale == 'th',
                       onTap: () {
                         provider.setLocale(const Locale('th'));
+
+                        Navigator.pop(context);
                         print("Setting locale to Thai"); // Debug statement
                       },
                     ),
@@ -270,6 +297,8 @@ class _LanguagePageState extends State<LanguagePage>
                       isSelected: currentLocale == 'tr',
                       onTap: () {
                         provider.setLocale(const Locale('tr'));
+
+                        Navigator.pop(context);
                         print("Setting locale to Turkish"); // Debug statement
                       },
                     ),
@@ -283,6 +312,7 @@ class _LanguagePageState extends State<LanguagePage>
                       isSelected: currentLocale == 'vi',
                       onTap: () {
                         provider.setLocale(const Locale('vi'));
+                        Navigator.pop(context);
                         print(
                             "Setting locale to Vietnamese"); // Debug statement
                       },
@@ -297,6 +327,8 @@ class _LanguagePageState extends State<LanguagePage>
                       isSelected: currentLocale == 'zh',
                       onTap: () {
                         provider.setLocale(const Locale('zh'));
+
+                        Navigator.pop(context);
                         print("Setting locale to Chinese"); // Debug statement
                       },
                     ),
