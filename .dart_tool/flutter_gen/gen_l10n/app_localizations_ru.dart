@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -121,7 +123,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get currentPlanFreeTrail => 'Текущий план: Бесплатная пробная версия';
 
   @override
-  String get freeTailOneWeekUnlimitedUse => 'БЕСПЛАТНАЯ ПРОБНАЯ ВЕРСИЯ – 1 неделя – неограниченное использование\n\n';
+  String get freeTailOneWeekUnlimitedUse => 'БЕСПЛАТНАЯ ПРОБНАЯ ВЕРСИЯ – 3 дня – неограниченное использование\n\n';
 
   @override
   String get freeVersionAfterTrailExpires => 'БЕСПЛАТНАЯ ВЕРСИЯ – после окончания пробного периода\n\n';

@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -121,7 +123,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get currentPlanFreeTrail => 'Mevcut Plan: Ücretsiz Deneme';
 
   @override
-  String get freeTailOneWeekUnlimitedUse => 'ÜCRETSİZ DENEME – 1 Hafta – Sınırsız Kullanım\n\n';
+  String get freeTailOneWeekUnlimitedUse => 'ÜCRETSİZ DENEME – 3 Gün – Sınırsız Kullanım\n\n';
 
   @override
   String get freeVersionAfterTrailExpires => 'ÜCRETSİZ SÜRÜM – Deneme Süresi Bitince\n\n';

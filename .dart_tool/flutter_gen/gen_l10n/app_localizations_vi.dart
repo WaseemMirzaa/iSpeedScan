@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -121,7 +123,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get currentPlanFreeTrail => 'Gói hiện tại: Dùng thử miễn phí';
 
   @override
-  String get freeTailOneWeekUnlimitedUse => 'DÙNG THỬ MIỄN PHÍ – 1 Tuần – Sử dụng không giới hạn\n\n';
+  String get freeTailOneWeekUnlimitedUse => 'DÙNG THỬ MIỄN PHÍ – 3 Ngày – Sử dụng không giới hạn\n\n';
 
   @override
   String get freeVersionAfterTrailExpires => 'PHIÊN BẢN MIỄN PHÍ – Sau khi hết hạn dùng thử\n\n';

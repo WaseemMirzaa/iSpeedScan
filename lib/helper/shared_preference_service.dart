@@ -69,14 +69,37 @@ class PreferenceService {
     return prefs.getString(_firstOpenDateKey) == null;
   }
 
-  // Check if the saved first open date is older than 7 days
-  Future<bool> isFirstOpenDateOlderThan7Days() async {
+  // // Check if the saved first open date is older than 7 days
+  // Future<bool> isFirstOpenDateOlderThan7Days() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String? savedDate = prefs.getString(_firstOpenDateKey);
+  //
+  //   if (savedDate == null) {
+  //     saveFirstOpenDate();
+  //     return false; // No saved date, so it's not older than 7 days
+  //   }
+  //
+  //   // Parse the saved date from ISO8601 string
+  //   DateTime firstOpenDate = DateTime.parse(savedDate);
+  //   DateTime currentDate = DateTime.now();
+  //
+  //   // Calculate the difference between the current date and the saved date
+  //   Duration difference = currentDate.difference(firstOpenDate);
+  //
+  //   print('Difference in days 🟡 ${firstOpenDate}');
+  //   // Check if the difference is greater than 7 days
+  //   return difference.inDays > 7;
+  // }
+
+  // Check if the saved first open date is older than 3 days
+
+  Future<bool> isFirstOpenDateOlderThan3Days() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? savedDate = prefs.getString(_firstOpenDateKey);
 
     if (savedDate == null) {
       saveFirstOpenDate();
-      return false; // No saved date, so it's not older than 7 days
+      return false; // No saved date, so it's not older than 3 days
     }
 
     // Parse the saved date from ISO8601 string
@@ -87,9 +110,10 @@ class PreferenceService {
     Duration difference = currentDate.difference(firstOpenDate);
 
     print('Difference in days 🟡 ${firstOpenDate}');
-    // Check if the difference is greater than 7 days
-    return difference.inDays > 7;
+    // Check if the difference is greater than 3 days
+    return difference.inDays > 3;
   }
+
 
   // Increment and return the PDF created count
   Future<int> incrementAndReturnPdfCreatedCount() async {
@@ -105,9 +129,9 @@ class PreferenceService {
   Future<int> getPdfCreatedCount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    var olderThan7Days = await isFirstOpenDateOlderThan7Days();
+    var olderThan3Days = await isFirstOpenDateOlderThan3Days();
 
-    if (!olderThan7Days) {
+    if (!olderThan3Days) {
       await prefs.setInt(_pdfCreatedCountKey, 0);
     }
 
@@ -115,6 +139,22 @@ class PreferenceService {
   }
 
   // Reset the PDF created count after 7 days
+  // Future<void> resetPdfCreatedCount() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String? firstOpenDate = prefs.getString(_firstOpenDateKey);
+  //
+  //   if (firstOpenDate != null) {
+  //     DateTime firstOpenDateTime = DateTime.parse(firstOpenDate);
+  //     DateTime currentDate = DateTime.now();
+  //     Duration difference = currentDate.difference(firstOpenDateTime);
+  //
+  //     if (difference.inDays % 7 == 0) {
+  //       await prefs.setInt(_pdfCreatedCountKey, 0);
+  //     }
+  //   }
+  // }
+
+  // Reset the PDF created count after  3 days
   Future<void> resetPdfCreatedCount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? firstOpenDate = prefs.getString(_firstOpenDateKey);
@@ -124,8 +164,10 @@ class PreferenceService {
       DateTime currentDate = DateTime.now();
       Duration difference = currentDate.difference(firstOpenDateTime);
 
-      if (difference.inDays % 7 == 0) {
+      // Check if the difference in days is a multiple of 3
+      if (difference.inDays % 3 == 0) {
         await prefs.setInt(_pdfCreatedCountKey, 0);
+        print("PDF created count has been reset as the 3-day period has passed.");
       }
     }
   }
@@ -172,16 +214,32 @@ class PreferenceService {
   }
 
   /// Resets usage time if a week has passed (deprecated - use checkAndResetMonthlyUsage)
-  static Future<int> checkAndResetWeeklyUsage() async {
+  // static Future<int> checkAndResetWeeklyUsage() async {
+  //   final now = DateTime.now();
+  //   final lastReset = await getLastResetTime();
+  //
+  //   if (lastReset == null || now.difference(lastReset).inDays >= 7) {
+  //     await saveUsageMinutes(0);
+  //     await saveLastResetTime(now);
+  //     return 0;
+  //   }
+  //
+  //   return await getUsageMinutes();
+  // }
+
+  static Future<int> checkAndResetUsage() async {
     final now = DateTime.now();
     final lastReset = await getLastResetTime();
 
-    if (lastReset == null || now.difference(lastReset).inDays >= 7) {
-      await saveUsageMinutes(0);
-      await saveLastResetTime(now);
+    // If last reset is null or the difference is greater than or equal to 3 days, reset
+    if (lastReset == null || now.difference(lastReset).inDays >= 3) {
+      await saveUsageMinutes(0); // Reset the usage count
+      await saveLastResetTime(now); // Save the current time as the last reset time
       return 0;
     }
 
+    // If less than 3 days have passed, return the current usage minutes
     return await getUsageMinutes();
   }
+
 }
