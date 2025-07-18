@@ -10,6 +10,7 @@ import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_fr.dart';
+import 'app_localizations_he.dart';
 import 'app_localizations_hi.dart';
 import 'app_localizations_it.dart';
 import 'app_localizations_ja.dart';
@@ -104,21 +105,22 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('ar'),
-    Locale('de'),
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('hi'),
+    Locale('de'),
     Locale('it'),
     Locale('ja'),
+    Locale('ar'),
+    Locale('hi'),
     Locale('ko'),
     Locale('pt'),
     Locale('ru'),
     Locale('th'),
     Locale('tr'),
     Locale('vi'),
-    Locale('zh')
+    Locale('zh'),
+    Locale('he')
   ];
 
   /// No description provided for @iSpeedScan.
@@ -364,7 +366,7 @@ abstract class AppLocalizations {
   /// No description provided for @fourMinutesOfFreeScanningWeekly.
   ///
   /// In en, this message translates to:
-  /// **'✔ 4 minutes of FREE scanning weekly\n\n'**
+  /// **'✔ 3 minutes of FREE scanning weekly\n\n'**
   String get fourMinutesOfFreeScanningWeekly;
 
   /// No description provided for @oneTimePurchaseUnlockFullAccess.
@@ -540,6 +542,258 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'MAYBE LATER'**
   String get maybeLater;
+
+  /// No description provided for @stillEnjoyingIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Still Enjoying It?'**
+  String get stillEnjoyingIt;
+
+  /// No description provided for @stillEnjoyingItMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Still enjoying it? Upgrade now and keep access forever with our lifetime plan — one payment, no subscriptions, unlimited usage for life!'**
+  String get stillEnjoyingItMessage;
+
+  /// No description provided for @subscriptionTimeRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription Time Remaining'**
+  String get subscriptionTimeRemaining;
+
+  /// No description provided for @freeTrialTimeRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Trial Time Remaining'**
+  String get freeTrialTimeRemaining;
+
+  /// No description provided for @trialTimeRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'Trial Time Remaining'**
+  String get trialTimeRemaining;
+
+  /// No description provided for @almostOutOfFreeTimeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Almost Out of Free Time'**
+  String get almostOutOfFreeTimeTitle;
+
+  /// No description provided for @almostOutOfFreeTimeWarningMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re almost out of free time this month! Upgrade to our lifetime plan with a single one-time payment — no recurring charges, no subscriptions. Get unlimited usage forever.'**
+  String get almostOutOfFreeTimeWarningMessage;
+
+  /// No description provided for @subscribeNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe Now'**
+  String get subscribeNow;
+
+  /// No description provided for @upgradeNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade Now'**
+  String get upgradeNow;
+
+  /// No description provided for @resetTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Timer'**
+  String get resetTimer;
+
+  /// No description provided for @freeTimeExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Time Expired'**
+  String get freeTimeExpired;
+
+  /// No description provided for @freeTimeWillResetNextMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Your free 3 minutes will reset next month. Get unlimited scanning now!'**
+  String get freeTimeWillResetNextMonth;
+
+  /// No description provided for @premiumForever.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Forever - \$4.99'**
+  String get premiumForever;
+
+  /// No description provided for @unlimitedScanning.
+  ///
+  /// In en, this message translates to:
+  /// **'✓ Unlimited scanning\n✓ No time limits\n✓ Premium features\n✓ One-time payment'**
+  String get unlimitedScanning;
+
+  /// No description provided for @privacyAndSecurityDetailFive.
+  ///
+  /// In en, this message translates to:
+  /// **'5. Privacy Policy - Our apps use Google Firebase for App Store Optimization (ASO) and Search Engine Optimization (SEO) purposes only. We do not collect, sell, or use this information for any other purposes.\n\nFor more information about Google Firebase’s data practices, please refer to their Privacy Policy:'**
+  String get privacyAndSecurityDetailFive;
+
+  /// No description provided for @readyToUnlockUnlimitedPower.
+  ///
+  /// In en, this message translates to:
+  /// **'🚀 Ready to Unlock Unlimited Power?'**
+  String get readyToUnlockUnlimitedPower;
+
+  /// No description provided for @timesUpButYourJourneyContinues.
+  ///
+  /// In en, this message translates to:
+  /// **'⏰ Time\'s Up! But Your Journey Continues...'**
+  String get timesUpButYourJourneyContinues;
+
+  /// No description provided for @upgradeToUnlimitedScanning.
+  ///
+  /// In en, this message translates to:
+  /// **'🌟 Upgrade to Premium and scan without limits! Join thousands of users who\'ve unlocked their full potential.'**
+  String get upgradeToUnlimitedScanning;
+
+  /// No description provided for @finalCountdown.
+  ///
+  /// In en, this message translates to:
+  /// **'⚡ Final Countdown!'**
+  String get finalCountdown;
+
+  /// No description provided for @dontLetProductivityStop.
+  ///
+  /// In en, this message translates to:
+  /// **'🚀 Don\'t let your productivity stop here! Upgrade now for unlimited scanning power.'**
+  String get dontLetProductivityStop;
+
+  /// No description provided for @later.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get later;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @trialStatusDebug.
+  ///
+  /// In en, this message translates to:
+  /// **'Trial Status Debug'**
+  String get trialStatusDebug;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status:'**
+  String get status;
+
+  /// No description provided for @logic.
+  ///
+  /// In en, this message translates to:
+  /// **'Logic:'**
+  String get logic;
+
+  /// No description provided for @freeTrialExpiredOrExhausted.
+  ///
+  /// In en, this message translates to:
+  /// **'FREE TRIAL EXPIRED or FREE FEATURES EXHAUSTED'**
+  String get freeTrialExpiredOrExhausted;
+
+  /// No description provided for @subscribed.
+  ///
+  /// In en, this message translates to:
+  /// **'✅ SUBSCRIBED'**
+  String get subscribed;
+
+  /// No description provided for @freeTrialActive.
+  ///
+  /// In en, this message translates to:
+  /// **'🆓 FREE TRIAL ACTIVE'**
+  String get freeTrialActive;
+
+  /// No description provided for @monthlyAllowance.
+  ///
+  /// In en, this message translates to:
+  /// **'⏰ MONTHLY ALLOWANCE'**
+  String get monthlyAllowance;
+
+  /// No description provided for @trialExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'❌ TRIAL EXPIRED'**
+  String get trialExpired;
+
+  /// No description provided for @scanningBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Scanning blocked'**
+  String get scanningBlocked;
+
+  /// No description provided for @unlimitedAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited access'**
+  String get unlimitedAccess;
+
+  /// No description provided for @unlimitedScanningAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited scanning'**
+  String get unlimitedScanningAccess;
+
+  /// No description provided for @scanningAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Scanning available'**
+  String get scanningAvailable;
+
+  /// No description provided for @navigationBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigation blocked - trial expired!'**
+  String get navigationBlocked;
+
+  /// No description provided for @navigationAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigation allowed'**
+  String get navigationAllowed;
+
+  /// No description provided for @blocked.
+  ///
+  /// In en, this message translates to:
+  /// **'BLOCKED'**
+  String get blocked;
+
+  /// No description provided for @allowed.
+  ///
+  /// In en, this message translates to:
+  /// **'ALLOWED'**
+  String get allowed;
+
+  /// No description provided for @freeTrialExpiredOrFeaturesExhausted.
+  ///
+  /// In en, this message translates to:
+  /// **'FREE TRIAL EXPIRED or FREE FEATURES EXHAUSTED'**
+  String get freeTrialExpiredOrFeaturesExhausted;
+
+  /// No description provided for @freeFeaturesRenewEvery30Days.
+  ///
+  /// In en, this message translates to:
+  /// **'FREE FEATURES RENEW EVERY 30 DAYS'**
+  String get freeFeaturesRenewEvery30Days;
+
+  /// No description provided for @upgradeNowWithOneTimePurchase.
+  ///
+  /// In en, this message translates to:
+  /// **'UPGRADE NOW WITH A ONE TIME PURCHASE & UNLOCK THE FULL POWER OF iSpeedScan 🚀.'**
+  String get upgradeNowWithOneTimePurchase;
+
+  /// No description provided for @refresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get refresh;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -551,7 +805,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'de', 'en', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'de', 'en', 'es', 'fr', 'he', 'hi', 'it', 'ja', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -567,6 +821,7 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
     case 'en': return AppLocalizationsEn();
     case 'es': return AppLocalizationsEs();
     case 'fr': return AppLocalizationsFr();
+    case 'he': return AppLocalizationsHe();
     case 'hi': return AppLocalizationsHi();
     case 'it': return AppLocalizationsIt();
     case 'ja': return AppLocalizationsJa();

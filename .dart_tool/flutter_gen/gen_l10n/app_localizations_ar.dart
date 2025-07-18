@@ -127,7 +127,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get freeVersionAfterTrailExpires => 'الإصدار المجاني – بعد انتهاء التجربة\n\n';
 
   @override
-  String get fourMinutesOfFreeScanningWeekly => '✔ ٤ دقائق من المسح المجاني أسبوعيًا\n\n';
+  String get fourMinutesOfFreeScanningWeekly => '✔ ٣ دقائق من المسح المجاني أسبوعيًاا\n\n';
 
   @override
   String get oneTimePurchaseUnlockFullAccess => 'شراء لمرة واحدة (فتح الوصول الكامل)';
@@ -215,4 +215,130 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get maybeLater => 'ربما لاحقًا';
+
+  @override
+  String get stillEnjoyingIt => 'ما زلت تستمتع؟';
+
+  @override
+  String get stillEnjoyingItMessage => 'ما زلت تستمتع؟ قم بالترقية الآن واحتفظ بالوصول إلى الأبد مع خطتنا مدى الحياة — دفعة واحدة، بدون اشتراكات، استخدام غير محدود مدى الحياة!';
+
+  @override
+  String get subscriptionTimeRemaining => 'الوقت المتبقي للاشتراك';
+
+  @override
+  String get freeTrialTimeRemaining => 'الوقت المتبقي للتجربة المجانية';
+
+  @override
+  String get trialTimeRemaining => 'الوقت المتبقي للتجربة';
+
+  @override
+  String get almostOutOfFreeTimeTitle => 'أوشك الوقت المجاني على النفاد';
+
+  @override
+  String get almostOutOfFreeTimeWarningMessage => 'أوشك وقتك المجاني لهذا الشهر على النفاد! قم بالترقية إلى خطتنا مدى الحياة بدفعة واحدة — بدون رسوم متكررة، بدون اشتراكات. احصل على استخدام غير محدود إلى الأبد.';
+
+  @override
+  String get subscribeNow => 'اشترك الآن';
+
+  @override
+  String get upgradeNow => 'قم بالترقية الآن';
+
+  @override
+  String get resetTimer => 'إعادة تعيين المؤقت';
+
+  @override
+  String get freeTimeExpired => 'انتهى الوقت المجاني';
+
+  @override
+  String get freeTimeWillResetNextMonth => 'ستتم إعادة تعيين دقائقك المجانية الثلاث الشهر القادم. احصل على مسح غير محدود الآن!';
+
+  @override
+  String get premiumForever => 'بريميوم إلى الأبد - \$4.99';
+
+  @override
+  String get unlimitedScanning => '✓ مسح غير محدود\n✓ بدون حدود زمنية\n✓ ميزات بريميوم\n✓ دفعة واحدة';
+
+  @override
+  String get privacyAndSecurityDetailFive => '5. سياسة الخصوصية - تستخدم تطبيقاتنا Google Firebase لأغراض تحسين متجر التطبيقات (ASO) وتحسين محركات البحث (SEO) فقط. نحن لا نجمع أو نبيع أو نستخدم هذه المعلومات لأي أغراض أخرى.\n\nلمزيد من المعلومات حول ممارسات بيانات Google Firebase، يرجى الرجوع إلى سياسة الخصوصية الخاصة بهم:';
+
+  @override
+  String get readyToUnlockUnlimitedPower => '🚀 مستعد لإطلاق قوة غير محدودة؟';
+
+  @override
+  String get timesUpButYourJourneyContinues => '⏰ انتهى الوقت! لكن رحلتك تستمر...';
+
+  @override
+  String get upgradeToUnlimitedScanning => '🌟 قم بالترقية إلى بريميوم وامسح بدون حدود! انضم إلى آلاف المستخدمين الذين أطلقوا إمكاناتهم الكاملة.';
+
+  @override
+  String get finalCountdown => '⚡ العد التنازلي الأخير!';
+
+  @override
+  String get dontLetProductivityStop => '🚀 لا تدع إنتاجيتك تتوقف هنا! قم بالترقية الآن للحصول على قوة مسح غير محدودة.';
+
+  @override
+  String get later => 'لاحقاً';
+
+  @override
+  String get close => 'إغلاق';
+
+  @override
+  String get trialStatusDebug => 'تصحيح حالة التجربة';
+
+  @override
+  String get status => 'الحالة:';
+
+  @override
+  String get logic => 'المنطق:';
+
+  @override
+  String get freeTrialExpiredOrExhausted => 'انتهت التجربة المجانية أو نفدت الميزات المجانية';
+
+  @override
+  String get subscribed => '✅ مشترك';
+
+  @override
+  String get freeTrialActive => '🆓 التجربة المجانية نشطة';
+
+  @override
+  String get monthlyAllowance => '⏰ البدل الشهري';
+
+  @override
+  String get trialExpired => '❌ انتهت التجربة';
+
+  @override
+  String get scanningBlocked => 'المسح محظور';
+
+  @override
+  String get unlimitedAccess => 'وصول غير محدود';
+
+  @override
+  String get unlimitedScanningAccess => 'مسح غير محدود';
+
+  @override
+  String get scanningAvailable => 'المسح متاح';
+
+  @override
+  String get navigationBlocked => 'التنقل محظور - انتهت التجربة!';
+
+  @override
+  String get navigationAllowed => 'التنقل مسموح';
+
+  @override
+  String get blocked => 'محظور';
+
+  @override
+  String get allowed => 'مسموح';
+
+  @override
+  String get freeTrialExpiredOrFeaturesExhausted => 'انتهت التجربة المجانية أو نفدت الميزات المجانية';
+
+  @override
+  String get freeFeaturesRenewEvery30Days => 'الميزات المجانية تتجدد كل 30 يوماً';
+
+  @override
+  String get upgradeNowWithOneTimePurchase => 'قم بالترقية الآن بشراء لمرة واحدة وأطلق القوة الكاملة لـ iSpeedScan 🚀.';
+
+  @override
+  String get refresh => 'تحديث';
 }

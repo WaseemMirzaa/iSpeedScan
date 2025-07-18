@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
@@ -162,16 +163,44 @@ class _PrivacyWidgetState extends State<PrivacyWidget>
                               animationsMap['textOnPageLoadAnimation1']!),
                         ),
                       ),
-                      Text(
-                        '${t.atISpeedScanWePrioritizAndOtherDetails}\n\n${t.informationCollectionAndOtherDetails}\n\n${t.dataTransmissionPracticeAndOtherDetails}\n\n${t.absenceOfAdvertismentsAndOtherDetails}\n\n${t.ourDedicationToYourPrivacyAndOtherDetails}',
+                      RichText(
                         textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                              fontFamily: 'Readex Pro',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 12.5,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w500,
+                        text: TextSpan(
+                          style: FlutterFlowTheme.of(context)
+                              .labelLarge
+                              .override(
+                                fontFamily: 'Readex Pro',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 12.5,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                          children: [
+                            TextSpan(
+                              text:
+                                  '${t.atISpeedScanWePrioritizAndOtherDetails}\n\n${t.informationCollectionAndOtherDetails}\n\n${t.dataTransmissionPracticeAndOtherDetails}\n\n${t.absenceOfAdvertismentsAndOtherDetails}\n\n${t.ourDedicationToYourPrivacyAndOtherDetails}\n\n${t.privacyAndSecurityDetailFive}',
                             ),
+                            TextSpan(
+                              text:
+                                  'https://firebase.google.com/support/privacy',
+                              style: FlutterFlowTheme.of(context)
+                                  .labelLarge
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.blue,
+                                    fontSize: 12.5,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w500,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () async {
+                                  await launchURL(
+                                      'https://firebase.google.com/support/privacy');
+                                },
+                            ),
+                          ],
+                        ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation2']!),
                       Divider(

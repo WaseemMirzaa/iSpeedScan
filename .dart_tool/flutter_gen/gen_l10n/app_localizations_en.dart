@@ -127,7 +127,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get freeVersionAfterTrailExpires => 'FREE VERSION – After Trial Expires\n\n';
 
   @override
-  String get fourMinutesOfFreeScanningWeekly => '✔ 4 minutes of FREE scanning weekly\n\n';
+  String get fourMinutesOfFreeScanningWeekly => '✔ 3 minutes of FREE scanning weekly\n\n';
 
   @override
   String get oneTimePurchaseUnlockFullAccess => 'One Time Purchase (Unlock Full Access)';
@@ -215,4 +215,130 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get maybeLater => 'MAYBE LATER';
+
+  @override
+  String get stillEnjoyingIt => 'Still Enjoying It?';
+
+  @override
+  String get stillEnjoyingItMessage => 'Still enjoying it? Upgrade now and keep access forever with our lifetime plan — one payment, no subscriptions, unlimited usage for life!';
+
+  @override
+  String get subscriptionTimeRemaining => 'Subscription Time Remaining';
+
+  @override
+  String get freeTrialTimeRemaining => 'Free Trial Time Remaining';
+
+  @override
+  String get trialTimeRemaining => 'Trial Time Remaining';
+
+  @override
+  String get almostOutOfFreeTimeTitle => 'Almost Out of Free Time';
+
+  @override
+  String get almostOutOfFreeTimeWarningMessage => 'You\'re almost out of free time this month! Upgrade to our lifetime plan with a single one-time payment — no recurring charges, no subscriptions. Get unlimited usage forever.';
+
+  @override
+  String get subscribeNow => 'Subscribe Now';
+
+  @override
+  String get upgradeNow => 'Upgrade Now';
+
+  @override
+  String get resetTimer => 'Reset Timer';
+
+  @override
+  String get freeTimeExpired => 'Free Time Expired';
+
+  @override
+  String get freeTimeWillResetNextMonth => 'Your free 3 minutes will reset next month. Get unlimited scanning now!';
+
+  @override
+  String get premiumForever => 'Premium Forever - \$4.99';
+
+  @override
+  String get unlimitedScanning => '✓ Unlimited scanning\n✓ No time limits\n✓ Premium features\n✓ One-time payment';
+
+  @override
+  String get privacyAndSecurityDetailFive => '5. Privacy Policy - Our apps use Google Firebase for App Store Optimization (ASO) and Search Engine Optimization (SEO) purposes only. We do not collect, sell, or use this information for any other purposes.\n\nFor more information about Google Firebase’s data practices, please refer to their Privacy Policy:';
+
+  @override
+  String get readyToUnlockUnlimitedPower => '🚀 Ready to Unlock Unlimited Power?';
+
+  @override
+  String get timesUpButYourJourneyContinues => '⏰ Time\'s Up! But Your Journey Continues...';
+
+  @override
+  String get upgradeToUnlimitedScanning => '🌟 Upgrade to Premium and scan without limits! Join thousands of users who\'ve unlocked their full potential.';
+
+  @override
+  String get finalCountdown => '⚡ Final Countdown!';
+
+  @override
+  String get dontLetProductivityStop => '🚀 Don\'t let your productivity stop here! Upgrade now for unlimited scanning power.';
+
+  @override
+  String get later => 'Later';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get trialStatusDebug => 'Trial Status Debug';
+
+  @override
+  String get status => 'Status:';
+
+  @override
+  String get logic => 'Logic:';
+
+  @override
+  String get freeTrialExpiredOrExhausted => 'FREE TRIAL EXPIRED or FREE FEATURES EXHAUSTED';
+
+  @override
+  String get subscribed => '✅ SUBSCRIBED';
+
+  @override
+  String get freeTrialActive => '🆓 FREE TRIAL ACTIVE';
+
+  @override
+  String get monthlyAllowance => '⏰ MONTHLY ALLOWANCE';
+
+  @override
+  String get trialExpired => '❌ TRIAL EXPIRED';
+
+  @override
+  String get scanningBlocked => 'Scanning blocked';
+
+  @override
+  String get unlimitedAccess => 'Unlimited access';
+
+  @override
+  String get unlimitedScanningAccess => 'Unlimited scanning';
+
+  @override
+  String get scanningAvailable => 'Scanning available';
+
+  @override
+  String get navigationBlocked => 'Navigation blocked - trial expired!';
+
+  @override
+  String get navigationAllowed => 'Navigation allowed';
+
+  @override
+  String get blocked => 'BLOCKED';
+
+  @override
+  String get allowed => 'ALLOWED';
+
+  @override
+  String get freeTrialExpiredOrFeaturesExhausted => 'FREE TRIAL EXPIRED or FREE FEATURES EXHAUSTED';
+
+  @override
+  String get freeFeaturesRenewEvery30Days => 'FREE FEATURES RENEW EVERY 30 DAYS';
+
+  @override
+  String get upgradeNowWithOneTimePurchase => 'UPGRADE NOW WITH A ONE TIME PURCHASE & UNLOCK THE FULL POWER OF iSpeedScan 🚀.';
+
+  @override
+  String get refresh => 'Refresh';
 }

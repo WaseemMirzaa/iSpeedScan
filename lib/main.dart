@@ -38,11 +38,11 @@ void main() async {
         // For iOS, use manual options as well
         await Firebase.initializeApp(
           options: const FirebaseOptions(
-            apiKey: 'AIzaSyAHUsS5Wj9C7BFE6h2T3D3epCBtWu5nahM',
-            appId: '1:695369766912:ios:c14507644b575c110760e5',
-            messagingSenderId: '695369766912',
-            projectId: 'ispeedscan-4edc4',
-            storageBucket: 'ispeedscan-4edc4.firebasestorage.app',
+            apiKey: 'AIzaSyBVtRujTrW2EZrxy1wTMCv7V0PCPEEzYwQ',
+            appId: '1:274796257208:ios:f9be4f45e48fc8dc0db94d',
+            messagingSenderId: '274796257208',
+            projectId: 'ispeedscanios',
+            storageBucket: 'ispeedscanios.firebasestorage.app',
           ),
         );
       }
@@ -137,14 +137,30 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       title: 'ispeedscan',
       locale: Provider.of<LocaleProvider>(context).locale,
-      supportedLocales: L10n.supportedLocales,
+      supportedLocales: const [
+        Locale('en'), // English
+        Locale('es'), // Spanish
+        Locale('fr'), // French
+        Locale('de'), // German
+        Locale('it'), // Italian
+        Locale('ja'), // Japanese
+        Locale('ar'), // Arabic
+        Locale('hi'), // Hindi
+        Locale('ko'), // Korean
+        Locale('pt'), // Portuguese
+        Locale('ru'), // Russian
+        Locale('th'), // Thai
+        Locale('tr'), // Turkish
+        Locale('vi'), // Vietnamese
+        Locale('zh'), // Chinese
+        Locale('he'), // Hebrew
+      ],
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      // supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: false,

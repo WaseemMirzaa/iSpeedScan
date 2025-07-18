@@ -13,7 +13,7 @@ import 'dart:io';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'package:cunning_document_scanner/cunning_document_scanner.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+// import 'package:image_gallery_saver/image_gallery_saver.dart'; // Temporarily disabled
 import '../../../helper/analytics_helper.dart';
 import 'package:ispeedscan/helper/scanner_locale_helper.dart';
 
@@ -23,11 +23,8 @@ Future<List<String>> scannerAction(BuildContext context) async {
   String resultMessage = '';
 
   var analytics = FirebaseAnalytics.instance;
-  
-  var isPhotoMode = await PreferenceService.getMode();
 
-  // Apply the current app locale to the scanner before launching
-  await ScannerLocaleHelper.applyScannerLocale();
+  var isPhotoMode = await PreferenceService.getMode();
 
   try {
     pictures = await CunningDocumentScanner.getPictures(
@@ -54,8 +51,9 @@ Future<List<String>> scannerAction(BuildContext context) async {
 
       String name = 'ispeedscan$time.jpg';
 
-      // Use MediaStore API through ImageGallerySaver
-      await ImageGallerySaver.saveFile(picture, name: name);
+      // TODO: Implement alternative image saving method
+      // await ImageGallerySaver.saveFile(picture, name: name);
+      print('Would save image: $name at $picture');
     }
   }
   // For iOS, the existing code works fine
@@ -67,7 +65,9 @@ Future<List<String>> scannerAction(BuildContext context) async {
           .replaceAll(':', '-');
 
       String name = 'ispeedscan$time.pdf';
-      await ImageGallerySaver.saveFile(picture, name: name);
+      // TODO: Implement alternative image saving method
+      // await ImageGallerySaver.saveFile(picture, name: name);
+      print('Would save image: $name at $picture');
     }
   }
   if (isPhotoMode) {

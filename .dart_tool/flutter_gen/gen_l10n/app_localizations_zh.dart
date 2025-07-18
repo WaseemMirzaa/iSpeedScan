@@ -127,7 +127,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get freeVersionAfterTrailExpires => '免费版本 – 试用期结束后\n\n';
 
   @override
-  String get fourMinutesOfFreeScanningWeekly => '✔ 每周免费扫描4分钟\n\n';
+  String get fourMinutesOfFreeScanningWeekly => '✔ 每周免费扫描3分钟\n\n';
 
   @override
   String get oneTimePurchaseUnlockFullAccess => '一次性购买（解锁完全访问）';
@@ -215,4 +215,130 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get maybeLater => '也许以后';
+
+  @override
+  String get stillEnjoyingIt => '还在享受吗？';
+
+  @override
+  String get stillEnjoyingItMessage => '还在享受吗？立即升级，通过我们的终身计划永久保持访问权限 — 一次付费，无订阅，终身无限使用！';
+
+  @override
+  String get subscriptionTimeRemaining => '订阅剩余时间';
+
+  @override
+  String get freeTrialTimeRemaining => '免费试用剩余时间';
+
+  @override
+  String get trialTimeRemaining => '试用剩余时间';
+
+  @override
+  String get almostOutOfFreeTimeTitle => '免费时间即将用完';
+
+  @override
+  String get almostOutOfFreeTimeWarningMessage => '您本月的免费时间即将用完！升级到我们的终身计划，只需一次性付费 — 无重复收费，无订阅。永久无限使用。';
+
+  @override
+  String get subscribeNow => '立即订阅';
+
+  @override
+  String get upgradeNow => '立即升级';
+
+  @override
+  String get resetTimer => '重置计时器';
+
+  @override
+  String get freeTimeExpired => '免费时间已过期';
+
+  @override
+  String get freeTimeWillResetNextMonth => '您的免费3分钟将在下个月重置。立即获得无限扫描！';
+
+  @override
+  String get premiumForever => '永久高级版 - \$4.99';
+
+  @override
+  String get unlimitedScanning => '✓ 无限扫描\n✓ 无时间限制\n✓ 高级功能\n✓ 一次性付款';
+
+  @override
+  String get privacyAndSecurityDetailFive => '5. 隐私政策 - 我们的应用仅将Google Firebase用于应用商店优化（ASO）和搜索引擎优化（SEO）目的。我们不会收集、出售或将此信息用于任何其他目的。\n\n有关Google Firebase数据处理方式的更多信息，请参阅其隐私政策：';
+
+  @override
+  String get readyToUnlockUnlimitedPower => '🚀 准备好释放无限力量了吗？';
+
+  @override
+  String get timesUpButYourJourneyContinues => '⏰ 时间到了！但您的旅程还在继续...';
+
+  @override
+  String get upgradeToUnlimitedScanning => '🌟 升级到高级版，无限制扫描！加入数千名已释放全部潜力的用户。';
+
+  @override
+  String get finalCountdown => '⚡ 最后倒计时！';
+
+  @override
+  String get dontLetProductivityStop => '🚀 不要让您的生产力在这里停止！立即升级获得无限扫描能力。';
+
+  @override
+  String get later => '稍后';
+
+  @override
+  String get close => '关闭';
+
+  @override
+  String get trialStatusDebug => '试用状态调试';
+
+  @override
+  String get status => '状态:';
+
+  @override
+  String get logic => '逻辑:';
+
+  @override
+  String get freeTrialExpiredOrExhausted => '免费试用已过期或免费功能已用尽';
+
+  @override
+  String get subscribed => '✅ 已订阅';
+
+  @override
+  String get freeTrialActive => '🆓 免费试用激活';
+
+  @override
+  String get monthlyAllowance => '⏰ 月度配额';
+
+  @override
+  String get trialExpired => '❌ 试用已过期';
+
+  @override
+  String get scanningBlocked => '扫描已阻止';
+
+  @override
+  String get unlimitedAccess => '无限访问';
+
+  @override
+  String get unlimitedScanningAccess => '无限扫描';
+
+  @override
+  String get scanningAvailable => '扫描可用';
+
+  @override
+  String get navigationBlocked => '导航已阻止 - 试用已过期！';
+
+  @override
+  String get navigationAllowed => '导航允许';
+
+  @override
+  String get blocked => '已阻止';
+
+  @override
+  String get allowed => '允许';
+
+  @override
+  String get freeTrialExpiredOrFeaturesExhausted => '免费试用已过期或免费功能已用尽';
+
+  @override
+  String get freeFeaturesRenewEvery30Days => '免费功能每30天更新一次';
+
+  @override
+  String get upgradeNowWithOneTimePurchase => '立即通过一次性购买升级，解锁iSpeedScan的全部功能 🚀。';
+
+  @override
+  String get refresh => '刷新';
 }

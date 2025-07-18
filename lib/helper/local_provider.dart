@@ -19,6 +19,7 @@ class L10n {
     Locale('tr'),
     Locale('vi'),
     Locale('zh'),
+    Locale('he'), // Added Hebrew
   ];
 }
 

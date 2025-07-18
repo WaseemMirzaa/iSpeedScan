@@ -127,7 +127,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get freeVersionAfterTrailExpires => 'VERSIONE GRATUITA – Dopo la scadenza della prova\n\n';
 
   @override
-  String get fourMinutesOfFreeScanningWeekly => '✔ 4 minuti di scansione gratuita settimanale\n\n';
+  String get fourMinutesOfFreeScanningWeekly => '✔ 3 minuti di scansione gratuita settimanale\n\n';
 
   @override
   String get oneTimePurchaseUnlockFullAccess => 'Acquisto una tantum (Sblocca accesso completo)';
@@ -215,4 +215,130 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get maybeLater => 'FORSE PIÙ TARDI';
+
+  @override
+  String get stillEnjoyingIt => 'Ti piace ancora?';
+
+  @override
+  String get stillEnjoyingItMessage => 'Ti piace ancora? Aggiorna ora e mantieni l\'accesso per sempre con il nostro piano a vita — un pagamento, nessun abbonamento, utilizzo illimitato per la vita!';
+
+  @override
+  String get subscriptionTimeRemaining => 'Tempo di abbonamento rimanente';
+
+  @override
+  String get freeTrialTimeRemaining => 'Tempo di prova gratuita rimanente';
+
+  @override
+  String get trialTimeRemaining => 'Tempo di prova rimanente';
+
+  @override
+  String get almostOutOfFreeTimeTitle => 'Quasi senza tempo gratuito';
+
+  @override
+  String get almostOutOfFreeTimeWarningMessage => 'Stai quasi finendo il tempo gratuito di questo mese! Aggiorna al nostro piano a vita con un singolo pagamento una tantum — nessun costo ricorrente, nessun abbonamento. Ottieni utilizzo illimitato per sempre.';
+
+  @override
+  String get subscribeNow => 'Abbonati ora';
+
+  @override
+  String get upgradeNow => 'Aggiorna ora';
+
+  @override
+  String get resetTimer => 'Reimposta timer';
+
+  @override
+  String get freeTimeExpired => 'Tempo gratuito scaduto';
+
+  @override
+  String get freeTimeWillResetNextMonth => 'I tuoi 3 minuti gratuiti si resetteranno il prossimo mese. Ottieni scansioni illimitate ora!';
+
+  @override
+  String get premiumForever => 'Premium per sempre - \$4.99';
+
+  @override
+  String get unlimitedScanning => '✓ Scansioni illimitate\n✓ Nessun limite di tempo\n✓ Funzionalità premium\n✓ Pagamento una tantum';
+
+  @override
+  String get privacyAndSecurityDetailFive => '5. Informativa sulla privacy - Le nostre app utilizzano Google Firebase esclusivamente per scopi di ottimizzazione dell\'App Store (ASO) e ottimizzazione dei motori di ricerca (SEO). Non raccogliamo, vendiamo o utilizziamo queste informazioni per altri scopi.\n\nPer ulteriori informazioni sulle pratiche relative ai dati di Google Firebase, consulta la loro Informativa sulla privacy:';
+
+  @override
+  String get readyToUnlockUnlimitedPower => '🚀 Pronto a sbloccare potenza illimitata?';
+
+  @override
+  String get timesUpButYourJourneyContinues => '⏰ Tempo scaduto! Ma il tuo viaggio continua...';
+
+  @override
+  String get upgradeToUnlimitedScanning => '🌟 Aggiorna a Premium e scansiona senza limiti! Unisciti a migliaia di utenti che hanno sbloccato il loro pieno potenziale.';
+
+  @override
+  String get finalCountdown => '⚡ Conto alla rovescia finale!';
+
+  @override
+  String get dontLetProductivityStop => '🚀 Non lasciare che la tua produttività si fermi qui! Aggiorna ora per potenza di scansione illimitata.';
+
+  @override
+  String get later => 'Più tardi';
+
+  @override
+  String get close => 'Chiudi';
+
+  @override
+  String get trialStatusDebug => 'Debug Stato Prova';
+
+  @override
+  String get status => 'Stato:';
+
+  @override
+  String get logic => 'Logica:';
+
+  @override
+  String get freeTrialExpiredOrExhausted => 'PROVA GRATUITA SCADUTA O FUNZIONALITÀ GRATUITE ESAURITE';
+
+  @override
+  String get subscribed => '✅ ABBONATO';
+
+  @override
+  String get freeTrialActive => '🆓 PROVA GRATUITA ATTIVA';
+
+  @override
+  String get monthlyAllowance => '⏰ QUOTA MENSILE';
+
+  @override
+  String get trialExpired => '❌ PROVA SCADUTA';
+
+  @override
+  String get scanningBlocked => 'Scansione bloccata';
+
+  @override
+  String get unlimitedAccess => 'Accesso illimitato';
+
+  @override
+  String get unlimitedScanningAccess => 'Scansione illimitata';
+
+  @override
+  String get scanningAvailable => 'Scansione disponibile';
+
+  @override
+  String get navigationBlocked => 'Navigazione bloccata - prova scaduta!';
+
+  @override
+  String get navigationAllowed => 'Navigazione consentita';
+
+  @override
+  String get blocked => 'BLOCCATO';
+
+  @override
+  String get allowed => 'CONSENTITO';
+
+  @override
+  String get freeTrialExpiredOrFeaturesExhausted => 'PROVA GRATUITA SCADUTA O FUNZIONALITÀ GRATUITE ESAURITE';
+
+  @override
+  String get freeFeaturesRenewEvery30Days => 'LE FUNZIONALITÀ GRATUITE SI RINNOVANO OGNI 30 GIORNI';
+
+  @override
+  String get upgradeNowWithOneTimePurchase => 'AGGIORNA ORA CON UN ACQUISTO UNICO E SBLOCCA TUTTA LA POTENZA DI iSpeedScan 🚀.';
+
+  @override
+  String get refresh => 'Aggiorna';
 }

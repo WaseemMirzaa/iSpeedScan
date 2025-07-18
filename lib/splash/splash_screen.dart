@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import '../flutter_flow/nav/nav.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../helper/shared_preference_service.dart';
-import 'package:ispeedscan/l10n/app_localizations_es.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ToggleModeScreen extends StatefulWidget {
@@ -20,6 +19,8 @@ class _ToggleModeScreenState extends State<ToggleModeScreen> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
+    // Initialize isPdfMode with a default value to prevent null checks failing
+    isPdfMode = false; // Default value
     _loadMode();
     _initializeSplashScreen();
   }
@@ -33,10 +34,18 @@ class _ToggleModeScreenState extends State<ToggleModeScreen> {
   }
 
   Future<void> _loadMode() async {
-    bool savedMode = await PreferenceService.getMode();
-    setState(() {
-      isPdfMode = savedMode;
-    });
+    try {
+      bool savedMode = await PreferenceService.getMode();
+      setState(() {
+        isPdfMode = savedMode;
+      });
+    } catch (e) {
+      // Handle error and ensure isPdfMode is not null
+      print('Error loading mode: $e');
+      setState(() {
+        isPdfMode = false; // Fallback to default value
+      });
+    }
   }
 
   @override

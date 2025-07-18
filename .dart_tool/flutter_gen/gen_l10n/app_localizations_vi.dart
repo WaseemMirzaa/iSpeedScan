@@ -127,7 +127,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get freeVersionAfterTrailExpires => 'PHIÊN BẢN MIỄN PHÍ – Sau khi hết hạn dùng thử\n\n';
 
   @override
-  String get fourMinutesOfFreeScanningWeekly => '✔ 4 phút quét MIỄN PHÍ mỗi tuần\n\n';
+  String get fourMinutesOfFreeScanningWeekly => '✔ 3 phút quét MIỄN PHÍ mỗi tuần\n\n';
 
   @override
   String get oneTimePurchaseUnlockFullAccess => 'Mua một lần (Mở khóa truy cập đầy đủ)';
@@ -215,4 +215,130 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get maybeLater => 'CÓ THỂ SAU';
+
+  @override
+  String get stillEnjoyingIt => 'Vẫn đang thích sử dụng?';
+
+  @override
+  String get stillEnjoyingItMessage => 'Vẫn đang thích sử dụng? Nâng cấp ngay và có quyền truy cập mãi mãi với gói trọn đời của chúng tôi — một lần thanh toán, không đăng ký, sử dụng không giới hạn suốt đời!';
+
+  @override
+  String get subscriptionTimeRemaining => 'Thời gian đăng ký còn lại';
+
+  @override
+  String get freeTrialTimeRemaining => 'Thời gian dùng thử miễn phí còn lại';
+
+  @override
+  String get trialTimeRemaining => 'Thời gian dùng thử còn lại';
+
+  @override
+  String get almostOutOfFreeTimeTitle => 'Sắp hết thời gian miễn phí';
+
+  @override
+  String get almostOutOfFreeTimeWarningMessage => 'Thời gian miễn phí của bạn trong tháng này sắp hết! Nâng cấp lên gói trọn đời của chúng tôi với một lần thanh toán — không có phí định kỳ, không đăng ký. Nhận quyền sử dụng không giới hạn mãi mãi.';
+
+  @override
+  String get subscribeNow => 'Đăng ký ngay';
+
+  @override
+  String get upgradeNow => 'Nâng cấp ngay';
+
+  @override
+  String get resetTimer => 'Đặt lại bộ đếm thời gian';
+
+  @override
+  String get freeTimeExpired => 'Hết thời gian miễn phí';
+
+  @override
+  String get freeTimeWillResetNextMonth => '3 phút miễn phí của bạn sẽ được đặt lại vào tháng tới. Nhận quét không giới hạn ngay!';
+
+  @override
+  String get premiumForever => 'Premium mãi mãi - \$4.99';
+
+  @override
+  String get unlimitedScanning => '✓ Quét không giới hạn\n✓ Không giới hạn thời gian\n✓ Tính năng premium\n✓ Một lần thanh toán';
+
+  @override
+  String get privacyAndSecurityDetailFive => '5. Chính sách bảo mật - Ứng dụng của chúng tôi chỉ sử dụng Google Firebase cho mục đích Tối ưu hóa Cửa hàng Ứng dụng (ASO) và Tối ưu hóa Công cụ Tìm kiếm (SEO). Chúng tôi không thu thập, bán hoặc sử dụng thông tin này cho bất kỳ mục đích nào khác.\n\nĐể biết thêm thông tin về thực tiễn dữ liệu của Google Firebase, vui lòng tham khảo Chính sách Bảo mật của họ:';
+
+  @override
+  String get readyToUnlockUnlimitedPower => '🚀 Sẵn sàng mở khóa sức mạnh không giới hạn?';
+
+  @override
+  String get timesUpButYourJourneyContinues => '⏰ Hết thời gian! Nhưng hành trình của bạn vẫn tiếp tục...';
+
+  @override
+  String get upgradeToUnlimitedScanning => '🌟 Nâng cấp lên premium và quét không giới hạn! Tham gia cùng hàng nghìn người dùng đã mở khóa toàn bộ tiềm năng của họ.';
+
+  @override
+  String get finalCountdown => '⚡ Đếm ngược cuối cùng!';
+
+  @override
+  String get dontLetProductivityStop => '🚀 Đừng để năng suất của bạn dừng lại ở đây! Nâng cấp ngay để có sức mạnh quét không giới hạn.';
+
+  @override
+  String get later => 'Để sau';
+
+  @override
+  String get close => 'Đóng';
+
+  @override
+  String get trialStatusDebug => 'Gỡ lỗi trạng thái dùng thử';
+
+  @override
+  String get status => 'Trạng thái:';
+
+  @override
+  String get logic => 'Logic:';
+
+  @override
+  String get freeTrialExpiredOrExhausted => 'Dùng thử miễn phí hết hạn hoặc tính năng miễn phí đã cạn';
+
+  @override
+  String get subscribed => '✅ ĐÃ ĐĂNG KÝ';
+
+  @override
+  String get freeTrialActive => '🆓 DÙNG THỬ MIỄN PHÍ ĐANG HOẠT ĐỘNG';
+
+  @override
+  String get monthlyAllowance => '⏰ HẠN MỨC HÀNG THÁNG';
+
+  @override
+  String get trialExpired => '❌ DÙNG THỬ HẾT HẠN';
+
+  @override
+  String get scanningBlocked => 'Quét bị chặn';
+
+  @override
+  String get unlimitedAccess => 'Truy cập không giới hạn';
+
+  @override
+  String get unlimitedScanningAccess => 'Quét không giới hạn';
+
+  @override
+  String get scanningAvailable => 'Có thể quét';
+
+  @override
+  String get navigationBlocked => 'Điều hướng bị chặn - dùng thử hết hạn!';
+
+  @override
+  String get navigationAllowed => 'Điều hướng được phép';
+
+  @override
+  String get blocked => 'BỊ CHẶN';
+
+  @override
+  String get allowed => 'ĐƯỢC PHÉP';
+
+  @override
+  String get freeTrialExpiredOrFeaturesExhausted => 'DÙNG THỬ MIỄN PHÍ HẾT HẠN HOẶC TÍNH NĂNG MIỄN PHÍ ĐÃ CẠN';
+
+  @override
+  String get freeFeaturesRenewEvery30Days => 'TÍNH NĂNG MIỄN PHÍ GIA HẠN MỖI 30 NGÀY';
+
+  @override
+  String get upgradeNowWithOneTimePurchase => 'NÂNG CẤP NGAY VỚI MỘT LẦN MUA VÀ MỞ KHÓA TOÀN BỘ SỨC MẠNH CỦA iSpeedScan 🚀.';
+
+  @override
+  String get refresh => 'Làm mới';
 }

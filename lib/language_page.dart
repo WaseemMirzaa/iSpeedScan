@@ -332,6 +332,20 @@ class _LanguagePageState extends State<LanguagePage>
                         print("Setting locale to Chinese"); // Debug statement
                       },
                     ),
+
+                    // Add Hebrew language card after the existing language cards
+                    _buildLanguageCard(
+                      context: context,
+                      languageCode: 'he',
+                      languageName: 'עברית',
+                      flagEmoji: '🇮🇱',
+                      isSelected: currentLocale == 'he',
+                      onTap: () {
+                        provider.setLocale(const Locale('he'));
+                        Navigator.pop(context);
+                        print("Setting locale to Hebrew"); // Debug statement
+                      },  
+                    ),
                   ],
                 ),
               ),

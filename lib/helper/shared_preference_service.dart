@@ -1,13 +1,11 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceService {
-
   static const String modeKey = "isPdfMode";
   static const String pdfQuality = "pdfQuality";
 
   static const _firstOpenDateKey = 'first_open_date';
-  static const _pdfCreatedCountKey = 'pdf_created_count'
-  ;
+  static const _pdfCreatedCountKey = 'pdf_created_count';
   static const String _usageKey = 'usage_minutes';
   static const String _lastResetKey = 'last_reset';
 
@@ -46,7 +44,8 @@ class PreferenceService {
   Future<void> saveFirstOpenDate() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     DateTime now = DateTime.now();
-    String formattedDate = now.toIso8601String(); // You can customize the format
+    String formattedDate =
+        now.toIso8601String(); // You can customize the format
     await prefs.setString(_firstOpenDateKey, formattedDate);
   }
 
@@ -99,22 +98,17 @@ class PreferenceService {
     int newCount = currentCount + 1;
     await prefs.setInt(_pdfCreatedCountKey, newCount);
 
-
     return newCount;
   }
 
-
   // Fetch the PDF created count
   Future<int> getPdfCreatedCount() async {
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     var olderThan7Days = await isFirstOpenDateOlderThan7Days();
 
-    if(!olderThan7Days) {
-
+    if (!olderThan7Days) {
       await prefs.setInt(_pdfCreatedCountKey, 0);
-
     }
 
     return prefs.getInt(_pdfCreatedCountKey) ?? 0;
@@ -158,10 +152,26 @@ class PreferenceService {
   static Future<DateTime?> getLastResetTime() async {
     final prefs = await SharedPreferences.getInstance();
     final int? timestamp = prefs.getInt(_lastResetKey);
-    return timestamp != null ? DateTime.fromMillisecondsSinceEpoch(timestamp) : null;
+    return timestamp != null
+        ? DateTime.fromMillisecondsSinceEpoch(timestamp)
+        : null;
   }
 
-  /// Resets usage time if a week has passed
+  /// Resets usage time if a month has passed (30 days)
+  static Future<int> checkAndResetMonthlyUsage() async {
+    final now = DateTime.now();
+    final lastReset = await getLastResetTime();
+
+    if (lastReset == null || now.difference(lastReset).inDays >= 30) {
+      await saveUsageMinutes(0);
+      await saveLastResetTime(now);
+      return 0;
+    }
+
+    return await getUsageMinutes();
+  }
+
+  /// Resets usage time if a week has passed (deprecated - use checkAndResetMonthlyUsage)
   static Future<int> checkAndResetWeeklyUsage() async {
     final now = DateTime.now();
     final lastReset = await getLastResetTime();

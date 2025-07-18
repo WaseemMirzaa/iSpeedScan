@@ -127,7 +127,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get freeVersionAfterTrailExpires => 'ÜCRETSİZ SÜRÜM – Deneme Süresi Bitince\n\n';
 
   @override
-  String get fourMinutesOfFreeScanningWeekly => '✔ Haftalık 4 dakika ÜCRETSİZ tarama\n\n';
+  String get fourMinutesOfFreeScanningWeekly => '✔ Haftalık 3 dakika ÜCRETSİZ tarama\n\n';
 
   @override
   String get oneTimePurchaseUnlockFullAccess => 'Tek Seferlik Satın Alma (Tam Erişimi Aç)';
@@ -215,4 +215,130 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get maybeLater => 'BELKİ SONRA';
+
+  @override
+  String get stillEnjoyingIt => 'Hala keyif alıyor musunuz?';
+
+  @override
+  String get stillEnjoyingItMessage => 'Hala keyif alıyor musunuz? Şimdi yükseltin ve yaşam boyu planımızla sonsuza kadar erişim sağlayın — tek ödeme, abonelik yok, yaşam boyu sınırsız kullanım!';
+
+  @override
+  String get subscriptionTimeRemaining => 'Abonelik kalan süresi';
+
+  @override
+  String get freeTrialTimeRemaining => 'Ücretsiz deneme kalan süresi';
+
+  @override
+  String get trialTimeRemaining => 'Deneme kalan süresi';
+
+  @override
+  String get almostOutOfFreeTimeTitle => 'Ücretsiz süre neredeyse bitti';
+
+  @override
+  String get almostOutOfFreeTimeWarningMessage => 'Bu ayki ücretsiz süreniz neredeyse bitti! Tek seferlik ödemeyle yaşam boyu planımıza yükseltin — tekrarlayan ücret yok, abonelik yok. Sonsuza kadar sınırsız kullanım elde edin.';
+
+  @override
+  String get subscribeNow => 'Şimdi abone ol';
+
+  @override
+  String get upgradeNow => 'Şimdi yükselt';
+
+  @override
+  String get resetTimer => 'Zamanlayıcıyı sıfırla';
+
+  @override
+  String get freeTimeExpired => 'Ücretsiz süre doldu';
+
+  @override
+  String get freeTimeWillResetNextMonth => 'Ücretsiz 3 dakikanız gelecek ay sıfırlanacak. Şimdi sınırsız tarama alın!';
+
+  @override
+  String get premiumForever => 'Sonsuza kadar premium - \$4.99';
+
+  @override
+  String get unlimitedScanning => '✓ Sınırsız tarama\n✓ Zaman sınırı yok\n✓ Premium özellikler\n✓ Tek ödeme';
+
+  @override
+  String get privacyAndSecurityDetailFive => '5. Gizlilik Politikası - Uygulamalarımız Google Firebase\'i yalnızca Uygulama Mağazası Optimizasyonu (ASO) ve Arama Motoru Optimizasyonu (SEO) amaçları için kullanır. Bu bilgileri başka amaçlar için toplamıyor, satmıyor veya kullanmıyoruz.\n\nGoogle Firebase\'in veri uygulamaları hakkında daha fazla bilgi için lütfen Gizlilik Politikalarına bakın:';
+
+  @override
+  String get readyToUnlockUnlimitedPower => '🚀 Sınırsız gücü açmaya hazır mısınız?';
+
+  @override
+  String get timesUpButYourJourneyContinues => '⏰ Süre doldu! Ama yolculuğunuz devam ediyor...';
+
+  @override
+  String get upgradeToUnlimitedScanning => '🌟 Premium\'a yükseltin ve sınırsız tarayın! Tam potansiyellerini açan binlerce kullanıcıya katılın.';
+
+  @override
+  String get finalCountdown => '⚡ Son geri sayım!';
+
+  @override
+  String get dontLetProductivityStop => '🚀 Üretkenliğinizin burada durmasına izin vermeyin! Sınırsız tarama gücü için şimdi yükseltin.';
+
+  @override
+  String get later => 'Sonra';
+
+  @override
+  String get close => 'Kapat';
+
+  @override
+  String get trialStatusDebug => 'Deneme durumu hata ayıklama';
+
+  @override
+  String get status => 'Durum:';
+
+  @override
+  String get logic => 'Mantık:';
+
+  @override
+  String get freeTrialExpiredOrExhausted => 'Ücretsiz deneme süresi doldu veya ücretsiz özellikler tükendi';
+
+  @override
+  String get subscribed => '✅ ABONELİK YAPILDI';
+
+  @override
+  String get freeTrialActive => '🆓 ÜCRETSİZ DENEME AKTİF';
+
+  @override
+  String get monthlyAllowance => '⏰ AYLIK ÖDENEK';
+
+  @override
+  String get trialExpired => '❌ DENEME SÜRESİ DOLDU';
+
+  @override
+  String get scanningBlocked => 'Tarama engellendi';
+
+  @override
+  String get unlimitedAccess => 'Sınırsız erişim';
+
+  @override
+  String get unlimitedScanningAccess => 'Sınırsız tarama';
+
+  @override
+  String get scanningAvailable => 'Tarama mevcut';
+
+  @override
+  String get navigationBlocked => 'Navigasyon engellendi - deneme süresi doldu!';
+
+  @override
+  String get navigationAllowed => 'Navigasyona izin verildi';
+
+  @override
+  String get blocked => 'ENGELLENDİ';
+
+  @override
+  String get allowed => 'İZİN VERİLDİ';
+
+  @override
+  String get freeTrialExpiredOrFeaturesExhausted => 'ÜCRETSİZ DENEME SÜRESİ DOLDU VEYA ÜCRETSİZ ÖZELLİKLER TÜKENDİ';
+
+  @override
+  String get freeFeaturesRenewEvery30Days => 'ÜCRETSİZ ÖZELLİKLER HER 30 GÜNDE YENİLENİR';
+
+  @override
+  String get upgradeNowWithOneTimePurchase => 'ŞİMDİ TEK SEFERLİK SATIN ALMAYLA YÜKSELTİN VE iSpeedScan\'İN TAM GÜCÜNÜ AÇIN 🚀.';
+
+  @override
+  String get refresh => 'Yenile';
 }
