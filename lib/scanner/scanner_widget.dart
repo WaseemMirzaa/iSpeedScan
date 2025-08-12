@@ -45,11 +45,23 @@ class _ScannerWidgetState extends State<ScannerWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   late String selectedValue;
 
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   selectedValue = AppLocalizations.of(context)!.high;
+  // }
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    selectedValue = AppLocalizations.of(context)!.high;
+    final localizations = AppLocalizations.of(context);
+    if (localizations != null) {
+      selectedValue = localizations.high;
+    } else {
+      // Handle the error or fallback here, for example:
+      selectedValue = "en";
+    }
   }
+
 
   DateTime? _sessionStartTime;
   int _totalUsageMinutes = 0;
@@ -72,7 +84,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
   bool _isSubscribed = true;
   final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
-  bool _is7DaysPassed = false;
+  bool _is3DaysPassed = false;
   CustomerInfo? _customerInfo;
 
   // Progress bar state variables
@@ -200,7 +212,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
       // if (_isSubscribed) return;
       await service.checkAndSaveDate();
-      _is7DaysPassed = await service.isFirstOpenDateOlderThan7Days();
+      _is3DaysPassed = await service.isFirstOpenDateOlderThan3Days();
 
       // Continue with regular subscription check
       _customerInfo = await Purchases.getCustomerInfo();
@@ -255,7 +267,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
     print('📊 Subscription Status Check Complete:');
     print('  _isSubscribed: $_isSubscribed');
     print('  isPurchased: $isPurchased');
-    print('  _is7DaysPassed: $_is7DaysPassed');
+    print('  _is3DaysPassed: $_is3DaysPassed');
 
     // Update progress bar visibility after checking subscription status
     _updateProgressBarVisibility();
@@ -346,13 +358,15 @@ class _ScannerWidgetState extends State<ScannerWidget>
     }
 
     // Check if 7-day trial has passed
-    final is7DaysPassed = await service.isFirstOpenDateOlderThan7Days();
-    if (!is7DaysPassed) {
-      print('⏰ Still in 7-day free trial, no timer restrictions');
+    final is3DaysPassed = await service.isFirstOpenDateOlderThan3Days();
+
+    // final is7DaysPassed = await service.isFirstOpenDateOlderThan7Days();
+    if (!is3DaysPassed) {
+      print('⏰ Still in 3-day free trial, no timer restrictions');
       return;
     }
 
-    print('⏰ 7-day trial passed, loading timer state for monthly cycle');
+    print('⏰ 3-day trial passed, loading timer state for monthly cycle');
 
     // Load timer start date
     final timerStartString = prefs.getString('timer_start_date');
@@ -467,7 +481,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
   // TESTING METHODS FOR DEBUG BUTTONS
   Future<void> _testBypass7DayTrial() async {
-    print('🧪 TESTING: Bypassing 7-day trial');
+    print('🧪 TESTING: Bypassing 3-day trial');
 
     // Set subscription and purchase status to false
     final prefs = await SharedPreferences.getInstance();
@@ -475,19 +489,19 @@ class _ScannerWidgetState extends State<ScannerWidget>
     await prefs.setBool('is_purchased_checked', false);
 
     // Set first open date to 8 days ago to bypass 7-day limit
-    final eightDaysAgo = DateTime.now().subtract(Duration(days: 8));
+    final eightDaysAgo = DateTime.now().subtract(Duration(days: 4));
     await prefs.setString('first_open_date', eightDaysAgo.toIso8601String());
 
     // Update local state
     _isSubscribed = false;
     isPurchased = false;
-    _is7DaysPassed = true;
+    _is3DaysPassed = true;
 
     // Update progress bar visibility
     _updateProgressBarVisibility();
 
     setState(() {});
-    print('✅ TESTING: 7-day trial bypassed, progress bar should show');
+    print('✅ TESTING: 3-day trial bypassed, progress bar should show');
   }
 
   Future<void> _testReset3MinTimer() async {
@@ -605,7 +619,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
     print('🔍 DEBUG: Checking trial limit dialog conditions:');
     print('   - _isSubscribed: $_isSubscribed');
     print('   - isPurchased: $isPurchased');
-    print('   - _is7DaysPassed: $_is7DaysPassed');
+    print('   - _is3DaysPassed: $_is3DaysPassed');
     print('   - _timerExpired: $_timerExpired');
     print('   - _remainingSeconds: $_remainingSeconds');
 
@@ -633,7 +647,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
     // Final verdict
     bool shouldShow = !_isSubscribed &&
         !isPurchased &&
-        _is7DaysPassed &&
+        _is3DaysPassed &&
         _timerExpired &&
         lastShownString != todayString;
 
@@ -645,15 +659,15 @@ class _ScannerWidgetState extends State<ScannerWidget>
   bool _shouldBlockNavigation() {
     // Block navigation if:
     // 1. User is not subscribed AND not purchased
-    // 2. 7-day trial period has passed
+    // 2. 3-day trial period has passed
     // 3. 3-minute timer has expired
     bool shouldBlock =
-        !_isSubscribed && !isPurchased && _is7DaysPassed && _timerExpired;
+        !_isSubscribed && !isPurchased && _is3DaysPassed && _timerExpired;
 
     print('🚫 Navigation block check:');
     print('   - Not subscribed: ${!_isSubscribed}');
     print('   - Not purchased: ${!isPurchased}');
-    print('   - 7 days passed: $_is7DaysPassed');
+    print('   - 3 days passed: $_is3DaysPassed');
     print('   - Timer expired: $_timerExpired');
     print('   - Should block: $shouldBlock');
 
@@ -667,8 +681,8 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
   void _updateProgressBarVisibility() {
     // Progress bar logic for non-subscribed users:
-    // 1. During 7-day trial: NO progress bar (unlimited usage)
-    // 2. After 7-day trial: YES progress bar (3-minute monthly timer)
+    // 1. During 3-day trial: NO progress bar (unlimited usage)
+    // 2. After 3-day trial: YES progress bar (3-minute monthly timer)
     // 3. Subscribed/Purchased users: NO progress bar (unlimited usage)
 
     bool shouldShow = false;
@@ -677,7 +691,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
       // Subscribed or purchased users get unlimited access
       shouldShow = false;
       print('🔍 Progress Bar: Hidden (user subscribed/purchased)');
-    } else if (!_is7DaysPassed) {
+    } else if (!_is3DaysPassed) {
       // During 7-day trial period - no timer restrictions
       shouldShow = false;
       print('🔍 Progress Bar: Hidden (still in 7-day free trial)');
@@ -685,14 +699,14 @@ class _ScannerWidgetState extends State<ScannerWidget>
       // After 7-day trial - show progress bar with monthly timer
       shouldShow = true;
       print(
-          '🔍 Progress Bar: Visible (7-day trial ended, monthly timer active)');
+          '🔍 Progress Bar: Visible (3-day trial ended, monthly timer active)');
     }
 
     // Debug logging
     print('🔍 Progress Bar Debug:');
     print('  _isSubscribed: $_isSubscribed');
     print('  isPurchased: $isPurchased');
-    print('  _is7DaysPassed: $_is7DaysPassed');
+    print('  _is3DaysPassed: $_is3DaysPassed');
     print('  shouldShow: $shouldShow');
     print('  _showProgressBar: $_showProgressBar');
 
@@ -774,7 +788,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
       return;
     }
 
-    if (!_is7DaysPassed) {
+    if (!_is3DaysPassed) {
       print(
           '🚫 7-day trial period not passed yet, skipping trial limit dialog');
       return;
@@ -803,7 +817,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
     print(
         '✅ All conditions met - showing trial limit dialog for today: $todayString');
     print('   - Timer expired: $_timerExpired');
-    print('   - 7 days passed: $_is7DaysPassed');
+    print('   - 3 days passed: $_is3DaysPassed');
     print('   - Not subscribed: ${!_isSubscribed}');
     print('   - Not purchased: ${!isPurchased}');
 
@@ -1082,7 +1096,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
       return t.readyToUnlockUnlimitedPower;
     } else if (_isSubscribed && !isPurchased) {
       return t.subscriptionTimeRemaining;
-    } else if (!_is7DaysPassed) {
+    } else if (!_is3DaysPassed) {
       return t.freeTrialTimeRemaining;
     } else {
       return t.trialTimeRemaining;
@@ -1123,7 +1137,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
     setState(() {
       _isSubscribed = isSubscribed;
       this.isPurchased = isPurchased;
-      _is7DaysPassed = is7DaysPassed;
+      _is3DaysPassed = is7DaysPassed;
     });
     _updateProgressBarVisibility();
   }
@@ -1261,9 +1275,9 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                   await requestPermission(cameraPermission);
 
                                   if (!_isSubscribed &&
-                                      _is7DaysPassed &&
+                                      _is3DaysPassed &&
                                       _totalUsageMinutes > 3 * 60) {
-                                    print('days passed $_is7DaysPassed');
+                                    print('days passed $_is3DaysPassed');
                                     print('😂$_totalUsageMinutes');
                                     await analytics.logEvent(
                                       name: 'event_on_trial_limit_reached',
@@ -1320,9 +1334,9 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                   await requestPermission(cameraPermission);
 
                                   if (!_isSubscribed &&
-                                      _is7DaysPassed &&
+                                      _is3DaysPassed &&
                                       _totalUsageMinutes > 3 * 60) {
-                                    print('days passed $_is7DaysPassed');
+                                    print('days passed $_is3DaysPassed');
                                     await analytics.logEvent(
                                       name: 'event_on_trial_limit_reached',
                                       parameters: {
@@ -2837,8 +2851,8 @@ class _ScannerWidgetState extends State<ScannerWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await requestPermission(cameraPermission);
 
-      if (!_isSubscribed && _is7DaysPassed && _totalUsageMinutes > 3 * 60) {
-        print('days passed $_is7DaysPassed');
+      if (!_isSubscribed && _is3DaysPassed && _totalUsageMinutes > 3 * 60) {
+        print('days passed $_is3DaysPassed');
         print('😂$_totalUsageMinutes');
 
         await analytics.logEvent(
@@ -3136,7 +3150,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
         if (_isSubscribed) {
           trialStatus = t.subscribed;
           accessStatus = t.unlimitedAccess;
-        } else if (!_is7DaysPassed) {
+        } else if (!_is3DaysPassed) {
           trialStatus = t.freeTrialActive;
           accessStatus = t.unlimitedScanningAccess;
         } else if (_totalUsageMinutes <= 3 * 60) {
@@ -3175,7 +3189,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                       fontWeight: FontWeight.w600,
                       color: _isSubscribed
                           ? Colors.green
-                          : (!_is7DaysPassed
+                          : (!_is3DaysPassed
                               ? Colors.blue
                               : (_totalUsageMinutes <= 3 * 60
                                   ? Colors.orange
@@ -3191,17 +3205,17 @@ class _ScannerWidgetState extends State<ScannerWidget>
                   style: TextStyle(fontWeight: FontWeight.bold)),
               SizedBox(height: 8),
               Text("• Subscribed: $_isSubscribed"),
-              Text("• 7 Days Passed: $_is7DaysPassed"),
+              Text("• 3 days passed: $_is3DaysPassed"),
               Text("• Usage Time: ${usageMinutes.toStringAsFixed(2)} minutes"),
               Text("• Usage Seconds: $_totalUsageMinutes seconds"),
               Text("• Limit: 180 seconds (3 minutes)"),
               SizedBox(height: 8),
               Text(
-                "${t.logic} ${!_isSubscribed && _is7DaysPassed && _totalUsageMinutes > 3 * 60 ? t.blocked : t.allowed}",
+                "${t.logic} ${!_isSubscribed && _is3DaysPassed && _totalUsageMinutes > 3 * 60 ? t.blocked : t.allowed}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: (!_isSubscribed &&
-                          _is7DaysPassed &&
+                          _is3DaysPassed &&
                           _totalUsageMinutes > 3 * 60)
                       ? Colors.red
                       : Colors.green,

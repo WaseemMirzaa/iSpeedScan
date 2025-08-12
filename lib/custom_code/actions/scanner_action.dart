@@ -13,9 +13,7 @@ import 'dart:io';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'package:cunning_document_scanner/cunning_document_scanner.dart';
-// import 'package:image_gallery_saver/image_gallery_saver.dart'; // Temporarily disabled
 import '../../../helper/analytics_helper.dart';
-import 'package:ispeedscan/helper/scanner_locale_helper.dart';
 
 Future<List<String>> scannerAction(BuildContext context) async {
   List<String> _pictures = [];
