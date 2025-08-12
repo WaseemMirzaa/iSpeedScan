@@ -253,7 +253,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get freeTimeWillResetNextMonth => 'Ücretsiz 3 dakikanız gelecek ay sıfırlanacak. Şimdi sınırsız tarama alın!';
 
   @override
-  String get premiumForever => 'Sonsuza kadar premium - \$4.99';
+  String get premiumForever => 'Sonsuza kadar premium - \$1.99';
 
   @override
   String get unlimitedScanning => '✓ Sınırsız tarama\n✓ Zaman sınırı yok\n✓ Premium özellikler\n✓ Tek ödeme';

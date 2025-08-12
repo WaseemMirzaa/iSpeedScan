@@ -253,7 +253,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get freeTimeWillResetNextMonth => 'Tus 3 minutos gratuitos se reiniciarán el próximo mes. ¡Obtén escaneo ilimitado ahora!';
 
   @override
-  String get premiumForever => 'Premium Para Siempre - \$4.99';
+  String get premiumForever => 'Premium Para Siempre - \$1.99';
 
   @override
   String get unlimitedScanning => '✓ Escaneo ilimitado\n✓ Sin límites de tiempo\n✓ Funciones premium\n✓ Pago único';

@@ -253,7 +253,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get freeTimeWillResetNextMonth => '무료 3분이 다음 달에 재설정됩니다. 지금 무제한 스캔을 받으세요!';
 
   @override
-  String get premiumForever => '영원한 프리미엄 - \$4.99';
+  String get premiumForever => '영원한 프리미엄 - \$1.99';
 
   @override
   String get unlimitedScanning => '✓ 무제한 스캔\n✓ 시간 제한 없음\n✓ 프리미엄 기능\n✓ 한 번 결제';

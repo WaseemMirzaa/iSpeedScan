@@ -253,7 +253,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get freeTimeWillResetNextMonth => 'ستتم إعادة تعيين دقائقك المجانية الثلاث الشهر القادم. احصل على مسح غير محدود الآن!';
 
   @override
-  String get premiumForever => 'بريميوم إلى الأبد - \$4.99';
+  String get premiumForever => 'بريميوم إلى الأبد - \$1.99';
 
   @override
   String get unlimitedScanning => '✓ مسح غير محدود\n✓ بدون حدود زمنية\n✓ ميزات بريميوم\n✓ دفعة واحدة';

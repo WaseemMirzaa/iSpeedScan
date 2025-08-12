@@ -253,7 +253,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get freeTimeWillResetNextMonth => '3 phút miễn phí của bạn sẽ được đặt lại vào tháng tới. Nhận quét không giới hạn ngay!';
 
   @override
-  String get premiumForever => 'Premium mãi mãi - \$4.99';
+  String get premiumForever => 'Premium mãi mãi - \$1.99';
 
   @override
   String get unlimitedScanning => '✓ Quét không giới hạn\n✓ Không giới hạn thời gian\n✓ Tính năng premium\n✓ Một lần thanh toán';

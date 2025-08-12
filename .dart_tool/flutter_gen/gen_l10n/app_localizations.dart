@@ -618,7 +618,7 @@ abstract class AppLocalizations {
   /// No description provided for @premiumForever.
   ///
   /// In en, this message translates to:
-  /// **'Premium Forever - \$4.99'**
+  /// **'Premium Forever - \$1.99'**
   String get premiumForever;
 
   /// No description provided for @unlimitedScanning.

@@ -513,7 +513,7 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                                   // offering
                                 }
                               },
-                              text: '${t.purchaseNow} \$4.99',
+                              text: '${t.purchaseNow} \$1.99',
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 50.0,
@@ -724,7 +724,6 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
 
     _customerInfo = await Purchases.getCustomerInfo();
 
-
     offerings = await Purchases.getOfferings();
 
     var offering = offerings?.getOffering('sub_lifetime');
@@ -746,10 +745,10 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
         await analytics.logEvent(
           name: param!,
           parameters: {
-              'price': offering?.availablePackages[0].storeProduct.price
-                    .toString(),
-                'currencyCode':
-                    offering?.availablePackages[0].storeProduct.currencyCode,
+            'price':
+                offering?.availablePackages[0].storeProduct.price.toString(),
+            'currencyCode':
+                offering?.availablePackages[0].storeProduct.currencyCode,
             'screen': 'Subscription Screen',
             'os': Platform.isAndroid ? 'android' : 'ios',
             'timestamp': DateTime.now().toIso8601String(),

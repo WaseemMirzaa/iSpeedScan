@@ -1,0 +1,82 @@
+# iSpeedScan - Unsubscribed User Messages
+# All text messages shown to unsubscribed users in banners, popups, and dialogs
+
+## PROGRESS BAR TITLES
+1. "Free Trial Time Remaining" (freeTrialTimeRemaining)
+2. "Trial Time Remaining" (trialTimeRemaining) 
+3. "Subscription Time Remaining" (subscriptionTimeRemaining)
+4. "🚀 Ready to unlock unlimited power?" (readyToUnlockUnlimitedPower)
+
+## PROGRESS BAR WARNING MESSAGES (when timer is running low)
+5. "⚡ Final Countdown!" (finalCountdown)
+6. "🚀 Don't let your productivity stop here! Upgrade now for unlimited scanning power." (dontLetProductivityStop)
+
+## PROGRESS BAR EXPIRED MESSAGES (when timer reaches 0:00)
+7. "⏰ Time's up! But your journey continues..." (timesUpButYourJourneyContinues)
+8. "🌟 Upgrade to Premium and scan without limits! Join thousands of users who've unlocked their full potential." (upgradeToUnlimitedScanning)
+
+## TIMER EXPIRED DIALOG
+9. Dialog Title: "Free Time Expired" (freeTimeExpired)
+10. Dialog Message: "Your free 3 minutes will reset next month. Get unlimited scanning now!" (freeTimeWillResetNextMonth)
+11. Premium Box Title: "Premium Forever - $1.99" (premiumForever)
+12. Premium Box Features: "✓ Unlimited scanning\n✓ No time limits\n✓ Premium features\n✓ One-time payment" (unlimitedScanning)
+
+## ENGAGEMENT DIALOG (shown on day 4 and day 2)
+13. Dialog Title: "Still enjoying it?" (stillEnjoyingIt)
+14. Dialog Message: "Still enjoying it? Upgrade now and keep access forever with our lifetime plan — one payment, no subscriptions, unlimited usage for life!" (stillEnjoyingItMessage)
+
+## ALMOST OUT OF TIME WARNING (when < 50 seconds remaining)
+15. Warning Title: "Almost Out of Free Time" (almostOutOfFreeTimeTitle)
+16. Warning Message: "You're almost out of free time this month! Upgrade to our lifetime plan with a single one-time payment — no recurring charges, no subscriptions. Get unlimited usage forever." (almostOutOfFreeTimeWarningMessage)
+
+## BUTTON TEXTS
+17. "Upgrade Now" (upgradeNow)
+18. "Subscribe Now" (subscribeNow)
+19. "Later" (later)
+20. "Reset Timer" (resetTimer)
+21. "Cancel" (cancel)
+22. "Refresh" (refresh)
+
+## TRIAL STATUS DEBUG MESSAGES (for testing/debugging)
+23. "FREE TRIAL EXPIRED or FREE FEATURES EXHAUSTED" (freeTrialExpiredOrFeaturesExhausted)
+24. "FREE FEATURES RENEW EVERY 30 DAYS" (freeFeaturesRenewEvery30Days)
+25. "UPGRADE NOW WITH A ONE TIME PURCHASE & UNLOCK THE FULL POWER OF iSpeedScan 🚀." (upgradeNowWithOneTimePurchase)
+26. "❌ Trial expired" (trialExpired)
+27. "Scanning blocked" (scanningBlocked)
+28. "Navigation blocked - trial expired!" (navigationBlocked)
+29. "BLOCKED" (blocked)
+30. "ALLOWED" (allowed)
+
+## REVENUE CAT FOOTER TEXT (subscription terms)
+31. "A purchase will be applied to your account upon confirmation of the amount selected. Subscriptions will automatically renew unless canceled within 24 hours of the end of the current period. You can cancel any time using your account settings. Any unused portion of a free trial will be forfeited if you purchase a subscription."
+
+## LOADING DIALOG
+32. "Creating PDF..." (default loading message)
+
+## ADDITIONAL MOTIVATIONAL MESSAGES (from other language files)
+33. "🚀 Ready to unlock unlimited power?" (readyToUnlockUnlimitedPower)
+34. "⏰ Time's up! But your journey continues..." (timesUpButYourJourneyContinues)
+35. "🌟 Upgrade to Premium and scan without limits! Join thousands of users who have unlocked their full potential." (upgradeToUnlimitedScanning)
+
+## NOTES:
+- Messages 1-4: Shown as progress bar titles depending on user state
+- Messages 5-6: Shown when timer has ≤50 seconds remaining (red warning)
+- Messages 7-8: Shown when timer expires (motivational)
+- Messages 9-12: Main timer expired dialog content
+- Messages 13-14: Engagement dialog shown on specific days
+- Messages 15-16: Warning when almost out of time
+- Messages 17-22: Button labels used throughout dialogs
+- Messages 23-30: Debug/status messages
+- Message 31: Legal text for subscriptions
+- Message 32: Loading dialog text
+- Messages 33-35: Additional motivational content
+
+## TIMING RULES:
+- Engagement dialog: Shows on day 4 and day 2 after first app open
+- Timer expired dialog: Shows once per day when timer expires
+- Warning messages: Show when ≤50 seconds remaining
+- Progress bar: Shows for non-purchased users after 7-day trial
+
+
+
+nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn

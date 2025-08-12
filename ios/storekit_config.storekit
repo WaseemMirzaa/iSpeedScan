@@ -12,7 +12,7 @@
   "identifier" : "6906E269",
   "nonRenewingSubscriptions" : [
     {
-      "displayPrice" : "4.99",
+      "displayPrice" : "1.99",
       "familyShareable" : false,
       "internalID" : "6742865483",
       "localizations" : [
@@ -84,7 +84,7 @@
         "name" : "Offer Code Redeem Sheet"
       }
     ],
-    "appPrice" : "4.99",
+    "appPrice" : "1.99",
     "isPaidApp" : true,
     "simulatesAskToBuyInSandbox" : false
   },

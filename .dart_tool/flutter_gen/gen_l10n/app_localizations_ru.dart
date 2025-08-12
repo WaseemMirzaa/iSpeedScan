@@ -253,7 +253,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get freeTimeWillResetNextMonth => 'Ваши бесплатные 3 минуты обновятся в следующем месяце. Получите безлимитное сканирование сейчас!';
 
   @override
-  String get premiumForever => 'Премиум навсегда - \$4.99';
+  String get premiumForever => 'Премиум навсегда - \$1.99';
 
   @override
   String get unlimitedScanning => '✓ Безлимитное сканирование\n✓ Без ограничений по времени\n✓ Премиум функции\n✓ Единовременный платёж';

@@ -2426,7 +2426,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                               child: Text(
                                                 !_isSubscribed
                                                     ? t.lifeTimeSubsciption +
-                                                        ' \$4.99'
+                                                        ' \$1.99'
                                                     : t.viewPurchaseDetails,
                                                 style:
                                                     FlutterFlowTheme.of(context)

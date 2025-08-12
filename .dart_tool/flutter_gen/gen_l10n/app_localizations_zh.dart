@@ -253,7 +253,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get freeTimeWillResetNextMonth => '您的免费3分钟将在下个月重置。立即获得无限扫描！';
 
   @override
-  String get premiumForever => '永久高级版 - \$4.99';
+  String get premiumForever => '永久高级版 - \$1.99';
 
   @override
   String get unlimitedScanning => '✓ 无限扫描\n✓ 无时间限制\n✓ 高级功能\n✓ 一次性付款';
