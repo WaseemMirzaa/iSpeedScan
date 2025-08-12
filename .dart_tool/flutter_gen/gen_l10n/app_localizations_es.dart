@@ -1,5 +1,3 @@
-// ignore: unused_import
-import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -217,6 +215,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get maybeLater => 'QUIZÁS MÁS TARDE';
+
+  @override
+  String get thankYou => '¡Gracias!';
+
+  @override
+  String get redirectingToStore => 'Redirigiendo a la tienda de aplicaciones...';
+
+  @override
+  String get feedbackAppreciated => '¡Tus comentarios nos ayudan a mejorar!';
 
   @override
   String get stillEnjoyingIt => '¿Aún lo disfrutas?';

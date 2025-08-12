@@ -10,6 +10,7 @@ import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_fr.dart';
+import 'app_localizations_he.dart';
 import 'app_localizations_hi.dart';
 import 'app_localizations_it.dart';
 import 'app_localizations_ja.dart';
@@ -104,21 +105,22 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('ar'),
-    Locale('de'),
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('hi'),
+    Locale('de'),
     Locale('it'),
     Locale('ja'),
+    Locale('ar'),
+    Locale('hi'),
     Locale('ko'),
     Locale('pt'),
     Locale('ru'),
     Locale('th'),
     Locale('tr'),
     Locale('vi'),
-    Locale('zh')
+    Locale('zh'),
+    Locale('he')
   ];
 
   /// No description provided for @iSpeedScan.
@@ -541,6 +543,24 @@ abstract class AppLocalizations {
   /// **'MAYBE LATER'**
   String get maybeLater;
 
+  /// No description provided for @thankYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank You!'**
+  String get thankYou;
+
+  /// No description provided for @redirectingToStore.
+  ///
+  /// In en, this message translates to:
+  /// **'Redirecting you to the app store...'**
+  String get redirectingToStore;
+
+  /// No description provided for @feedbackAppreciated.
+  ///
+  /// In en, this message translates to:
+  /// **'Your feedback helps us improve!'**
+  String get feedbackAppreciated;
+
   /// No description provided for @stillEnjoyingIt.
   ///
   /// In en, this message translates to:
@@ -803,7 +823,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'de', 'en', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'de', 'en', 'es', 'fr', 'he', 'hi', 'it', 'ja', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -819,6 +839,7 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
     case 'en': return AppLocalizationsEn();
     case 'es': return AppLocalizationsEs();
     case 'fr': return AppLocalizationsFr();
+    case 'he': return AppLocalizationsHe();
     case 'hi': return AppLocalizationsHi();
     case 'it': return AppLocalizationsIt();
     case 'ja': return AppLocalizationsJa();

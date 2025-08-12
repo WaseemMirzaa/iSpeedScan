@@ -12,6 +12,7 @@ import 'package:pdfx/pdfx.dart';
 import 'package:provider/provider.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:rate_my_app/rate_my_app.dart';
+import '../services/custom_rating_service.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import '../helper/log_helper.dart';
@@ -61,7 +62,6 @@ class _ScannerWidgetState extends State<ScannerWidget>
       selectedValue = "en";
     }
   }
-
 
   DateTime? _sessionStartTime;
   int _totalUsageMinutes = 0;
@@ -280,53 +280,23 @@ class _ScannerWidgetState extends State<ScannerWidget>
     ]);
   }
 
-  Future<void> initRateMyApp() async {
-    final t = AppLocalizations.of(context)!;
-    RateMyApp rateMyApp = RateMyApp(
-      preferencesPrefix: 'rateMyApp_',
-      minDays: 7,
-      minLaunches: 7,
-      remindDays: 7,
-      remindLaunches: 10,
-      googlePlayIdentifier: 'com.tevineighdesigns.ispeedscan1',
-      appStoreIdentifier: '6627339270',
-    );
+  Future<void> initCustomRatingDialog() async {
+    // Initialize the custom rating service
+    await CustomRatingService.init();
 
-    rateMyApp.init().then((_) {
-      if (rateMyApp.shouldOpenDialog) {
-        rateMyApp.showRateDialog(
-          context,
-          title: t.rateThisApp, // The dialog title.
-          message: t.ifYouUsingEnjoyThisApp,
-          rateButton: t.rate, // The dialog "rate" button text.
-          noButton: t.noThanks, // The dialog "no" button text.
-          laterButton: t.maybeLater, // The dialog "later" button text.
-          listener: (button) {
-            // The button click listener (useful if you want to cancel the click event).
-            switch (button) {
-              case RateMyAppDialogButton.rate:
-                print('Clicked on "Rate".');
-                break;
-              case RateMyAppDialogButton.later:
-                print('Clicked on "Later".');
-                break;
-              case RateMyAppDialogButton.no:
-                print('Clicked on "No".');
-                break;
-            }
+    // Show the dialog if conditions are met
+    if (mounted) {
+      await CustomRatingService.showRatingDialog(context);
+    }
+  }
 
-            return true; // Return false if you want to cancel the click event.
-          },
-          ignoreNativeDialog:
-              false, // Set to false if you want to show the Apple's native app rating dialog on iOS or Google's native app rating dialog (depends on the current Platform).
-          dialogStyle: const DialogStyle(), // Custom dialog styles.
-          onDismissed: () => rateMyApp.callEvent(RateMyAppEventType
-              .laterButtonPressed), // Called when the user dismissed the dialog (either by taping outside or by pressing the "back" button).
-          // contentBuilder: (co/ntext, defaultContent) => content, // This one allows you to change the default dialog content.
-          // actionsBuilder: (context) => [], // This one allows you to use your own buttons.
-        );
-      }
-    });
+  // Debug method to test rating dialog
+  Future<void> _testShowRatingDialog() async {
+    await CustomRatingService.resetRatingData();
+    await CustomRatingService.init();
+    if (mounted) {
+      await CustomRatingService.showRatingDialog(context);
+    }
   }
 
   Future<void> _loadLastDialogShownDate() async {
@@ -2948,7 +2918,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
       ),
     });
 
-    initRateMyApp();
+    initCustomRatingDialog();
   }
 
   Future<void> checkPdfCreation(List<String> images) async {

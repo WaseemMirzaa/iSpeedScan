@@ -217,6 +217,15 @@ class AppLocalizationsHe extends AppLocalizations {
   String get maybeLater => 'אולי אחר כך';
 
   @override
+  String get thankYou => 'Thank You!';
+
+  @override
+  String get redirectingToStore => 'Redirecting you to the app store...';
+
+  @override
+  String get feedbackAppreciated => 'Your feedback helps us improve!';
+
+  @override
   String get stillEnjoyingIt => 'עדיין נהנה?';
 
   @override
