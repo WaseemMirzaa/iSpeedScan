@@ -68,6 +68,7 @@
   "languageInformation": "Thông tin ngôn ngữ",
   "iSpeedScanSupportsMultipleLanuages": "iSpeedScan hỗ trợ nhiều ngôn ngữ giúp ứng dụng dễ tiếp cận với người dùng trên toàn thế giới. Nếu ngôn ngữ bạn muốn chưa có, sẽ được bổ sung trong các bản cập nhật sau.",
   "rateThisApp": "Đánh giá ứng dụng này",
+  "rateThisAppMessage": "Nếu bạn thích sử dụng ứng dụng này, hãy dành một phút để lại đánh giá nhé! Phản hồi của bạn giúp chúng tôi cải thiện ứng dụng và chỉ mất chưa đến một phút.",
   "ifYouUsingEnjoyThisApp": "Nếu bạn thích sử dụng ứng dụng này, hãy dành một phút để lại đánh giá nhé! Phản hồi của bạn giúp chúng tôi cải thiện ứng dụng.",
   "rate": "ĐÁNH GIÁ",
   "noThanks": "KHÔNG CẢM ƠN",
@@ -114,5 +115,11 @@
   "upgradeNowWithOneTimePurchase": "NÂNG CẤP NGAY VỚI MỘT LẦN MUA VÀ MỞ KHÓA TOÀN BỘ SỨC MẠNH CỦA iSpeedScan 🚀.",
   "cancel": "Hủy",
   "refresh": "Làm mới",
-  "privacyAndSecurityDetailFive": "5. Chính sách bảo mật - Ứng dụng của chúng tôi chỉ sử dụng Google Firebase cho mục đích Tối ưu hóa Cửa hàng Ứng dụng (ASO) và Tối ưu hóa Công cụ Tìm kiếm (SEO). Chúng tôi không thu thập, bán hoặc sử dụng thông tin này cho bất kỳ mục đích nào khác.\n\nĐể biết thêm thông tin về thực tiễn dữ liệu của Google Firebase, vui lòng tham khảo Chính sách Bảo mật của họ:"
+  "privacyAndSecurityDetailFive": "5. Chính sách bảo mật - Ứng dụng của chúng tôi chỉ sử dụng Google Firebase cho mục đích Tối ưu hóa Cửa hàng Ứng dụng (ASO) và Tối ưu hóa Công cụ Tìm kiếm (SEO). Chúng tôi không thu thập, bán hoặc sử dụng thông tin này cho bất kỳ mục đích nào khác.\n\nĐể biết thêm thông tin về thực tiễn dữ liệu của Google Firebase, vui lòng tham khảo Chính sách Bảo mật của họ:",
+  "usePromoCode": "Sử Dụng Mã Khuyến Mãi",
+  "enterPromoCode": "Nhập Mã Khuyến Mãi",
+  "apply": "Áp Dụng",
+  "invalidPromoCode": "Mã Khuyến Mãi Không Hợp Lệ",
+  "promoCodeAppliedSuccessfully": "Mã Khuyến Mãi Đã Được Áp Dụng Thành Công!",
+  "promoCode": "Mã Khuyến Mãi"
 }

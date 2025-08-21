@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/services.dart';
 import 'package:ispeedscan/helper/local_provider.dart';
@@ -587,6 +588,79 @@ class _ConverterWidgetState extends State<SubscriptionWidget>
                             ),
                           ),
                         ),
+                          StreamBuilder<DocumentSnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection('app_settings')
+                            .doc('promo_code')
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox
+                                .shrink(); // or a loader if you prefer
+                          }
+                          if (!snapshot.hasData || !snapshot.data!.exists) {
+                            return const SizedBox.shrink();
+                          }
+
+                          final data =
+                              snapshot.data!.data() as Map<String, dynamic>;
+                          final bool isEnabled = data['is_enabled'] ?? false;
+                          final List<String> failureCodes =
+                              List<String>.from(data['failure_codes'] ?? []);
+
+                          if (!isEnabled) {
+                            return const SizedBox.shrink();
+                          }
+
+                          return Visibility(
+                            visible: !_isSubscribed,
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 16.0, 8.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    ShowPromoCodeDialog.show(
+                                        context, t, failureCodes);
+                                  },
+                                  text: '${t.usePromoCode}',
+                                  // 'Buy Now in 1.99\$'
+                                  // ,
+                                  options: FFButtonOptions(
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                    iconPadding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                    color: const Color(0xFF173F5A),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: const BorderSide(
+                                      color: Color(0xFF173F5A),
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    
                     ],
                   ),
                 ),
@@ -859,4 +933,195 @@ void _showPermissionDialog(BuildContext context, String message,
       );
     },
   );
+}
+
+
+
+class ShowPromoCodeDialog {
+  static Future<void> show(
+    BuildContext context,
+    AppLocalizations appLocalizations,
+    List<String> failureCodes,
+  ) async {
+    final promoController = TextEditingController();
+    String? errorText;
+
+    // Brand color you shared for buttons/borders
+    const brandColor = Color(0xFF173F5A);
+
+    await showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (dialogContext) {
+        final theme = Theme.of(dialogContext);
+
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              elevation: 8,
+              backgroundColor: theme.colorScheme.surface,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              titlePadding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
+              contentPadding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
+              actionsPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+              title: Row(
+                children: [
+                  const Icon(Icons.local_offer_rounded, color: brandColor),
+                  const SizedBox(width: 8),
+                  // NOTE: cannot be const because it uses a localized string
+                  Text(
+                    appLocalizations.enterPromoCode,
+                    style: theme.textTheme.titleLarge
+                        ?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextFormField(
+                    controller: promoController,
+                    autofocus: true,
+                    style: const TextStyle(
+                      color: brandColor,
+                    ),
+                    cursorColor: brandColor,
+                    textInputAction: TextInputAction.done,
+                    onFieldSubmitted: (_) => _validateAndApply(
+                        context,
+                        appLocalizations,
+                        promoController.text,
+                        setState,
+                        (msg) => errorText = msg,
+                        failureCodes),
+                    decoration: InputDecoration(
+                      labelText: appLocalizations.promoCode,
+                      labelStyle: theme.textTheme.labelLarge?.copyWith(
+                        color: brandColor,
+                      ),
+                      // hintText: '000111',
+                      // prefixIcon: const Icon(Icons.qr_code_2_rounded),
+                      filled: true,
+
+                      // Use themed borders; add a brand-colored focused border
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(
+                          color: brandColor,
+                          width: 2,
+                        ),
+                      ),
+                      errorText: errorText,
+                      isDense: true,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                ],
+              ),
+              actions: [
+                // Cancel (outlined, on-surface-variant border)
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    side: BorderSide(
+                      color: theme.colorScheme.outlineVariant.withOpacity(0.8),
+                      width: 1.2,
+                    ),
+                  ),
+                  onPressed: () => Navigator.of(dialogContext).pop(),
+                  child: Text(
+                    appLocalizations.cancel,
+                    style: theme.textTheme.labelLarge,
+                  ),
+                ),
+
+                // Apply (elevated, brand color)
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: brandColor,
+                    foregroundColor: theme.colorScheme.onPrimary,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 18, vertical: 12),
+                  ),
+                  onPressed: () => _validateAndApply(
+                    context,
+                    appLocalizations,
+                    promoController.text,
+                    setState,
+                    (msg) => errorText = msg,
+                    failureCodes,
+                  ),
+                  child: Text(
+                    appLocalizations.apply,
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: theme.colorScheme.onPrimary,
+                      letterSpacing: 0.2,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  /// Validates the code and shows a SnackBar on success.
+  static void _validateAndApply(
+    BuildContext context,
+    AppLocalizations loc,
+    String input,
+    void Function(void Function()) setState,
+    void Function(String?) setError,
+    List<String> failureCodes,
+  ) {
+    final code = input.trim();
+
+    var valid = failureCodes.contains(code);
+    if (valid) {
+      Navigator.of(context).pop([
+        // {"promoCodeApplied": true},
+        // {"id": 2, "name": "Item 2"},
+      ]);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green.shade600,
+          behavior: SnackBarBehavior.floating,
+          content: Row(
+            children: [
+              const Icon(Icons.check_circle_outline_rounded,
+                  color: Colors.white),
+              const SizedBox(width: 8),
+              Text(
+                loc.promoCodeAppliedSuccessfully,
+                style: const TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+      );
+
+      Navigator.of(context).pop([
+        {"promoCodeApplied": true},
+        // {"id": 2, "name": "Item 2"},
+      ]);
+    } else {
+      setState(() {
+        setError(loc.invalidPromoCode);
+      });
+    }
+  }
 }

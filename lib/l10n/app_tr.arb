@@ -68,6 +68,7 @@
   "languageInformation": "Dil Bilgisi",
   "iSpeedScanSupportsMultipleLanuages": "iSpeedScan, uygulamayı dünya çapındaki kullanıcılar için erişilebilir kılmak adına birden fazla dili destekler. Tercih ettiğiniz dil mevcut değilse, gelecekteki güncellemelerde daha fazla dil eklenecektir.",
   "rateThisApp": "Bu uygulamayı değerlendirin",
+  "rateThisAppMessage": "Bu uygulamayı kullanmaktan keyif alıyorsanız, lütfen bir dakikanızı ayırıp bir değerlendirme bırakın! Geri bildiriminiz geliştirmemize yardımcı olur ve bir dakikadan az sürer.",
   "ifYouUsingEnjoyThisApp": "Bu uygulamayı kullanmaktan keyif alıyorsanız, lütfen bir dakikanızı ayırıp bir değerlendirme bırakın! Geri bildiriminiz geliştirmemize yardımcı olur.",
   "rate": "DEĞERLENDİR",
   "noThanks": "HAYIR TEŞEKKÜR",
@@ -114,5 +115,11 @@
   "upgradeNowWithOneTimePurchase": "ŞİMDİ TEK SEFERLİK SATIN ALMAYLA YÜKSELTİN VE iSpeedScan'İN TAM GÜCÜNÜ AÇIN 🚀.",
   "cancel": "İptal",
   "refresh": "Yenile",
-  "privacyAndSecurityDetailFive": "5. Gizlilik Politikası - Uygulamalarımız Google Firebase'i yalnızca Uygulama Mağazası Optimizasyonu (ASO) ve Arama Motoru Optimizasyonu (SEO) amaçları için kullanır. Bu bilgileri başka amaçlar için toplamıyor, satmıyor veya kullanmıyoruz.\n\nGoogle Firebase'in veri uygulamaları hakkında daha fazla bilgi için lütfen Gizlilik Politikalarına bakın:"
+  "privacyAndSecurityDetailFive": "5. Gizlilik Politikası - Uygulamalarımız Google Firebase'i yalnızca Uygulama Mağazası Optimizasyonu (ASO) ve Arama Motoru Optimizasyonu (SEO) amaçları için kullanır. Bu bilgileri başka amaçlar için toplamıyor, satmıyor veya kullanmıyoruz.\n\nGoogle Firebase'in veri uygulamaları hakkında daha fazla bilgi için lütfen Gizlilik Politikalarına bakın:",
+  "usePromoCode": "Promosyon Kodu Kullan",
+  "enterPromoCode": "Promosyon Kodunu Girin",
+  "apply": "Uygula",
+  "invalidPromoCode": "Geçersiz Promosyon Kodu",
+  "promoCodeAppliedSuccessfully": "Promosyon Kodu Başarıyla Uygulandı!",
+  "promoCode": "Promosyon Kodu"
 }

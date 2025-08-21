@@ -68,6 +68,7 @@
   "languageInformation": "言語情報",
   "iSpeedScanSupportsMultipleLanuages": "iSpeedScan は複数の言語に対応しており、世界中のユーザーが利用できます。ご希望の言語がない場合は、今後のアップデートで追加されます。",
   "rateThisApp": "このアプリを評価する",
+  "rateThisAppMessage": "このアプリを気に入っていただけたら、レビューを残していただけると嬉しいです！あなたのフィードバックは改善に役立ち、1分もかかりません。",
   "ifYouUsingEnjoyThisApp": "このアプリを気に入っていただけたら、レビューを残していただけると嬉しいです！あなたのフィードバックは改善に役立ちます。",
   "rate": "評価する",
   "noThanks": "結構です",
@@ -114,5 +115,11 @@
   "freeFeaturesRenewEvery30Days": "無料機能は30日ごとに更新されます",
   "upgradeNowWithOneTimePurchase": "今すぐ一回限りの購入でアップグレードして、iSpeedScanの全機能を解放しましょう 🚀。",
   "cancel": "キャンセル",
-  "refresh": "更新"
+  "refresh": "更新",
+  "usePromoCode": "プロモコードを使用",
+  "enterPromoCode": "プロモコードを入力",
+  "apply": "適用",
+  "invalidPromoCode": "無効なプロモコード",
+  "promoCodeAppliedSuccessfully": "プロモコードが正常に適用されました！",
+  "promoCode": "プロモコード"
 }

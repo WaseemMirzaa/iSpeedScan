@@ -66,6 +66,7 @@
   "languageInformation": "מידע על שפות",
   "iSpeedScanSupportsMultipleLanuages": "האפליקציה תומכת במספר שפות כדי להנגיש אותה למשתמשים ברחבי העולם. אם השפה שלך לא זמינה כרגע, נוסיף שפות נוספות בעדכונים עתידיים.",
   "rateThisApp": "דרג את האפליקציה",
+  "rateThisAppMessage": "אם אתה נהנה להשתמש באפליקציה, נשמח אם תוכל להקדיש דקה להשאיר ביקורת! המשוב שלך עוזר לנו להשתפר ולא ייקח יותר מדקה.",
   "ifYouUsingEnjoyThisApp": "אם אתה נהנה להשתמש באפליקציה, נשמח אם תוכל להקדיש דקה להשאיר ביקורת! המשוב שלך עוזר לנו להשתפר ולא ייקח יותר מדקה.",
   "rate": "דרג",
   "noThanks": "לא תודה",
@@ -112,5 +113,11 @@
   "freeFeaturesRenewEvery30Days": "תכונות חינמיות מתחדשות כל 30 יום",
   "upgradeNowWithOneTimePurchase": "שדרג עכשיו ברכישה חד-פעמית ושחרר את הכוח המלא של iSpeedScan 🚀.",
   "cancel": "ביטול",
-  "refresh": "רענן"
+  "refresh": "רענן",
+  "usePromoCode": "השתמש בקוד הנחה",
+  "enterPromoCode": "הזן קוד הנחה",
+  "apply": "החל",
+  "invalidPromoCode": "קוד הנחה לא תקין",
+  "promoCodeAppliedSuccessfully": "קוד ההנחה הוחל בהצלחה!",
+  "promoCode": "קוד הנחה"
 }

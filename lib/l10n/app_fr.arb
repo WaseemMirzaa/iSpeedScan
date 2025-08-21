@@ -68,6 +68,7 @@
   "languageInformation": "Informations sur la langue",
   "iSpeedScanSupportsMultipleLanuages": "iSpeedScan prend en charge plusieurs langues pour rendre l'application accessible dans le monde entier. Si votre langue préférée n'est pas disponible, d'autres seront ajoutées dans de futures mises à jour.",
   "rateThisApp": "Noter cette application",
+  "rateThisAppMessage": "Si vous aimez cette application, merci de prendre une minute pour laisser un avis ! Vos retours nous aident à nous améliorer et ne prendront pas plus d'une minute.",
   "ifYouUsingEnjoyThisApp": "Si vous aimez cette application, merci de prendre une minute pour laisser un avis ! Vos retours nous aident à nous améliorer.",
   "rate": "NOTER",
   "noThanks": "NON MERCI",
@@ -114,5 +115,11 @@
   "freeFeaturesRenewEvery30Days": "LES FONCTIONNALITÉS GRATUITES SE RENOUVELLENT TOUS LES 30 JOURS",
   "upgradeNowWithOneTimePurchase": "PASSEZ AU NIVEAU SUPÉRIEUR MAINTENANT AVEC UN ACHAT UNIQUE ET DÉBLOQUEZ TOUTE LA PUISSANCE D'iSpeedScan 🚀.",
   "cancel": "Annuler",
-  "refresh": "Actualiser"
+  "refresh": "Actualiser",
+  "usePromoCode": "Utiliser le Code Promo",
+  "enterPromoCode": "Entrez le Code Promo",
+  "apply": "Appliquer",
+  "invalidPromoCode": "Code Promo Invalide",
+  "promoCodeAppliedSuccessfully": "Code Promo Appliqué avec Succès !",
+  "promoCode": "Code Promo"
 }

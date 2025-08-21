@@ -41,15 +41,25 @@ class PreferenceService {
   static getSavedQuality() {}
 
   // Save the current date as the first open date
-  Future<void> saveFirstOpenDate() async {
+  Future<void> saveFirstOpenDate([DateTime? fiveDaysAgo]) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (fiveDaysAgo != null) {
+      String formattedDate =
+        fiveDaysAgo.toIso8601String(); // You can customize the format
+    await prefs.setString(_firstOpenDateKey, formattedDate);
+      return;
+    }
+    
     DateTime now = DateTime.now();
     String formattedDate =
         now.toIso8601String(); // You can customize the format
     await prefs.setString(_firstOpenDateKey, formattedDate);
   }
 
-  checkAndSaveDate() async {
+  checkAndSaveDate([DateTime? fiveDaysAgo]) async {
+    if (fiveDaysAgo != null) {
+      saveFirstOpenDate(fiveDaysAgo);
+    }
     var date = await getFirstOpenDate();
 
     if (date == null) {
@@ -114,7 +124,6 @@ class PreferenceService {
     return difference.inDays > 3;
   }
 
-
   // Increment and return the PDF created count
   Future<int> incrementAndReturnPdfCreatedCount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -167,7 +176,8 @@ class PreferenceService {
       // Check if the difference in days is a multiple of 3
       if (difference.inDays % 3 == 0) {
         await prefs.setInt(_pdfCreatedCountKey, 0);
-        print("PDF created count has been reset as the 3-day period has passed.");
+        print(
+            "PDF created count has been reset as the 3-day period has passed.");
       }
     }
   }
@@ -234,12 +244,12 @@ class PreferenceService {
     // If last reset is null or the difference is greater than or equal to 3 days, reset
     if (lastReset == null || now.difference(lastReset).inDays >= 3) {
       await saveUsageMinutes(0); // Reset the usage count
-      await saveLastResetTime(now); // Save the current time as the last reset time
+      await saveLastResetTime(
+          now); // Save the current time as the last reset time
       return 0;
     }
 
     // If less than 3 days have passed, return the current usage minutes
     return await getUsageMinutes();
   }
-
 }

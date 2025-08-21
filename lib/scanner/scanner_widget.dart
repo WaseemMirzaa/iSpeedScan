@@ -11,9 +11,10 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:provider/provider.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
-import 'package:rate_my_app/rate_my_app.dart';
-import '../services/custom_rating_service.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import '../helper/log_helper.dart';
 import '../helper/pdf_creation.dart';
@@ -212,6 +213,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
 
       // if (_isSubscribed) return;
       await service.checkAndSaveDate();
+
       _is3DaysPassed = await service.isFirstOpenDateOlderThan3Days();
 
       // Continue with regular subscription check
@@ -280,23 +282,795 @@ class _ScannerWidgetState extends State<ScannerWidget>
     ]);
   }
 
-  Future<void> initCustomRatingDialog() async {
-    // Initialize the custom rating service
-    await CustomRatingService.init();
+  // Main rating initialization method
+  Future<void> initRateMyApp() async {
+    final prefs = await SharedPreferences.getInstance();
 
-    // Show the dialog if conditions are met
-    if (mounted) {
-      await CustomRatingService.showRatingDialog(context);
+    // Track first launch date
+    if (!prefs.containsKey('first_launch_date')) {
+      await prefs.setString(
+          'first_launch_date', DateTime.now().toIso8601String());
+    }
+
+    // Increment launch count
+    final currentCount = prefs.getInt('launch_count') ?? 0;
+    await prefs.setInt('launch_count', currentCount + 1);
+
+    // Check if we should show the rating dialog
+    if (await _shouldShowRatingDialog()) {
+      await _showCustomRatingDialog();
     }
   }
 
-  // Debug method to test rating dialog
-  Future<void> _testShowRatingDialog() async {
-    await CustomRatingService.resetRatingData();
-    await CustomRatingService.init();
-    if (mounted) {
-      await CustomRatingService.showRatingDialog(context);
+  // Check if rating dialog should be shown
+  Future<bool> _shouldShowRatingDialog() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // Don't show if user has already rated
+    if (prefs.getBool('has_rated') ?? false) {
+      return false;
     }
+
+    // Get first launch date
+    final firstLaunchString = prefs.getString('first_launch_date');
+    if (firstLaunchString == null) return false;
+
+    final firstLaunch = DateTime.parse(firstLaunchString);
+    final daysSinceFirstLaunch = DateTime.now().difference(firstLaunch).inDays;
+    final launchCount = prefs.getInt('launch_count') ?? 0;
+
+    // Check cooldown period
+    final lastReminderString = prefs.getString('last_reminder_date');
+    if (lastReminderString != null) {
+      final lastReminder = DateTime.parse(lastReminderString);
+      final daysSinceReminder = DateTime.now().difference(lastReminder).inDays;
+      if (daysSinceReminder < 7) {
+        return false; // Still in cooldown period
+      }
+    }
+
+    // Show if: (3+ days AND 5+ launches) OR 7+ days
+    return (daysSinceFirstLaunch >= 3 && launchCount >= 5) ||
+        daysSinceFirstLaunch >= 7;
+  }
+
+  Future<void> _showCustomRatingDialog() async {
+    final l10n = AppLocalizations.of(context)!;
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          elevation: 10,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.85,
+            constraints: BoxConstraints(
+              maxWidth: 400,
+              maxHeight: MediaQuery.of(context).size.height * 0.7,
+            ),
+            padding: EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.0),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.white,
+                  Color(0xFFF8F9FA),
+                ],
+              ),
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // App Icon or Logo
+                  Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 10,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        'assets/images/app_launcher_icon.jpg',
+                        width: 80,
+                        height: 80,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          // Fallback to ispeed_logo.png if app_launcher_icon.jpg fails
+                          return Image.asset(
+                            'assets/images/ispeed_logo.png',
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              // Final fallback to PDF icon
+                              return Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xFF173F5A),
+                                      Color(0xFF2E5A7A)
+                                    ],
+                                  ),
+                                ),
+                                child: Icon(
+                                  Icons.picture_as_pdf,
+                                  size: 40,
+                                  color: Colors.white,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 20),
+
+                  // Title
+                  Text(
+                    l10n!.rateThisApp,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF173F5A),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+
+                  SizedBox(height: 12),
+
+                  // Message
+                  Text(
+                    l10n!.rateThisAppMessage,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Color(0xFF6B7280),
+                      height: 1.4,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+
+                  SizedBox(height: 24),
+
+                  // 5-Star Rating Bar
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: List.generate(5, (index) {
+                  //     return GestureDetector(
+                  //       onTap: () {
+                  //         setState(() {
+                  //           selectedStars = index + 1;
+                  //         });
+                  //       },
+                  //       child: Container(
+                  //         padding: EdgeInsets.all(4),
+                  //         child: Icon(
+                  //           selectedStars > index
+                  //               ? Icons.star_rounded
+                  //               : Icons.star_outline_rounded,
+                  //           size: 40,
+                  //           color: selectedStars > index
+                  //               ? Colors.amber
+                  //               : Colors.grey[300],
+                  //         ),
+                  //       ),
+                  //     );
+                  //   }),
+                  // ),
+
+                  SizedBox(height: 8),
+
+                  // Rating feedback text
+
+                  // Buttons
+                  Column(
+                    children: [
+                      // Rate Button
+                      Container(
+                        width: double.infinity,
+                        height: 50,
+                        margin: EdgeInsets.only(bottom: 12),
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            Navigator.of(context).pop();
+                            print('User clicked Rate button');
+
+                            // Track analytics
+                            try {
+                              await analytics.logEvent(
+                                name: 'rating_button_clicked',
+                                parameters: {
+                                  'timestamp': DateTime.now().toIso8601String(),
+                                  'platform':
+                                      Platform.isAndroid ? 'android' : 'ios',
+                                },
+                              );
+                            } catch (e) {
+                              print('Analytics error: $e');
+                            }
+
+                            // Always take user to store for rating/feedback
+                            await _handleRateButtonPressed();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFF173F5A),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            elevation: 3,
+                          ),
+                          child: Text(
+                            l10n!.rate,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // Secondary buttons row
+                      Row(
+                        children: [
+                          // "No Thanks" Button
+                          Expanded(
+                            child: Container(
+                              height: 44,
+                              margin: EdgeInsets.only(right: 6),
+                              child: TextButton(
+                                onPressed: () async {
+                                  Navigator.of(context).pop();
+                                  print('User clicked "No Thanks"');
+
+                                  // Set reminder for later (don't mark as rated)
+                                  final prefs =
+                                      await SharedPreferences.getInstance();
+                                  await prefs.setString('last_reminder_date',
+                                      DateTime.now().toIso8601String());
+                                },
+                                style: TextButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.grey[300]!),
+                                  ),
+                                ),
+                                child: Text(
+                                  l10n!.noThanks,
+                                  style: TextStyle(
+                                    color: Colors.grey[600],
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          // "Maybe Later" Button
+                          Expanded(
+                            child: Container(
+                              height: 44,
+                              margin: EdgeInsets.only(left: 6),
+                              child: TextButton(
+                                onPressed: () async {
+                                  Navigator.of(context).pop();
+                                  print('User clicked "Maybe Later"');
+
+                                  // Set reminder for later (don't mark as rated)
+                                  final prefs =
+                                      await SharedPreferences.getInstance();
+                                  await prefs.setString('last_reminder_date',
+                                      DateTime.now().toIso8601String());
+                                },
+                                style: TextButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.grey[300]!),
+                                  ),
+                                ),
+                                child: Text(
+                                  l10n!.maybeLater,
+                                  style: TextStyle(
+                                    color: Colors.grey[600],
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  // // Custom attractive rating dialog
+  // Future<void> _showCustomRatingDialog() async {
+  //   if (!mounted) return;
+
+  //   // Log analytics
+  //   await analytics.logEvent(
+  //     name: 'rating_dialog_shown',
+  //     parameters: {
+  //       'timestamp': DateTime.now().toIso8601String(),
+  //       'platform': Platform.isAndroid ? 'android' : 'ios',
+  //     },
+  //   );
+
+  //   return showDialog<void>(
+  //     context: context,
+  //     barrierDismissible: false,
+  //     builder: (BuildContext context) {
+  //       return Dialog(
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(24.0),
+  //         ),
+  //         elevation: 20,
+  //         backgroundColor: Colors.transparent,
+  //         child: Container(
+  //           width: MediaQuery.of(context).size.width * 0.85,
+  //           constraints: BoxConstraints(
+  //             maxWidth: 400,
+  //             maxHeight: MediaQuery.of(context).size.height * 0.7,
+  //           ),
+  //           padding: EdgeInsets.all(28.0),
+  //           decoration: BoxDecoration(
+  //             borderRadius: BorderRadius.circular(24.0),
+  //             gradient: LinearGradient(
+  //               begin: Alignment.topLeft,
+  //               end: Alignment.bottomRight,
+  //               colors: [
+  //                 Colors.white,
+  //                 Color(0xFFF8F9FA),
+  //                 Color(0xFFF1F3F4),
+  //               ],
+  //             ),
+  //             boxShadow: [
+  //               BoxShadow(
+  //                 color: Colors.black.withValues(alpha: 0.15),
+  //                 blurRadius: 30,
+  //                 offset: Offset(0, 15),
+  //                 spreadRadius: 0,
+  //               ),
+  //               BoxShadow(
+  //                 color: Color(0xFF173F5A).withValues(alpha: 0.1),
+  //                 blurRadius: 20,
+  //                 offset: Offset(0, 10),
+  //                 spreadRadius: 0,
+  //               ),
+  //             ],
+  //           ),
+  //           child: SingleChildScrollView(
+  //             child: Column(
+  //               mainAxisSize: MainAxisSize.min,
+  //               children: [
+  //                 // Beautiful App Icon with enhanced styling
+  //                 Container(
+  //                   width: 90,
+  //                   height: 90,
+  //                   decoration: BoxDecoration(
+  //                     borderRadius: BorderRadius.circular(20),
+  //                     gradient: LinearGradient(
+  //                       begin: Alignment.topLeft,
+  //                       end: Alignment.bottomRight,
+  //                       colors: [
+  //                         Color(0xFF173F5A),
+  //                         Color(0xFF2E5A7A),
+  //                         Color(0xFF4A7BA7),
+  //                       ],
+  //                     ),
+  //                     boxShadow: [
+  //                       BoxShadow(
+  //                         color: Color(0xFF173F5A).withValues(alpha: 0.4),
+  //                         blurRadius: 20,
+  //                         offset: Offset(0, 8),
+  //                         spreadRadius: 0,
+  //                       ),
+  //                       BoxShadow(
+  //                         color: Colors.white.withValues(alpha: 0.8),
+  //                         blurRadius: 10,
+  //                         offset: Offset(-2, -2),
+  //                         spreadRadius: 0,
+  //                       ),
+  //                     ],
+  //                   ),
+  //                   child: ClipRRect(
+  //                     borderRadius: BorderRadius.circular(20),
+  //                     child: Image.asset(
+  //                       'assets/images/app_launcher_icon.jpg',
+  //                       width: 90,
+  //                       height: 90,
+  //                       fit: BoxFit.cover,
+  //                       errorBuilder: (context, error, stackTrace) {
+  //                         return Image.asset(
+  //                           'assets/images/ispeed_logo.png',
+  //                           width: 90,
+  //                           height: 90,
+  //                           fit: BoxFit.cover,
+  //                           errorBuilder: (context, error, stackTrace) {
+  //                             return Container(
+  //                               width: 90,
+  //                               height: 90,
+  //                               decoration: BoxDecoration(
+  //                                 borderRadius: BorderRadius.circular(20),
+  //                                 gradient: LinearGradient(
+  //                                   begin: Alignment.topLeft,
+  //                                   end: Alignment.bottomRight,
+  //                                   colors: [
+  //                                     Color(0xFF173F5A),
+  //                                     Color(0xFF2E5A7A),
+  //                                     Color(0xFF4A7BA7),
+  //                                   ],
+  //                                 ),
+  //                               ),
+  //                               child: Icon(
+  //                                 Icons.document_scanner_rounded,
+  //                                 size: 45,
+  //                                 color: Colors.white,
+  //                               ),
+  //                             );
+  //                           },
+  //                         );
+  //                       },
+  //                     ),
+  //                   ),
+  //                 ),
+
+  //                 SizedBox(height: 24),
+
+  //                 // Enhanced Title with better typography
+  //                 Text(
+  //                   'Rate iSpeedScan',
+  //                   style: TextStyle(
+  //                     fontSize: 26,
+  //                     fontWeight: FontWeight.bold,
+  //                     color: Color(0xFF173F5A),
+  //                     letterSpacing: -0.5,
+  //                     height: 1.2,
+  //                   ),
+  //                   textAlign: TextAlign.center,
+  //                 ),
+
+  //                 SizedBox(height: 12),
+
+  //                 // Enhanced Message with better styling
+  //                 Text(
+  //                   'Love using iSpeedScan? Your rating helps us improve and reach more users who need fast document scanning!',
+  //                   style: TextStyle(
+  //                     fontSize: 16,
+  //                     color: Color(0xFF6B7280),
+  //                     height: 1.5,
+  //                     fontWeight: FontWeight.w400,
+  //                   ),
+  //                   textAlign: TextAlign.center,
+  //                 ),
+
+  //                 SizedBox(height: 32),
+
+  //                 // Enhanced Buttons with better styling
+  //                 Column(
+  //                   children: [
+  //                     // Primary Rate Button with gradient
+  //                     Container(
+  //                       width: double.infinity,
+  //                       height: 54,
+  //                       margin: EdgeInsets.only(bottom: 16),
+  //                       decoration: BoxDecoration(
+  //                         borderRadius: BorderRadius.circular(16.0),
+  //                         gradient: LinearGradient(
+  //                           begin: Alignment.topLeft,
+  //                           end: Alignment.bottomRight,
+  //                           colors: [
+  //                             Color(0xFF173F5A),
+  //                             Color(0xFF2E5A7A),
+  //                           ],
+  //                         ),
+  //                         boxShadow: [
+  //                           BoxShadow(
+  //                             color: Color(0xFF173F5A).withValues(alpha: 0.3),
+  //                             blurRadius: 15,
+  //                             offset: Offset(0, 6),
+  //                             spreadRadius: 0,
+  //                           ),
+  //                         ],
+  //                       ),
+  //                       child: ElevatedButton(
+  //                         onPressed: () async {
+  //                           Navigator.of(context).pop();
+  //                           print('User clicked Rate button');
+
+  //                           try {
+  //                             await analytics.logEvent(
+  //                               name: 'rating_button_clicked',
+  //                               parameters: {
+  //                                 'timestamp': DateTime.now().toIso8601String(),
+  //                                 'platform':
+  //                                     Platform.isAndroid ? 'android' : 'ios',
+  //                               },
+  //                             );
+  //                           } catch (e) {
+  //                             print('Analytics error: $e');
+  //                           }
+
+  //                           await _handleRateButtonPressed();
+  //                         },
+  //                         style: ElevatedButton.styleFrom(
+  //                           backgroundColor: Colors.transparent,
+  //                           foregroundColor: Colors.white,
+  //                           shadowColor: Colors.transparent,
+  //                           shape: RoundedRectangleBorder(
+  //                             borderRadius: BorderRadius.circular(16.0),
+  //                           ),
+  //                           elevation: 0,
+  //                         ),
+  //                         child: Row(
+  //                           mainAxisAlignment: MainAxisAlignment.center,
+  //                           children: [
+  //                             Icon(Icons.star_rounded, size: 20),
+  //                             SizedBox(width: 8),
+  //                             Text(
+  //                               'Rate App',
+  //                               style: TextStyle(
+  //                                 fontSize: 17,
+  //                                 fontWeight: FontWeight.w600,
+  //                                 letterSpacing: 0.5,
+  //                               ),
+  //                             ),
+  //                           ],
+  //                         ),
+  //                       ),
+  //                     ),
+
+  //                     // Secondary buttons row with enhanced styling
+  //                     Row(
+  //                       children: [
+  //                         // "No Thanks" Button
+  //                         Expanded(
+  //                           child: Container(
+  //                             height: 48,
+  //                             margin: EdgeInsets.only(right: 8),
+  //                             child: TextButton(
+  //                               onPressed: () async {
+  //                                 Navigator.of(context).pop();
+  //                                 print('User clicked "No Thanks"');
+
+  //                                 final prefs =
+  //                                     await SharedPreferences.getInstance();
+  //                                 await prefs.setString('last_reminder_date',
+  //                                     DateTime.now().toIso8601String());
+  //                               },
+  //                               style: TextButton.styleFrom(
+  //                                 shape: RoundedRectangleBorder(
+  //                                   borderRadius: BorderRadius.circular(12.0),
+  //                                   side: BorderSide(
+  //                                     color: Color(0xFFE5E7EB),
+  //                                     width: 1.5,
+  //                                   ),
+  //                                 ),
+  //                                 backgroundColor: Colors.white,
+  //                               ),
+  //                               child: Text(
+  //                                 'No Thanks',
+  //                                 style: TextStyle(
+  //                                   color: Color(0xFF6B7280),
+  //                                   fontSize: 15,
+  //                                   fontWeight: FontWeight.w500,
+  //                                 ),
+  //                               ),
+  //                             ),
+  //                           ),
+  //                         ),
+
+  //                         // "Maybe Later" Button
+  //                         Expanded(
+  //                           child: Container(
+  //                             height: 48,
+  //                             margin: EdgeInsets.only(left: 8),
+  //                             child: TextButton(
+  //                               onPressed: () async {
+  //                                 Navigator.of(context).pop();
+  //                                 print('User clicked "Maybe Later"');
+
+  //                                 final prefs =
+  //                                     await SharedPreferences.getInstance();
+  //                                 await prefs.setString('last_reminder_date',
+  //                                     DateTime.now().toIso8601String());
+  //                               },
+  //                               style: TextButton.styleFrom(
+  //                                 shape: RoundedRectangleBorder(
+  //                                   borderRadius: BorderRadius.circular(12.0),
+  //                                   side: BorderSide(
+  //                                     color: Color(0xFFE5E7EB),
+  //                                     width: 1.5,
+  //                                   ),
+  //                                 ),
+  //                                 backgroundColor: Colors.white,
+  //                               ),
+  //                               child: Text(
+  //                                 'Maybe Later',
+  //                                 style: TextStyle(
+  //                                   color: Color(0xFF6B7280),
+  //                                   fontSize: 15,
+  //                                   fontWeight: FontWeight.w500,
+  //                                 ),
+  //                               ),
+  //                             ),
+  //                           ),
+  //                         ),
+  //                       ],
+  //                     ),
+  //                   ],
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
+
+  // Handle rate button pressed - Direct store navigation
+  Future<void> _handleRateButtonPressed() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    print('🌟 Rate button pressed - opening app store directly');
+
+    // Log analytics
+    try {
+      await analytics.logEvent(
+        name: 'rating_button_clicked',
+        parameters: {
+          'timestamp': DateTime.now().toIso8601String(),
+          'platform': Platform.isAndroid ? 'android' : 'ios',
+        },
+      );
+    } catch (e) {
+      print('Analytics error: $e');
+    }
+
+    // Mark as rated to prevent repeated dialogs
+    await prefs.setBool('has_rated', true);
+
+    // Open store page directly for rating
+    await _openStorePageForRating();
+  }
+
+  // Open store page for rating with enhanced native URL schemes
+  Future<void> _openStorePageForRating() async {
+    print('🌟 Opening app store for rating...');
+
+    try {
+      bool success = false;
+
+      if (Platform.isAndroid) {
+        // Android - Try multiple URL schemes for Google Play Store
+        final androidUrls = [
+          'https://play.google.com/store/apps/details?id=com.tevineighdesigns.ispeedscan1',
+          'intent://details?id=com.tevineighdesigns.ispeedscan1#Intent;scheme=market;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.android.vending;end',
+        ];
+
+        for (String url in androidUrls) {
+          try {
+            print('📱 Android: Trying URL: $url');
+            success = await launchUrl(
+              Uri.parse(url),
+              mode: LaunchMode.externalApplication,
+            );
+            if (success) {
+              print('✅ Android URL successful: $url');
+              break;
+            }
+          } catch (e) {
+            print('❌ Android URL failed: $url - Error: $e');
+            continue;
+          }
+        }
+      } else if (Platform.isIOS) {
+        // iOS - Try multiple URL schemes for App Store
+        final iosUrls = [
+          'itms-apps://apps.apple.com/app/id6627339270',
+        ];
+
+        for (String url in iosUrls) {
+          try {
+            print('📱 iOS: Trying URL: $url');
+            success = await launchUrl(
+              Uri.parse(url),
+              mode: LaunchMode.externalApplication,
+            );
+            if (success) {
+              print('✅ iOS URL successful: $url');
+              break;
+            }
+          } catch (e) {
+            print('❌ iOS URL failed: $url - Error: $e');
+            continue;
+          }
+        }
+      }
+    } catch (e) {
+      print('❌ Store page opening failed: $e');
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+                'Could not open app store. Please search for "iSpeedScan" in your app store and leave a review!'),
+            backgroundColor: Colors.orange,
+            duration: Duration(seconds: 5),
+            action: SnackBarAction(
+              label: 'OK',
+              textColor: Colors.white,
+              onPressed: () {},
+            ),
+          ),
+        );
+      }
+    }
+  }
+
+  // Manual trigger for testing
+  Future<void> showRatingDialogManually() async {
+    print('🧪 TESTING: Manually showing rating dialog');
+    await _showCustomRatingDialog();
+  }
+
+  // Reset rating preferences for testing
+  Future<void> resetRatingPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('has_rated');
+    await prefs.remove('first_launch_date');
+    await prefs.remove('launch_count');
+    await prefs.remove('last_reminder_date');
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              'Rating preferences reset! You can now test the rating dialog.'),
+          backgroundColor: Color(0xFF173F5A),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
+    print('✅ Rating preferences reset for testing');
+  }
+
+  // Test the rate button functionality directly
+  Future<void> testRateButtonDirectly() async {
+    print('🧪 TESTING: Testing rate button functionality directly');
+    print(
+        '🧪 Platform: ${Platform.isAndroid ? "Android" : Platform.isIOS ? "iOS" : "Unknown"}');
+    await _handleRateButtonPressed();
   }
 
   Future<void> _loadLastDialogShownDate() async {
@@ -1449,6 +2223,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                                   ),
                                               maxLines: 2,
                                             ),
+                                            SizedBox(width: 12),
                                             Expanded(
                                               child: Text(
                                                 _formatTime(_remainingSeconds),
@@ -2372,9 +3147,28 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                         'isSubscribed':
                                             _isSubscribed.toString(),
                                       },
-                                    );
+                                    ).then((result) async {
+                                      if (result != null && result is List) {
+                                        // because you returned a list with one map
+                                        final promoResult = result[0];
+                                        final bool isPromoApplied =
+                                            (promoResult['promoCodeApplied']
+                                                    as bool?) ??
+                                                false;
 
-                                    // After returning from the subscription page, check status
+                                        print(
+                                            'Promo code applied: $isPromoApplied');
+
+                                        if (isPromoApplied) {
+                                          final DateTime fiveDaysAgo =
+                                              DateTime.now().subtract(
+                                                  const Duration(days: 5));
+                                          await service
+                                              .checkAndSaveDate(fiveDaysAgo);
+                                        }
+                                      }
+                                    });
+
                                     await checkSubscriptionStatus();
                                   },
                                   child: Container(
@@ -2387,11 +3181,8 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                         BoxShadow(
                                           blurRadius: 5.0,
                                           color: Color(0x3416202A),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                          offset: Offset(0.0, 2.0),
+                                        ),
                                       ],
                                       borderRadius: BorderRadius.circular(12.0),
                                       shape: BoxShape.rectangle,
@@ -2409,8 +3200,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 !_isSubscribed
-                                                    ? t.lifeTimeSubsciption +
-                                                        ' \$1.99'
+                                                    ? '${t.lifeTimeSubsciption} \$1.99'
                                                     : t.viewPurchaseDetails,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2437,11 +3227,13 @@ class _ScannerWidgetState extends State<ScannerWidget>
                                           ),
                                         ],
                                       ),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'rowOnPageLoadAnimation1']!),
+                                    ).animateOnPageLoad(
+                                      animationsMap['rowOnPageLoadAnimation1']!,
+                                    ),
                                   ),
                                 ),
                               ),
+
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 16.0, 0.0),
@@ -2918,7 +3710,10 @@ class _ScannerWidgetState extends State<ScannerWidget>
       ),
     });
 
-    initCustomRatingDialog();
+    // Delay the rate dialog to ensure context is ready
+    Future.delayed(Duration(seconds: 4), () {
+      initRateMyApp();
+    });
   }
 
   Future<void> checkPdfCreation(List<String> images) async {
