@@ -8,7 +8,7 @@ import 'package:ispeedscan/helper/local_provider.dart';
 
 import 'package:ispeedscan/services/app_store_service.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pdfx/pdfx.dart';
+// import 'package:pdfx/pdfx.dart';
 import 'package:provider/provider.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
@@ -3873,22 +3873,22 @@ class _ScannerWidgetState extends State<ScannerWidget>
     return deviceInfo.model.toLowerCase().contains('ipad');
   }
 
-  Future<String> generatePdfThumbnail(String pdfPath) async {
-    // Open the PDF and render the first page
-    final document = await PdfDocument.openFile(pdfPath);
-    final page = await document.getPage(1);
+  // Future<String> generatePdfThumbnail(String pdfPath) async {
+  //   // Open the PDF and render the first page
+  //   final document = await PdfDocument.openFile(pdfPath);
+  //   final page = await document.getPage(1);
 
-    // Render the page as an image (adjust width and height for quality)
-    final image = await page.render(width: 1920, height: 1090);
+  //   // Render the page as an image (adjust width and height for quality)
+  //   final image = await page.render(width: 1920, height: 1090);
 
-    // Save the rendered image as a temporary file
-    final directory = Directory('/storage/emulated/0/Download');
-    final thumbnailPath = '${directory.path}/thumbnail.png';
-    final thumbnailFile = File(thumbnailPath);
-    await thumbnailFile.writeAsBytes(image!.bytes);
+  //   // Save the rendered image as a temporary file
+  //   final directory = Directory('/storage/emulated/0/Download');
+  //   final thumbnailPath = '${directory.path}/thumbnail.png';
+  //   final thumbnailFile = File(thumbnailPath);
+  //   await thumbnailFile.writeAsBytes(image!.bytes);
 
-    return thumbnailPath;
-  }
+  //   return thumbnailPath;
+  // }
 
   void _showTrialStatusDialog() {
     final t = AppLocalizations.of(context)!;

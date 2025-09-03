@@ -12,7 +12,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-import 'package:cunning_document_scanner/cunning_document_scanner.dart';
+// import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 import '../../../helper/analytics_helper.dart';
 
 Future<List<String>> scannerAction(BuildContext context) async {
@@ -25,9 +25,11 @@ Future<List<String>> scannerAction(BuildContext context) async {
   var isPhotoMode = await PreferenceService.getMode();
 
   try {
-    pictures = await CunningDocumentScanner.getPictures(
-            noOfPages: 60, isGalleryImportAllowed: false) ??
-        [];
+    // pictures = await CunningDocumentScanner.getPictures(
+    //         noOfPages: 60, isGalleryImportAllowed: false) ??
+    //     [];
+    pictures = []; // Temporarily disabled scanner functionality
+    pictures = []; // Temporarily disabled scanner functionality
     _pictures = pictures;
 
     // Log scan completed event
