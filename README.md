@@ -67,8 +67,6 @@ iSpeedScan transforms your smartphone or tablet into a powerful, portable docume
 
 ---
 
-If you like — I can **draft an alternate README** assuming an **open-source clone** of iSpeedScan: with suggested **project structure**, **feature roadmap**, and **code-style guidelines** (useful if you plan to build something similar).
-
 [1]: https://apps.apple.com/us/app/ispeedscan-quick-doc-scanner/id6627339270?utm_source=chatgpt.com "‎iSpeedScan – Quick Doc Scanner App - App Store"
 [2]: https://apps.apple.com/us/app/document-scanner-by-ispeedscan/id6627339270?utm_source=chatgpt.com "‎iSpeedScan – Quick Doc Scanner on the App Store"
 [3]: https://www.issuewire.com/document-management-just-got-smarter-beloved-ios-apps-relaunch-with-upgrades-and-expand-to-android-1831569108441494?utm_source=chatgpt.com "Document Management Just Got Smarter: Beloved iOS Apps Relaunch with Upgrades and Expand to Android - IssueWire"
